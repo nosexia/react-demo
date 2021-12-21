@@ -1,0 +1,93 @@
+@import "~antd/es/style/themes/default.less";
+.container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: #0a1a29;
+  
+    .header {
+      background-size: 100% 100%;
+      box-sizing: border-box;
+      justify-content: center;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 18%;
+      background-image: url("./assets/headerBg.png");
+      display: flex;
+      color: #fff;
+      height: 345px;
+  
+      .titleEn {
+        font-size: 20px;
+        color: #ffffff;
+        letter-spacing: 15px;
+        font-weight: 200;
+      }
+  
+      .title {
+        font-size: 60px;
+        font-weight: bold;
+      }
+  
+      .contextText {
+        width: 600px;
+        height: 120px;
+        padding-right: 16px;
+        font-family: SourceHanSansCN-Regular;
+        font-size: 14px;
+        color: #ffffff;
+        letter-spacing: 1.4px;
+        font-size: 12px;
+        text-align: justify;
+        line-height: 20px;
+        font-weight: 400;
+        overflow: hidden;
+      }
+    }
+  
+    .contentWrap {
+      border-radius: @border-radius-base;
+      box-shadow: @box-shadow-base;
+      min-width: 322px;
+      width: 65%;
+      margin: 0 auto;
+      min-height: 100px;
+      max-width: 1500px;
+      padding: 16px 16px;
+      background-color: transparent;
+      display: flex;
+      flex-direction: column;
+  
+      .cardHeaderImg {
+        height: 160px;
+        width: 100%;
+      }
+      .context {
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        background-color: #073f5d;
+        .cardTitle {
+          font-size: 18px;
+          color: #ffffff;
+          letter-spacing: 0;
+          font-weight: 900;
+          margin-bottom: 10px;
+        }
+  
+        & > p {
+          font-size: 14px;
+          color: #ffffff;
+          letter-spacing: 1.8px;
+          text-align: justify;
+          line-height: 22px;
+          font-weight: 400;
+        }
+
+        & > p > p{
+          margin:0 !important;
+        }
+      }
+    }
+  }
+  

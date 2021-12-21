@@ -1,0 +1,555 @@
+.ant-btn-primary {
+  background: #7ed0f5;
+  border-color: #7ed0f5;
+  color: #fff !important;
+}
+
+.ant-btn-primary:hover {
+  background: #7ed0f5;
+  border-color: #7ed0f5;
+  color: #fff !important;
+}
+
+.ant-btn-primary:active {
+  background: #7ed0f5;
+  border-color: #7ed0f5;
+  color: #fff !important;
+}
+
+.ant-btn-dangerous {
+  color: #c03b70 !important;
+  border-color: #c03b70 !important;
+  background: #2d385c !important;
+}
+
+.ant-btn {
+  border-color: #7ed0f5;
+  color: #7ed0f5;
+  border-radius: 16px;
+  background-color: #005680;
+}
+
+.ant-btn:hover {
+  border-color: #7ed0f5;
+  color: #7ed0f5;
+}
+
+.ant-btn:active {
+  border-color: #7ed0f5;
+  color: #7ed0f5;
+}
+
+/* table */
+.ant-card .ant-card-middle {
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+.ant-pro-table {
+  margin: 35px;
+  background-color: #003857;
+  border-radius: 30px;
+}
+
+.ant-pro-table-search {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.ant-pro-table-search {
+  background-color: #005680;
+}
+
+.ant-card-middle {
+  background-color: #003857;
+}
+
+.ant-table-cell {
+  color: #fff !important;
+  border-right: none !important;
+  border-bottom: none !important;
+}
+
+.ant-table-thead .ant-table-cell {
+  background-color: #004164;
+}
+
+.ant-table-tbody .ant-table-cell {
+  background-color: #003857;
+}
+
+.ant-table-tbody tr:nth-child(even) .ant-table-cell {
+  background-color: #003e5f !important;
+}
+
+.ant-table-tbody tr:nth-child(odd) .ant-table-cell {
+  background-color: #003857 !important;
+}
+
+.ant-table.ant-table-bordered
+  > .ant-table-container
+  > .ant-table-content
+  > table,
+.ant-table.ant-table-bordered
+  > .ant-table-container
+  > .ant-table-header
+  > table {
+  border-top: none;
+}
+
+.ant-pro-table-list-toolbar-title {
+  color: #fff;
+}
+
+.ant-form-item-label > label {
+  color: #fff;
+}
+
+.ant-pro-table-list-toolbar-setting-item {
+  color: #fff;
+}
+
+.ant-table.ant-table-bordered > .ant-table-container {
+  border: none;
+  border: 1px solid #005f8e;
+}
+
+.ant-pagination-total-text {
+  color: #fff;
+}
+
+/* 弹窗分步表单中的内容不需要左右自适应居中，设置为居左 */
+.ant-modal-body .ant-pro-steps-form-container {
+  margin: 0;
+  width: 100%;
+}
+
+.ant-modal-content {
+  background-color: transparent;
+  position: relative;
+  z-index: 100;
+  border-radius: 30px;
+}
+.ant-modal-header {
+  background-color: #005680;
+  height: 45px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom: 1px solid #006da0;
+}
+
+.ant-modal-body {
+  background-color: #003857;
+  max-height: 445px;
+  overflow: auto;
+}
+
+.ant-modal-body .ant-pro-steps-form-step {
+  margin-top: 0;
+}
+
+.ant-modal-footer {
+  background-color: #005680;
+  height: 73px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-top: 1px solid #006da0;
+  padding: 20px 26px;
+}
+
+.ant-modal-footer .ant-btn-primary {
+  background-color: #7ed0f5;
+  color: #fff;
+}
+.ant-modal-close {
+  right: 10px;
+}
+.ant-modal-close-x {
+  width: 45px;
+  height: 45px;
+  line-height: 42px;
+}
+.ant-modal-close-icon {
+  background-color: #ffffff;
+  color: #003857;
+  font-size: 10px;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  line-height: 15px;
+}
+
+.ant-modal-title {
+  color: #fff;
+  line-height: 12px;
+}
+
+.ant-modal-footer .ant-btn {
+  border-radius: 16px;
+  /* color: #7ed0f5; */
+  border-color: #7ed0f5;
+}
+
+/* 修改选择框的颜色 */
+.ant-modal-body
+  .ant-select:not(.ant-select-customize-input)
+  .ant-select-selector {
+  background-color: #005680;
+  border: 1px solid #005680;
+  color: #fff;
+}
+
+.ant-modal-body .ant-form-item-label > label {
+  color: #fff;
+}
+
+.ant-modal-body .ant-radio-wrapper {
+  color: #fff;
+}
+
+.scrollbar {
+  width: 8px;
+  margin: 0 auto;
+}
+/* 覆盖弹窗中的分步表单样式 */
+.ant-modal-body .ant-pro-steps-form-steps-container {
+  max-width: 1160px;
+  margin: auto;
+  position: absolute;
+  top: -95px;
+  left: 0px;
+  width: 100%;
+}
+
+.ant-modal-body
+  .ant-steps-item-wait
+  > .ant-steps-item-container
+  > .ant-steps-item-content
+  > .ant-steps-item-title::after {
+  height: 2px;
+  background: #003e5d;
+}
+
+.ant-modal-body
+  .ant-steps-item-finish
+  > .ant-steps-item-container
+  > .ant-steps-item-content
+  > .ant-steps-item-title::after {
+  height: 2px;
+  background: #003e5d;
+}
+
+.ant-modal-body
+  .ant-steps-item-process
+  > .ant-steps-item-container
+  > .ant-steps-item-content
+  > .ant-steps-item-title::after {
+  height: 2px;
+  background: #003e5d;
+}
+
+.ant-modal-body
+  .ant-steps-item-wait
+  > .ant-steps-item-container
+  > .ant-steps-item-content
+  > .ant-steps-item-title {
+  color: #7ed0f5;
+}
+
+.ant-modal-body
+  .ant-steps-item-process
+  > .ant-steps-item-container
+  > .ant-steps-item-content
+  > .ant-steps-item-title {
+  color: #7ed0f5;
+  font-weight: bold;
+}
+
+.ant-modal-body
+  .ant-steps-item-finish
+  > .ant-steps-item-container
+  > .ant-steps-item-content
+  > .ant-steps-item-title {
+  color: #7ed0f5;
+  font-weight: bold;
+}
+
+.ant-modal-body .ant-steps-item-finish .ant-steps-item-icon {
+  background-color: #7ed0f5;
+  border-color: #7ed0f5;
+  box-sizing: border-box;
+}
+
+.ant-modal-body .ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon {
+  color: #003756;
+}
+
+.ant-modal-body
+  .ant-steps-item-process
+  > .ant-steps-item-container
+  > .ant-steps-item-icon {
+  background: #7ed0f5;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  position: relative;
+}
+.ant-modal-body .ant-steps-item-process > .ant-steps-item-container {
+  padding: 2px;
+}
+.ant-modal-body
+  .ant-steps-item-process
+  > .ant-steps-item-container
+  > .ant-steps-item-icon:before {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  top: -4px;
+  left: -4px;
+  width: 36px;
+  height: 36px;
+  border: 2px solid #003b58;
+  border-radius: 50%;
+}
+
+.ant-modal-body .ant-steps-item-wait .ant-steps-item-icon {
+  background-color: #003e5d;
+  border: 2px solid #5fcaf9;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.ant-modal-body .ant-steps-item-wait .ant-steps-item-icon > .ant-steps-icon {
+  color: #5fcaf9;
+}
+
+.ant-modal-body .ant-steps-item-icon .ant-steps-icon {
+  top: -2.5px;
+}
+
+/* 重置多选框样式 */
+.ant-checkbox + span {
+  color: #fff;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #00baff;
+  border-color: #00baff;
+}
+
+/* 自定义进度条样式 */
+.ant-progress-status-success .ant-progress-bg {
+  background-color: #03b3c3;
+}
+
+.ant-progress-status-success .ant-progress-text {
+  color: #03b3c3;
+}
+
+.ant-progress-success-bg,
+.ant-progress-bg {
+  background-color: #00a0ff;
+}
+.ant-progress-inner {
+  background-color: rgba(22, 77, 107, 0.5);
+}
+.ant-progress-status-exception .ant-progress-bg {
+  background-color: #b23b6e;
+}
+
+.ant-progress-status-exception .ant-progress-text {
+  color: #b23b6e;
+}
+.ant-progress-text {
+  color: rgba(138, 221, 255);
+}
+
+/* 覆盖输入框样式 */
+.ant-input-affix-wrapper {
+  background-color: #003857;
+  border: 1px solid #8ee3ff;
+}
+
+.ant-input {
+  background-color: #003857;
+  color: #fff;
+}
+
+.ant-input-affix-wrapper > input.ant-input {
+  color: #fff;
+}
+
+/* 覆盖数字输入框样式 */
+.ant-input-number-input-wrap{
+  background-color: #003857;
+  border: 0px solid #8ee3ff;
+}
+.ant-input-number-input{
+  background-color: #003857;
+  color: #fff;
+}
+
+/* 覆盖switch的样式 */
+.ant-switch-checked {
+  background-color: #7ed0f5 !important;
+}
+
+.ant-switch{
+  background-color: #005680;
+}
+
+/* select样式 */
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  background-color: #003857;
+  border: 1px solid #8ee3ff;
+  color: #fff;
+}
+
+.ant-select-arrow {
+  color: #8ee3ff;
+}
+
+/* 拖拽上传插件样式自定义 */
+.ant-form-item .ant-upload.ant-upload-drag {
+  background: #0a1a29;
+}
+
+.ant-upload.ant-upload-drag {
+  border: none;
+}
+
+.ant-upload.ant-upload-drag p.ant-upload-text {
+  color: #fff;
+}
+
+.ant-upload.ant-upload-drag p.ant-upload-hint {
+  color: #fff;
+}
+
+/* 自定义tabs的样式 */
+.tabs-wrap .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #fff;
+  font-weight: bold;
+}
+
+.tabs-wrap .ant-tabs-tab-btn {
+  color: #7ed0f5;
+}
+
+.tabs-wrap .ant-tabs-ink-bar {
+  background: #fff;
+}
+
+.tabs-wrap .tabs-wrap .ant-tabs-top > .ant-tabs-nav .ant-tabs-ink-bar,
+.ant-tabs-bottom > .ant-tabs-nav .ant-tabs-ink-bar,
+.ant-tabs-top > div > .ant-tabs-nav .ant-tabs-ink-bar,
+.ant-tabs-bottom > div > .ant-tabs-nav .ant-tabs-ink-bar {
+  height: 3px;
+  border-radius: 2px;
+}
+
+.tabs-wrap .ant-tabs-top > .ant-tabs-nav .ant-tabs-ink-bar,
+.ant-tabs-top > div > .ant-tabs-nav .ant-tabs-ink-bar {
+  bottom: 1px;
+}
+
+.tabs-wrap .ant-tabs-tab {
+  flex: 1;
+  justify-content: center;
+}
+.tabs-wrap .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list,
+.ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-list {
+  width: 100%;
+}
+
+/* 遮罩层默认背景透明度 */
+.ant-modal-mask {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* 自定义header头 */
+.ant-pro-top-nav-header-main,
+.wide {
+  /* background: url('@/assets/header/headerBg.png');
+     background-size: 100% 100%; */
+}
+
+.ant-layout-header {
+  height: 60px !important;
+}
+
+.ant-card {
+  background-color: #003e5f;
+  border: 1px solid #7ed0f5;
+  padding: 2px;
+}
+
+/* popover自定义样式 */
+.ant-popover-inner-content {
+  color: #fff;
+}
+
+.ant-popover-inner {
+  background-color: #005680;
+}
+
+.ant-popover-arrow-content {
+  background-color: #005680;
+}
+
+/* 登录popover的样式 */
+/* .login__popover--wrap .ant-popover-inner-content{
+  color: red;
+}
+.login__popover--wrap .ant-popover-inne{
+  background-color:rgba(0,86,128,.5)
+}
+.login__popover--wrap .ant-popover-arrow-content{
+  background-color:rgba(0,86,128,.5)
+} */
+
+/* ------------------------------------------------------- */
+.ant-modal-body .ant-pro-table {
+  margin: 0;
+}
+
+.ant-modal-body {
+  padding-bottom: 10px;
+}
+
+.ant-modal-body .ant-pro-form-group-title {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.ant-modal-body .ant-pro-form-group-container .ant-pro-form-group-title {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: rgb(126, 208, 245);
+  font-weight: 100;
+}
+
+.ant-pro-form-group-container .ant-space-item {
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.ant-modal-body .ant-space-horizontal {
+  gap: 0 32px !important;
+}
+
+.ant-modal-confirm-body .ant-modal-confirm-title{
+  color: #fff !important;
+}
+
+.ant-modal-confirm-body .ant-modal-confirm-content{
+  color: #fff;
+}
+
+.ant-modal-confirm .ant-modal-body{
+  border-radius: 5px;
+}
+
+/* Proform下tooltip样式 */
+.ant-form-item-label > label .ant-form-item-tooltip{
+  color:#FFF;
+}

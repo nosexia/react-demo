@@ -1,0 +1,55 @@
+@import "~antd/es/style/themes/default.less";
+
+.flleTypeWrap {
+  // background: #FFFF;
+
+  .fileTypeView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 168px;
+    height: 168px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    border: 1px solid @border-color-base;
+    border-radius: @border-radius-base;
+
+    &:hover {
+      background-color: @mentions-dropdown-bg;
+      border: 1px solid @primary-color;
+      & > span {
+        color: @primary-color;
+      }
+    }
+
+    & > img {
+      width: 100px;
+      height: 100px;
+    }
+
+    & > span {
+      color: @text-color;
+      text-align: center;
+      margin-top: 10px;
+    }
+  }
+
+  .fileTypeViewActive {
+    background-color: @primary-color;
+    box-shadow: @box-shadow-base;
+    border-radius: @border-radius-base;
+    border: 1px solid transparent;
+
+    &:hover {
+      background-color: #40a9ff;
+      & > span {
+        color: @white;
+      }
+    }
+
+    & > span {
+      color: @white;
+    }
+  }
+}
