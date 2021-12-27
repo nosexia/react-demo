@@ -461,6 +461,12 @@
   width: 100%;
 }
 
+/* 隐藏operations */
+.tabs-wrap .ant-tabs > .ant-tabs-nav .ant-tabs-nav-operations,
+.ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-operations {
+  display: none;
+}
+
 /* 遮罩层默认背景透明度 */
 .ant-modal-mask {
   background-color: rgba(0, 0, 0, 0.7);
