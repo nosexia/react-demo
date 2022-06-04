@@ -44,6 +44,7 @@ import ScatterPlot from '@pages/data/pages/browsing/pages/scatter-plot';
 import { setNavigate } from "@api/request";
 import TaskList from "@pages/arithmetic/pages/task-list";
 import Simulation from "@pages/model/pages/simulation";
+import RealtimeOverview from '@pages/model/pages/realtime-overview';
 
 //异步加载
 const LoginPage = React.lazy(() => import('@/pages/login'))
@@ -52,6 +53,10 @@ const routeList: any[] = [
   {
     path: "/login",
     element: <WrapperRouteComponent element={<LoginPage />} />,
+  },
+  {
+    path: "/realtime-overview",
+    element: <WrapperRouteComponent element={<RealtimeOverview />} />,
   },
   {
     path: "/",
