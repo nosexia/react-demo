@@ -2,31 +2,26 @@ import React, { useRef, useEffect, useState, useMemo, useCallback } from "react"
 import styles from "./index.module.less";
 import { axios } from '@/api/request';
 import { parseParams } from "@utils/utils";
+import { EdgeType, StaticInfo } from "./type";
+import mqtt from 'mqtt/dist/mqtt';
+import pako from 'pako';
 
-export enum EdgeType {
-  RESIDENT = 'resident',
-  WORKSPACE = 'workSpace',
-  STREET = 'street',
-  CROSS = 'cross',
-}
-
-const getStaticInfoUrl = "http://101.6.143.8:65515/sim/staticinfo/";
-
-export type StaticInfo = {
-  scenarioIdx: number;
-  edges: {
-      type: EdgeType;
-      id: number;
-      points: number[][];
-  }[];
-  backgroundUrl: string;
-};
-
+// 边对应的背景颜色
 const EdgeColor = {
   [EdgeType.STREET]: 'red',
   [EdgeType.RESIDENT]: 'green',
   [EdgeType.WORKSPACE]: 'blue',
   [EdgeType.CROSS]: 'yellow'
+}
+
+// 请求静态数据的url
+const getStaticInfoUrl = "http://101.6.143.8:65515/sim/staticinfo/";
+
+// mqtt的相关信息
+const mqttUrl = 'ws://39.107.153.245:36002/mqtt';
+const mqttOptions = {
+  username: "mnfz",
+  password: "mnfz000"
 }
 
 const RealtimeOverview = () => {
@@ -39,12 +34,29 @@ const RealtimeOverview = () => {
 
   // 获取静态数据
   const getStaticInfo = useCallback(async (idx: string) => {
-    if (!idx) return;
     const res: any = await axios.get(`${getStaticInfoUrl}?scenarioIdx=${idx}`);
     if (res && res.code === 200) setStaticInfo(res.data);
   }, []);
-  useEffect(() => void getStaticInfo(id), []);
-  
+
+  // 获取动态数据
+  const getDynamicInfo = useCallback(async (id: string) => {
+    const client = mqtt.connect(mqttUrl, mqttOptions);
+    client.on('connect', () => {
+        client.subscribe('ryh_test_' + id, (err) => err && console.log('subscribe error:', err ));
+    })
+
+    client.on('message', (topic, message) => {
+        const res = JSON.parse(pako.inflate(message, { to: 'string' }))
+        console.log(topic, res);
+    })
+  }, []);
+
+  useEffect(() => {
+    if (!id) return;
+    getStaticInfo(id);
+    getDynamicInfo(id);
+  }, [id, getStaticInfo, getDynamicInfo]);
+
   // 更改root的宽高
   useEffect(() => {
     const root = document.getElementById('root');
@@ -53,7 +65,7 @@ const RealtimeOverview = () => {
       root.style.width = '100vw';
     };
   }, []);
-  
+
   // 画背景
   useEffect(() => {
     if (!ref.current || !staticInfo) return;
@@ -73,7 +85,7 @@ const RealtimeOverview = () => {
     }
   }, [ref, staticInfo]);
   if (!staticInfo) return <></>;
-  return <canvas className={styles.container} ref={ref} height={1080} width={1920} style={{ backgroundImage: `url('${staticInfo.backgroundUrl}')`}}/>;
+  return <canvas className={styles.container} ref={ref} height={1080} width={1920} style={{ backgroundImage: `url('${staticInfo.backgroundUrl}')` }} />;
 }
 
 export default RealtimeOverview;
