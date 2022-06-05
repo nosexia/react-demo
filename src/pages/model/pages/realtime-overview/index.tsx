@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState, useMemo, useCallback } from "react"
 import styles from "./index.module.less";
 import { axios } from '@/api/request';
 import { parseParams } from "@utils/utils";
-import { EdgeType, StaticInfo } from "./type";
+import { DynamicInfo, EdgeType, StaticInfo } from "./type";
 import mqtt from 'mqtt/dist/mqtt';
 import pako from 'pako';
 
@@ -27,6 +27,7 @@ const mqttOptions = {
 const RealtimeOverview = () => {
   const ref = useRef<HTMLCanvasElement>(null);
   const [staticInfo, setStaticInfo] = useState<StaticInfo>();
+  const [dynamicInfo, setDynamicInfo] = useState<DynamicInfo>();
   const id = useMemo(() => {
     const params = parseParams(location.search)
     return params.id;
@@ -46,8 +47,8 @@ const RealtimeOverview = () => {
     })
 
     client.on('message', (topic, message) => {
-        const res = JSON.parse(pako.inflate(message, { to: 'string' }))
-        console.log(topic, res);
+        const res = JSON.parse(pako.inflate(message, { to: 'string' })) as DynamicInfo;
+        setDynamicInfo(res);
     })
   }, []);
 
@@ -66,24 +67,38 @@ const RealtimeOverview = () => {
     };
   }, []);
 
-  // 画背景
+  // // 画背景
+  // useEffect(() => {
+  //   if (!ref.current || !staticInfo) return;
+  //   const ctx = ref.current.getContext('2d');
+  //   if (!ctx) return;
+  //   const edges = staticInfo.edges;
+  //   for (const edge of edges) {
+  //     const edgePoints = edge.points;
+  //     ctx.beginPath();
+  //     ctx.moveTo(edgePoints[0][1], edgePoints[0][0]);
+  //     for (let i = 1; i < edgePoints.length; i++) {
+  //       ctx.lineTo(edgePoints[i][1], edgePoints[i][0]);
+  //     }
+  //     ctx.closePath();
+  //     ctx.fillStyle = EdgeColor[edge.type];
+  //     ctx.fill();
+  //   }
+  // }, [ref, staticInfo]);
+
+  // 画动态物体
   useEffect(() => {
-    if (!ref.current || !staticInfo) return;
+    if (!ref.current || !dynamicInfo) return;
     const ctx = ref.current.getContext('2d');
     if (!ctx) return;
-    const edges = staticInfo.edges;
-    for (const edge of edges) {
-      const edgePoints = edge.points;
+    ctx.clearRect(0, 0, 1920, 1080);
+    ctx.fillStyle = 'red';
+    for (const item of dynamicInfo.veh) {
       ctx.beginPath();
-      ctx.moveTo(edgePoints[0][1], edgePoints[0][0]);
-      for (let i = 1; i < edgePoints.length; i++) {
-        ctx.lineTo(edgePoints[i][1], edgePoints[i][0]);
-      }
-      ctx.closePath();
-      ctx.fillStyle = EdgeColor[edge.type];
+      ctx.rect(item.pos[1] - 10, item.pos[0] - 10, 20, 20);
       ctx.fill();
     }
-  }, [ref, staticInfo]);
+  }, [ref, dynamicInfo]);
   if (!staticInfo) return <></>;
   return <canvas className={styles.container} ref={ref} height={1080} width={1920} style={{ backgroundImage: `url('${staticInfo.backgroundUrl}')` }} />;
 }
