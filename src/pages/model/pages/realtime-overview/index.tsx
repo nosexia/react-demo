@@ -86,21 +86,31 @@ const RealtimeOverview = () => {
   //   }
   // }, [ref, staticInfo]);
 
-  // 画动态物体
-  useEffect(() => {
-    if (!ref.current || !dynamicInfo) return;
-    const ctx = ref.current.getContext('2d');
-    if (!ctx) return;
-    ctx.clearRect(0, 0, 1920, 1080);
-    ctx.fillStyle = 'red';
-    for (const item of dynamicInfo.veh) {
-      ctx.beginPath();
-      ctx.rect(item.pos[1] - 10, item.pos[0] - 10, 20, 20);
-      ctx.fill();
-    }
-  }, [ref, dynamicInfo]);
+  // // 画动态物体
+  // useEffect(() => {
+  //   if (!ref.current || !dynamicInfo) return;
+  //   const ctx = ref.current.getContext('2d');
+  //   if (!ctx) return;
+  //   ctx.clearRect(0, 0, 1920, 1080);
+  //   ctx.fillStyle = 'red';
+  //   for (const item of dynamicInfo.veh) {
+  //     ctx.beginPath();
+  //     ctx.rect(item.pos[1] - 10, item.pos[0] - 10, 20, 20);
+  //     ctx.fill();
+  //   }
+  // }, [ref, dynamicInfo]);
+
   if (!staticInfo) return <></>;
-  return <canvas className={styles.container} ref={ref} height={1080} width={1920} style={{ backgroundImage: `url('${staticInfo.backgroundUrl}')` }} />;
+  return (
+    <div className={styles.container} style={{ backgroundImage: `url('${staticInfo.backgroundUrl}')` }}>
+      {/* <canvas className={styles.canvas} ref={ref} height={1080} width={1920} />; */}
+      {
+        dynamicInfo?.veh.map(item => (
+          <div key={`${item.type}_${item.id}`} className={styles.veh} style={{ top: `${item.pos[0] * 100 / 1080}vh`, left: `${item.pos[1] * 100 / 1920}vw` }} />
+        ))
+      }
+    </div>
+  );
 }
 
 export default RealtimeOverview;
