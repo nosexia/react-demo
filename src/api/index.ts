@@ -12,13 +12,13 @@ export const useLogin = () => {
 
 export const useGetCurrentUser = (navigate:any) => {
     let token = localStorage.getItem('token');
-    if(token === null) {
-        return new Promise((resolve, reject) => {
-            navigate(`/login?redirect=${location.pathname}${location.search}`);
-            //不发出请求
-            resolve({data:null, error:null})
-        })
-    }
+    // if(token === null) {
+    //     return new Promise((resolve, reject) => {
+    //         navigate(`/login?redirect=${location.pathname}${location.search}`);
+    //         //不发出请求
+    //         resolve({data:null, error:null})
+    //     })
+    // }
     return useGetOne<CurrentUserResult>(
         "CurrentUser",
         "/spw/userCenter/getUserInfo"

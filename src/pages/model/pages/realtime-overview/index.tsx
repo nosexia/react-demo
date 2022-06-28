@@ -5,7 +5,6 @@ import { parseParams } from "@utils/utils";
 import { DynamicInfo, EdgeType, StaticInfo } from "./type";
 import mqtt from 'mqtt/dist/mqtt';
 import pako from 'pako';
-
 // 边对应的背景颜色
 const EdgeColor = {
   [EdgeType.STREET]: 'red',
@@ -25,6 +24,7 @@ const mqttOptions = {
 }
 
 const RealtimeOverview = () => {
+  
   const ref = useRef<HTMLCanvasElement>(null);
   const [staticInfo, setStaticInfo] = useState<StaticInfo>();
   const [dynamicInfo, setDynamicInfo] = useState<DynamicInfo>();
@@ -99,7 +99,6 @@ const RealtimeOverview = () => {
   //     ctx.fill();
   //   }
   // }, [ref, dynamicInfo]);
-
   if (!staticInfo) return <></>;
   return (
     <div className={styles.container} style={{ backgroundImage: `url('${staticInfo.backgroundUrl}')` }}>
@@ -109,6 +108,23 @@ const RealtimeOverview = () => {
           <div key={`${item.type}_${item.id}`} className={styles.veh} style={{ top: `${item.pos[0] * 100 / 1080}vh`, left: `${item.pos[1] * 100 / 1920}vw` }} />
         ))
       }
+      <div className={styles.leftLegend}>
+        <div className={styles.leftLegendLabel}>
+          <p>无人车</p>
+          <p>小型四旋翼</p>
+          <p>固定翼无人机</p>
+          <p>坦克</p>
+          <p>舰船</p>
+          <p>战列舰</p>
+          <p>伪装战列舰</p>
+        </div>
+
+        <div className={styles.leftLegendIcon}>
+          <p className={styles.wurencheIcon}></p>
+          <p className={styles.sixuanyiIcon}></p>
+          <p className={styles.gudingyiIcon}></p>
+        </div>
+      </div>
     </div>
   );
 }
