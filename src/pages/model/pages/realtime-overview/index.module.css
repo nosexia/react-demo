@@ -20,10 +20,12 @@
   transition-property: top left;
   transition-duration: 30ms;
 }
-.leftLegend {
+.legendWrapper {
+  margin-left: 131px;
+  margin-top: 117px;
+}
+.legendWrapper .leftLegend {
   position: relative;
-  left: 131px;
-  top: 117px;
   background: url(@/assets/images/backgroundLegend.png) no-repeat left top;
   width: 295px;
   height: 446px;
@@ -31,60 +33,60 @@
   display: flex;
   justify-content: center;
 }
-.leftLegendLabel {
+.legendWrapper .leftLegend .leftLegendLabel {
   font-size: 21px;
   color: #FFF;
   font-family: MicrosoftYaHei;
   text-align: left;
   padding-top: 112px;
 }
-.leftLegendLabel > p {
+.legendWrapper .leftLegend .leftLegendLabel > p {
   line-height: 1em;
   margin-bottom: 15px;
 }
-.leftLegendIcon {
+.legendWrapper .leftLegend .leftLegendIcon {
   padding-top: 104px;
   width: 100px;
 }
-.leftLegendIcon > p {
+.legendWrapper .leftLegend .leftLegendIcon > p {
   margin: 0 auto;
-  background-size: contain;
+  background-size: contain!important;
 }
-.wurencheIcon {
+.legendWrapper .leftLegend .leftLegendIcon .wurencheIcon {
   width: 67px;
   height: 45px;
   background: url(@/assets/images/wurenche.png) no-repeat center top;
 }
-.sixuanyiIcon {
+.legendWrapper .leftLegend .leftLegendIcon .sixuanyiIcon {
   width: 42px;
   height: 36px;
   margin-top: -10px !important;
   background: url(@/assets/images/sixuanyiIcon.png) no-repeat center top;
 }
-.gudingyiIcon {
+.legendWrapper .leftLegend .leftLegendIcon .gudingyiIcon {
   width: 60px;
   height: 48px;
   background: url(@/assets/images/gudingyiIcon.png) no-repeat center top;
 }
-.tankeIcon {
+.legendWrapper .leftLegend .leftLegendIcon .tankeIcon {
   width: 63px;
   height: 30px;
   margin-top: -6px !important;
   background: url(@/assets/images/tankeIcon.png) no-repeat center top;
 }
-.jianchuanIcon {
+.legendWrapper .leftLegend .leftLegendIcon .jianchuanIcon {
   width: 98px;
   height: 17px;
   margin-top: 10px!important;
   background: url(@/assets/images/jianchuanIcon.png) no-repeat center top;
 }
-.zhanliejianIcon {
+.legendWrapper .leftLegend .leftLegendIcon .zhanliejianIcon {
   width: 93px;
   height: 20px;
   margin-top: 17px!important;
   background: url(@/assets/images/zhanliejianIcon.png) no-repeat center top;
 }
-.weizhuangzhanliejianIcon {
+.legendWrapper .leftLegend .leftLegendIcon .weizhuangzhanliejianIcon {
   width: 93px;
   height: 20px;
   margin-top: 16px!important;

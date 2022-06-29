@@ -108,25 +108,37 @@ const RealtimeOverview = () => {
           <div key={`${item.type}_${item.id}`} className={styles.veh} style={{ top: `${item.pos[0] * 100 / 1080}vh`, left: `${item.pos[1] * 100 / 1920}vw` }} />
         ))
       }
-      <div className={styles.leftLegend}>
-        <div className={styles.leftLegendLabel}>
-          <p>无人车</p>
-          <p>小型四旋翼</p>
-          <p>固定翼无人机</p>
-          <p>坦克</p>
-          <p>舰船</p>
-          <p>战列舰</p>
-          <p>伪装战列舰</p>
+      <div className={styles.legendWrapper}>
+        <div className={styles.leftLegend}>
+          <div className={styles.leftLegendLabel}>
+            <p>无人车</p>
+            <p>小型四旋翼</p>
+            <p>固定翼无人机</p>
+            <p>坦克</p>
+            <p>舰船</p>
+            <p>战列舰</p>
+            <p>伪装战列舰</p>
+          </div>
+
+          <div className={styles.leftLegendIcon}>
+            <p className={styles.wurencheIcon}></p>
+            <p className={styles.sixuanyiIcon}></p>
+            <p className={styles.gudingyiIcon}></p>
+            <p className={styles.tankeIcon}></p>
+            <p className={styles.jianchuanIcon}></p>
+            <p className={styles.zhanliejianIcon}></p>
+            <p className={styles.weizhuangzhanliejianIcon}></p>
+          </div>
         </div>
 
-        <div className={styles.leftLegendIcon}>
-          <p className={styles.wurencheIcon}></p>
-          <p className={styles.sixuanyiIcon}></p>
-          <p className={styles.gudingyiIcon}></p>
-          <p className={styles.tankeIcon}></p>
-          <p className={styles.jianchuanIcon}></p>
-          <p className={styles.zhanliejianIcon}></p>
-          <p className={styles.weizhuangzhanliejianIcon}></p>
+        <div className={styles.rightLegend}>
+          <div className={styles.dawuIcon}>
+            <p>大雾天气</p>
+          </div>
+
+          <div>
+          东南风 六级
+          </div>
         </div>
       </div>
     </div>
