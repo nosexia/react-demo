@@ -143,6 +143,23 @@ const RealtimeOverview = () => {
           </div>
         </div>
       </div>
+
+      <div className={styles.statusWrapper}>
+        <p>战斗进度</p>
+        <p>空中侦察</p>
+      </div>
+
+      <div className={styles.specialInfoWrapper}>
+        <p>特殊信息</p>
+        <p>发现目标建筑 发现武装力量</p>
+      </div>
+
+      <p className={styles.dateWrapper}>2022-06-13    00:06:50:55</p>
+      
+      <div className={styles.jianchuanGroup}>
+        
+      </div>
+    
     </div>
   );
 }

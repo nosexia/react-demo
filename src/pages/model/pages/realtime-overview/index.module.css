@@ -126,6 +126,7 @@
   color: #fff;
   font-size: 28px;
   font-family: MicrosoftYaHei-Bold;
+  font-weight: bold;
 }
 .legendWrapper .rightLegend .fengxiangIcon {
   position: relative;
@@ -149,4 +150,63 @@
   color: #fff;
   font-size: 28px;
   font-family: MicrosoftYaHei-Bold;
+  font-weight: bold;
+}
+.statusWrapper {
+  margin-top: 68px;
+  width: 638px;
+  height: 179px;
+  background: url('@/assets/images/statusWrapperBackground.png') no-repeat left top;
+  background-size: contain;
+  text-align: center;
+  margin-left: 131px;
+}
+.statusWrapper p {
+  margin-bottom: 0;
+}
+.statusWrapper p:nth-child(1) {
+  font-size: 29px;
+  color: #EBC127;
+  font-family: MicrosoftYaHei-Bold;
+  font-weight: bold;
+  padding-top: 41px;
+}
+.statusWrapper p:nth-child(2) {
+  font-size: 36px;
+  color: #FFF;
+  font-family: MicrosoftYaHei-Bold;
+  font-weight: bold;
+}
+.specialInfoWrapper {
+  margin-top: 20px;
+  margin-left: 123px;
+  width: 632px;
+  height: 178px;
+  background: url('@/assets/images/specialInfoBackground.png') no-repeat left top;
+  background-size: contain;
+  text-align: center;
+}
+.specialInfoWrapper p {
+  margin-bottom: 0;
+}
+.specialInfoWrapper p:nth-child(1) {
+  font-family: MicrosoftYaHei-Bold;
+  font-weight: bold;
+  color: #EBC127;
+  padding-top: 40px;
+  font-size: 29px;
+}
+.specialInfoWrapper p:nth-child(2) {
+  font-family: MicrosoftYaHei-Bold;
+  font-weight: bold;
+  color: #DA0000;
+  font-size: 29px;
+}
+.dateWrapper {
+  margin-left: 123px;
+  width: 632px;
+  text-align: center;
+  margin-top: 23px;
+  color: #FFFFFF;
+  font-size: 28px;
 }
