@@ -22,44 +22,68 @@
 }
 .leftLegend {
   position: relative;
-  left: 153px;
-  top: 136px;
+  left: 131px;
+  top: 117px;
   background: url(@/assets/images/backgroundLegend.png) no-repeat left top;
-  width: 345px;
-  height: 521px;
+  width: 295px;
+  height: 446px;
   background-size: contain;
   display: flex;
   justify-content: center;
 }
 .leftLegendLabel {
-  font-size: 25px;
+  font-size: 21px;
   color: #FFF;
   font-family: MicrosoftYaHei;
   text-align: left;
-  padding-top: 130px;
+  padding-top: 112px;
+}
+.leftLegendLabel > p {
+  line-height: 1em;
+  margin-bottom: 15px;
 }
 .leftLegendIcon {
-  padding-top: 130px;
-  width: 115px;
+  padding-top: 104px;
+  width: 100px;
+}
+.leftLegendIcon > p {
+  margin: 0 auto;
+  background-size: contain;
 }
 .wurencheIcon {
-  margin: 0 auto;
-  width: 79px;
-  height: 53px;
-  background: url(@/assets/images/wurenche.png) no-repeat center -8px;
-  background-size: contain;
+  width: 67px;
+  height: 45px;
+  background: url(@/assets/images/wurenche.png) no-repeat center top;
 }
 .sixuanyiIcon {
-  margin: 0 auto;
-  width: 50px;
-  height: 43px;
-  background: url(@/assets/images/sixuanyiIcon.png) no-repeat center -8px;
-  background-size: contain;
+  width: 42px;
+  height: 36px;
+  background: url(@/assets/images/sixuanyiIcon.png) no-repeat center top;
 }
 .gudingyiIcon {
-  margin: 0 auto;
-  width: 71px;
-  height: 51px;
-  background: url(@/assets/images/gudingyiIcon.png) no-repeat center -8px;
-  background-size: contain;
+  width: 60px;
+  height: 48px;
+  background: url(@/assets/images/gudingyiIcon.png) no-repeat center top;
+}
+.tankeIcon {
+  width: 63px;
+  height: 30px;
+  margin-top: -10px !important;
+  background: url(@/assets/images/tankeIcon.png) no-repeat center top;
+}
+.jianchuanIcon {
+  width: 98px;
+  height: 17px;
+  margin-top: -10px !important;
+  background: url(@/assets/images/jianchuanIcon.png) no-repeat center top;
+}
+.zhanliejianIcon {
+  width: 93px;
+  height: 20px;
+  background: url(@/assets/images/zhanliejianIcon.png) no-repeat center top;
+}
+.weizhuangzhanliejianIcon {
+  width: 93px;
+  height: 20px;
+  background: url(@/assets/images/weizhuangzhanliejianIcon.png) no-repeat center top;
 }

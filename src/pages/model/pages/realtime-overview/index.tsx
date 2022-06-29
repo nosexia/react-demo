@@ -123,6 +123,10 @@ const RealtimeOverview = () => {
           <p className={styles.wurencheIcon}></p>
           <p className={styles.sixuanyiIcon}></p>
           <p className={styles.gudingyiIcon}></p>
+          <p className={styles.tankeIcon}></p>
+          <p className={styles.jianchuanIcon}></p>
+          <p className={styles.zhanliejianIcon}></p>
+          <p className={styles.weizhuangzhanliejianIcon}></p>
         </div>
       </div>
     </div>
