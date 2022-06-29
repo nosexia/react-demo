@@ -179,7 +179,12 @@ const RealtimeOverview = () => {
                 <i></i>
               </div>
             </div>
-            <div><span>油    量</span><i></i></div>
+            <div className={styles.aliveContent}>
+              <div><p>油    量</p></div>
+              <div className={styles.bg}>
+                <i className={styles.youliang}></i>
+              </div>
+            </div>
           </div>
         </div>
         </div>
