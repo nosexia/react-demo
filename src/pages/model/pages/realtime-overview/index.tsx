@@ -157,9 +157,32 @@ const RealtimeOverview = () => {
       <p className={styles.dateWrapper}>2022-06-13    00:06:50:55</p>
       
       <div className={styles.jianchuanGroup}>
-        
-      </div>
-    
+
+        <div className={styles.jianchuanWrapper}>
+          <p className={styles.jianchuanTop}></p>
+          <div className={styles.jianchuanCenterWrapper}>
+            <p className={styles.jianchuanCenterShuiwen}>
+            </p>
+            <p className={styles.jianchuanCenter}>
+            </p>
+          </div>
+          <p className={styles.jianchuanBottom}></p>
+        </div>
+
+        <div className={styles.liveWrapper}>
+          <i className={styles.liveBg}></i>
+          <div className={styles.jianchuanContent}>
+            <div><p>北纬25°03'，东经121°31'</p></div>
+            <div className={styles.aliveContent}>
+              <div><p>生命值</p></div>
+              <div className={styles.bg}>
+                <i></i>
+              </div>
+            </div>
+            <div><span>油    量</span><i></i></div>
+          </div>
+        </div>
+        </div>
     </div>
   );
 }

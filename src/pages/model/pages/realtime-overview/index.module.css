@@ -210,3 +210,110 @@
   color: #FFFFFF;
   font-size: 28px;
 }
+.jianchuanGroup {
+  display: flex;
+}
+.jianchuanGroup .jianchuanWrapper {
+  width: 314px;
+}
+.jianchuanGroup .jianchuanWrapper p {
+  margin-bottom: 0;
+}
+.jianchuanGroup .jianchuanWrapper .jianchuanTop {
+  width: 115px;
+  height: 20px;
+  background: url('@/assets/images/jianchuanIcon.png') no-repeat left top;
+  background-size: contain;
+}
+.jianchuanGroup .jianchuanWrapper .jianchuanCenterWrapper {
+  margin-top: 14px;
+  position: relative;
+  height: 63px;
+}
+.jianchuanGroup .jianchuanWrapper .jianchuanCenterWrapper .jianchuanCenterShuiwen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 275px;
+  height: 63px;
+  background: url('@/assets/images/jianchuanshuiwenIcon.png') no-repeat left top;
+  background-size: contain;
+}
+.jianchuanGroup .jianchuanWrapper .jianchuanCenterWrapper .jianchuanCenter {
+  position: absolute;
+  left: 84px;
+  top: 13px;
+  width: 230px;
+  height: 41px;
+  background: url('@/assets/images/jianchuanIcon.png') no-repeat left top;
+  background-size: contain;
+}
+.jianchuanGroup .jianchuanWrapper .jianchuanBottom {
+  margin-top: 13px;
+  width: 115px;
+  height: 20px;
+  background: url('@/assets/images/jianchuanIcon.png') no-repeat left top;
+  background-size: contain;
+}
+.jianchuanGroup .liveWrapper {
+  font-family: MicrosoftYaHei;
+  position: relative;
+  margin-left: 28px;
+}
+.jianchuanGroup .liveWrapper p {
+  margin-bottom: 0;
+}
+.jianchuanGroup .liveWrapper i.liveBg {
+  margin-top: 23px;
+  position: absolute;
+  width: 155px;
+  height: 70px;
+  background: rgba(0, 0, 0, 0.4);
+}
+.jianchuanGroup .liveWrapper .jianchuanContent {
+  margin-top: 23px;
+  color: #fff;
+  font-size: 12px;
+}
+.jianchuanGroup .liveWrapper .jianchuanContent > div:nth-child(1) {
+  width: 144px;
+  height: 30px;
+  line-height: 40px;
+  border: 1px solid #FFF;
+  border-radius: 7px;
+}
+.jianchuanGroup .liveWrapper .jianchuanContent > div:nth-child(1) p {
+  font-size: 12px;
+  transform: scale(0.9);
+  -webkit-transform: scale(0.9);
+  transform-origin: 50%;
+  height: 30px;
+  line-height: 30px;
+}
+.jianchuanGroup .liveWrapper .jianchuanContent > div:nth-child(2) {
+  margin-top: 5px;
+  display: flex;
+}
+.jianchuanGroup .liveWrapper .jianchuanContent > div:nth-child(2) > div:nth-child(1) {
+  width: 38px;
+}
+.jianchuanGroup .liveWrapper .jianchuanContent > div:nth-child(2) > div:nth-child(1) > p {
+  transform: scale(0.9);
+  -webkit-transform: scale(0.9);
+  transform-origin: 50%;
+}
+.jianchuanGroup .liveWrapper .jianchuanContent > div:nth-child(2) div.bg {
+  position: relative;
+  width: 104px;
+  height: 12px;
+  display: block;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.jianchuanGroup .liveWrapper .jianchuanContent > div:nth-child(2) div.bg i {
+  display: block;
+  width: 20px;
+  height: 12px;
+  background: red;
+}
