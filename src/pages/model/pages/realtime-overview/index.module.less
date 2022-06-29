@@ -24,10 +24,13 @@
 }
 
 .legendWrapper {
+    p {
+        margin-bottom: 0;
+    }
     margin-left: 131px;
     margin-top: 117px;
+    display: flex;
     .leftLegend {
-        position: relative;
         background: url(@/assets/images/backgroundLegend.png) no-repeat left top;
         width: 295px;
         height: 446px;
@@ -101,6 +104,64 @@
                 height: 20px;
                 margin-top: 16px!important;
                 background: url(@/assets/images/weizhuangzhanliejianIcon.png) no-repeat center top;
+            }
+        }
+    }
+
+    .rightLegend {
+        background: url(@/assets/images/backgroundLegend.png) no-repeat left top;
+        background-size: contain;
+        width: 295px;
+        height: 446px;
+        margin-left: 25px;
+        display: flex;
+        flex-direction: column;
+        .dawuIcon {
+            position: relative;
+            width: 124px;
+            margin: 51px auto 42px;
+            ::before {
+                position: absolute;
+                left:0;
+                top:0;
+                display: block;
+                content: '';
+                width: 124px;
+                height: 111px;
+                background: url(@/assets/images/dawuIcon.png) no-repeat left top;
+                background-size: contain;
+            }
+            p {
+                padding-top: 122px;
+                text-align: center;
+                color:#fff;
+                font-size: 28px;
+                font-family: MicrosoftYaHei-Bold;
+            }
+        }
+
+
+        .fengxiangIcon {
+            position: relative;
+            width: 152px;
+            margin: 0 auto;
+            ::before {
+                position: absolute;
+                left:27px;
+                top:0;
+                display: block;
+                content: '';
+                width: 98px;
+                height: 91px;
+                background: url(@/assets/images/fengxiangIcon.png) no-repeat left top;
+                background-size: contain;
+            }
+            p {
+                padding-top: 105px;
+                text-align: center;
+                color:#fff;
+                font-size: 28px;
+                font-family: MicrosoftYaHei-Bold;
             }
         }
     }

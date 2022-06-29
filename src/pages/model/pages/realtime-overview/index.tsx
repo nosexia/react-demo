@@ -136,8 +136,10 @@ const RealtimeOverview = () => {
             <p>大雾天气</p>
           </div>
 
-          <div>
-          东南风 六级
+          <div className={styles.fengxiangIcon}>
+            <p>
+            东南风 六级
+            </p>
           </div>
         </div>
       </div>
