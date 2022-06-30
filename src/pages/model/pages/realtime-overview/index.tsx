@@ -189,6 +189,18 @@ const RealtimeOverview = () => {
         <div className={styles.wurenjiIcon}></div>
         <Electric liveValue={'20px'} oilValue={'30px'}/>
       </div>
+
+      <div className={styles.jianlietingGroup}>
+        <div className={styles.jianlietingIcon}></div>
+        <Electric liveValue={'20px'} oilValue={'30px'}/>
+      </div>
+
+
+      <div className={styles.weizhuangjianlietingGroup}>
+        <div className={styles.weizhuangjianlietingIcon}></div>
+        <Electric liveValue={'20px'} oilValue={'30px'}/>
+      </div>
+
     </div>
   );
 };
