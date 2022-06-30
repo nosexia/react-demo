@@ -127,6 +127,20 @@ const RealtimeOverview = () => {
           }}
         />
       ))}
+      <div className={styles.sixuanyi} className={styles.sixuanyi} style={{position: 'absolute', top: '400px', left: '1400px'}}>
+        <div className={styles.sixuanyiContent}>
+          <img src={require('@/assets/images/sixuanyiIcon.png')} />
+          <Electric oilValue={'40px'} liveValue={'50px'} styles={{marginLeft: '0'}} />
+        </div>
+      </div>
+
+
+      <div className={styles.sixuanyi} style={{position: 'absolute', top: '200px', left: '1200px'}}>
+        <div className={styles.sixuanyiContent}>
+          <img src={require('@/assets/images/sixuanyiIcon.png')} />
+          <Electric oilValue={'40px'} liveValue={'50px'} styles={{marginLeft: '0'}} />
+        </div>
+      </div>
       <div className={styles.legendWrapper}>
         <div className={styles.leftLegend}>
           <div className={styles.leftLegendLabel}>

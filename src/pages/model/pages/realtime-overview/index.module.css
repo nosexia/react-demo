@@ -324,3 +324,22 @@
 .relativeInfoWrapper .relativeInfoBottom .relativeInfoContent .relativeDetail p span {
   padding-right: 40px;
 }
+.sixuanyi {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 334px;
+  height: 334px;
+  border: 9px dashed #FFFFFF;
+  border-radius: 50%;
+  background: rgba(230, 89, 89, 0.4);
+}
+.sixuanyi .sixuanyiContent {
+  display: flex;
+  justify-content: flex-end;
+}
+.sixuanyi .sixuanyiContent img {
+  display: block;
+  width: 65px;
+  height: 60px;
+}
