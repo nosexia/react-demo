@@ -207,7 +207,7 @@
   width: 632px;
   text-align: center;
   margin-top: 23px;
-  color: #FFFFFF;
+  color: rgba(255, 255, 255, 0.5);
   font-size: 28px;
 }
 .jianchuanGroup {
@@ -255,34 +255,34 @@
   background: url('@/assets/images/jianchuanIcon.png') no-repeat left top;
   background-size: contain;
 }
-.jianchuanGroup .liveWrapper {
+.liveWrapper {
   font-family: MicrosoftYaHei;
   position: relative;
   margin-left: 28px;
 }
-.jianchuanGroup .liveWrapper p {
+.liveWrapper p {
   margin-bottom: 0;
 }
-.jianchuanGroup .liveWrapper i.liveBg {
+.liveWrapper i.liveBg {
   margin-top: 23px;
   position: absolute;
   width: 155px;
   height: 70px;
   background: rgba(0, 0, 0, 0.4);
 }
-.jianchuanGroup .liveWrapper .jianchuanContent {
+.liveWrapper .jianchuanContent {
   margin-top: 23px;
   color: #fff;
   font-size: 12px;
 }
-.jianchuanGroup .liveWrapper .jianchuanContent > div:nth-child(1) {
+.liveWrapper .jianchuanContent > div:nth-child(1) {
   width: 144px;
   height: 30px;
   line-height: 40px;
   border: 1px solid #FFF;
   border-radius: 7px;
 }
-.jianchuanGroup .liveWrapper .jianchuanContent > div:nth-child(1) p {
+.liveWrapper .jianchuanContent > div:nth-child(1) p {
   font-size: 12px;
   transform: scale(0.9);
   -webkit-transform: scale(0.9);
@@ -290,21 +290,21 @@
   height: 30px;
   line-height: 30px;
 }
-.jianchuanGroup .liveWrapper .jianchuanContent > div.aliveContent {
+.liveWrapper .jianchuanContent > div.aliveContent {
   margin-top: 5px;
   display: flex;
 }
-.jianchuanGroup .liveWrapper .jianchuanContent > div.aliveContent > div:nth-child(1) {
+.liveWrapper .jianchuanContent > div.aliveContent > div:nth-child(1) {
   width: 38px;
 }
-.jianchuanGroup .liveWrapper .jianchuanContent > div.aliveContent > div:nth-child(1) > p {
+.liveWrapper .jianchuanContent > div.aliveContent > div:nth-child(1) > p {
   transform: scale(0.9);
   -webkit-transform: scale(0.9);
   transform-origin: 50%;
   height: 12px;
   line-height: 12px;
 }
-.jianchuanGroup .liveWrapper .jianchuanContent > div.aliveContent div.bg {
+.liveWrapper .jianchuanContent > div.aliveContent div.bg {
   position: relative;
   width: 104px;
   height: 12px;
@@ -313,12 +313,12 @@
   border-radius: 4px;
   overflow: hidden;
 }
-.jianchuanGroup .liveWrapper .jianchuanContent > div.aliveContent div.bg i {
+.liveWrapper .jianchuanContent > div.aliveContent div.bg i {
   display: block;
   width: 20px;
   height: 12px;
   background: red;
 }
-.jianchuanGroup .liveWrapper .jianchuanContent > div.aliveContent div.bg .youliang {
+.liveWrapper .jianchuanContent > div.aliveContent div.bg .youliang {
   background: blue;
 }

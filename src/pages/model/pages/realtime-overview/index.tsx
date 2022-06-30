@@ -1,35 +1,41 @@
-import React, { useRef, useEffect, useState, useMemo, useCallback } from "react";
+import React, {
+  useRef,
+  useEffect,
+  useState,
+  useMemo,
+  useCallback
+} from "react";
 import styles from "./index.module.less";
-import { axios } from '@/api/request';
+import { axios } from "@/api/request";
 import { parseParams } from "@utils/utils";
 import { DynamicInfo, EdgeType, StaticInfo } from "./type";
-import mqtt from 'mqtt/dist/mqtt';
-import pako from 'pako';
+import mqtt from "mqtt/dist/mqtt";
+import pako from "pako";
+import Electric from "@/components/electric";
 // 边对应的背景颜色
 const EdgeColor = {
-  [EdgeType.STREET]: 'red',
-  [EdgeType.RESIDENT]: 'green',
-  [EdgeType.WORKSPACE]: 'blue',
-  [EdgeType.CROSS]: 'yellow'
-}
+  [EdgeType.STREET]: "red",
+  [EdgeType.RESIDENT]: "green",
+  [EdgeType.WORKSPACE]: "blue",
+  [EdgeType.CROSS]: "yellow"
+};
 
 // 请求静态数据的url
 const getStaticInfoUrl = "http://101.6.143.8:65515/sim/staticinfo/";
 
 // mqtt的相关信息
-const mqttUrl = 'ws://39.107.153.245:36002/mqtt';
+const mqttUrl = "ws://39.107.153.245:36002/mqtt";
 const mqttOptions = {
   username: "mnfz",
   password: "mnfz000"
-}
+};
 
 const RealtimeOverview = () => {
-  
   const ref = useRef<HTMLCanvasElement>(null);
   const [staticInfo, setStaticInfo] = useState<StaticInfo>();
   const [dynamicInfo, setDynamicInfo] = useState<DynamicInfo>();
   const id = useMemo(() => {
-    const params = parseParams(location.search)
+    const params = parseParams(location.search);
     return params.id;
   }, [location]);
 
@@ -42,14 +48,19 @@ const RealtimeOverview = () => {
   // 获取动态数据
   const getDynamicInfo = useCallback(async (id: string) => {
     const client = mqtt.connect(mqttUrl, mqttOptions);
-    client.on('connect', () => {
-        client.subscribe('ryh_test_' + id, (err) => err && console.log('subscribe error:', err ));
-    })
+    client.on("connect", () => {
+      client.subscribe(
+        "ryh_test_" + id,
+        err => err && console.log("subscribe error:", err)
+      );
+    });
 
-    client.on('message', (topic, message) => {
-        const res = JSON.parse(pako.inflate(message, { to: 'string' })) as DynamicInfo;
-        setDynamicInfo(res);
-    })
+    client.on("message", (topic, message) => {
+      const res = JSON.parse(
+        pako.inflate(message, { to: "string" })
+      ) as DynamicInfo;
+      setDynamicInfo(res);
+    });
   }, []);
 
   useEffect(() => {
@@ -60,11 +71,11 @@ const RealtimeOverview = () => {
 
   // 更改root的宽高
   useEffect(() => {
-    const root = document.getElementById('root');
+    const root = document.getElementById("root");
     if (root) {
-      root.style.height = '100vh';
-      root.style.width = '100vw';
-    };
+      root.style.height = "100vh";
+      root.style.width = "100vw";
+    }
   }, []);
 
   // // 画背景
@@ -101,13 +112,21 @@ const RealtimeOverview = () => {
   // }, [ref, dynamicInfo]);
   if (!staticInfo) return <></>;
   return (
-    <div className={styles.container} style={{ backgroundImage: `url('${staticInfo.backgroundUrl}')` }}>
+    <div
+      className={styles.container}
+      style={{ backgroundImage: `url('${staticInfo.backgroundUrl}')` }}
+    >
       {/* <canvas className={styles.canvas} ref={ref} height={1080} width={1920} />; */}
-      {
-        dynamicInfo?.veh.map(item => (
-          <div key={`${item.type}_${item.id}`} className={styles.veh} style={{ top: `${item.pos[0] * 100 / 1080}vh`, left: `${item.pos[1] * 100 / 1920}vw` }} />
-        ))
-      }
+      {dynamicInfo?.veh.map(item => (
+        <div
+          key={`${item.type}_${item.id}`}
+          className={styles.veh}
+          style={{
+            top: `${(item.pos[0] * 100) / 1080}vh`,
+            left: `${(item.pos[1] * 100) / 1920}vw`
+          }}
+        />
+      ))}
       <div className={styles.legendWrapper}>
         <div className={styles.leftLegend}>
           <div className={styles.leftLegendLabel}>
@@ -137,9 +156,7 @@ const RealtimeOverview = () => {
           </div>
 
           <div className={styles.fengxiangIcon}>
-            <p>
-            东南风 六级
-            </p>
+            <p>东南风 六级</p>
           </div>
         </div>
       </div>
@@ -154,42 +171,26 @@ const RealtimeOverview = () => {
         <p>发现目标建筑 发现武装力量</p>
       </div>
 
-      <p className={styles.dateWrapper}>2022-06-13    00:06:50:55</p>
-      
-      <div className={styles.jianchuanGroup}>
+      <p className={styles.dateWrapper}>2022-06-13 00:06:50:55</p>
 
+      <div className={styles.jianchuanGroup}>
         <div className={styles.jianchuanWrapper}>
           <p className={styles.jianchuanTop}></p>
           <div className={styles.jianchuanCenterWrapper}>
-            <p className={styles.jianchuanCenterShuiwen}>
-            </p>
-            <p className={styles.jianchuanCenter}>
-            </p>
+            <p className={styles.jianchuanCenterShuiwen}></p>
+            <p className={styles.jianchuanCenter}></p>
           </div>
           <p className={styles.jianchuanBottom}></p>
         </div>
+      <Electric liveValue={'20px'} oilValue={'30px'}/>
+      </div>
 
-        <div className={styles.liveWrapper}>
-          <i className={styles.liveBg}></i>
-          <div className={styles.jianchuanContent}>
-            <div><p>北纬25°03'，东经121°31'</p></div>
-            <div className={styles.aliveContent}>
-              <div><p>生命值</p></div>
-              <div className={styles.bg}>
-                <i></i>
-              </div>
-            </div>
-            <div className={styles.aliveContent}>
-              <div><p>油    量</p></div>
-              <div className={styles.bg}>
-                <i className={styles.youliang}></i>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
+      <div className={styles.wurenjiGroup}>
+        <div></div>
+        <Electric liveValue={'20px'} oilValue={'30px'}/>
+      </div>
     </div>
   );
-}
+};
 
 export default RealtimeOverview;
