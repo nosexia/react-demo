@@ -182,11 +182,11 @@ const RealtimeOverview = () => {
           </div>
           <p className={styles.jianchuanBottom}></p>
         </div>
-      <Electric liveValue={'20px'} oilValue={'30px'}/>
+      <Electric liveValue={'20px'} oilValue={'30px'} styles={{marginTop: '23px'}}/>
       </div>
 
       <div className={styles.wurenjiGroup}>
-        <div></div>
+        <div className={styles.wurenjiIcon}></div>
         <Electric liveValue={'20px'} oilValue={'30px'}/>
       </div>
     </div>

@@ -3,11 +3,12 @@ import styles from "./index.module.less";
 
 type Props = {
     liveValue: string,
-    oilValue: string
+    oilValue: string,
+    styles?: Record<string,any>
 }
 const Electrc:FC<Props> = (props) => {
     return (
-        <div className={styles.liveWrapper}>
+        <div className={styles.liveWrapper} style={props.styles}>
             <i className={styles.liveBg}></i>
             <div className={styles.jianchuanContent}>
             <div><p>北纬25°03'，东经121°31'</p></div>
