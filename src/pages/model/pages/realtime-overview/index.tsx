@@ -166,6 +166,12 @@ const RealtimeOverview = () => {
         <p>空中侦察</p>
       </div>
 
+      <div className={styles.relativeInfoWrapper}>
+        <div className={styles.relativeInfoContent}>
+          <h5>场景相关信息</h5>
+        </div>
+      </div>
+
       <div className={styles.specialInfoWrapper}>
         <p>特殊信息</p>
         <p>发现目标建筑 发现武装力量</p>
@@ -182,25 +188,27 @@ const RealtimeOverview = () => {
           </div>
           <p className={styles.jianchuanBottom}></p>
         </div>
-      <Electric liveValue={'20px'} oilValue={'30px'} styles={{marginTop: '23px'}}/>
+        <Electric
+          liveValue={"20px"}
+          oilValue={"30px"}
+          styles={{ marginTop: "23px" }}
+        />
       </div>
 
       <div className={styles.wurenjiGroup}>
         <div className={styles.wurenjiIcon}></div>
-        <Electric liveValue={'20px'} oilValue={'30px'}/>
+        <Electric liveValue={"20px"} oilValue={"30px"} />
       </div>
 
       <div className={styles.jianlietingGroup}>
         <div className={styles.jianlietingIcon}></div>
-        <Electric liveValue={'20px'} oilValue={'30px'}/>
+        <Electric liveValue={"20px"} oilValue={"30px"} />
       </div>
-
 
       <div className={styles.weizhuangjianlietingGroup}>
         <div className={styles.weizhuangjianlietingIcon}></div>
-        <Electric liveValue={'20px'} oilValue={'30px'}/>
+        <Electric liveValue={"20px"} oilValue={"30px"} />
       </div>
-
     </div>
   );
 };

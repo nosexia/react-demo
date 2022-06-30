@@ -21,6 +21,7 @@
   transition-duration: 30ms;
 }
 .legendWrapper {
+  font-family: MicrosoftYaHei-Bold;
   margin-left: 131px;
   margin-top: 117px;
   display: flex;
@@ -281,4 +282,36 @@
   height: 38px;
   background: url('@/assets/images/weizhuangjianlieting1.png') no-repeat left top;
   background-size: contain;
+}
+.relativeInfoWrapper {
+  position: relative;
+  padding-top: 69px;
+  padding-bottom: 72px;
+}
+.relativeInfoWrapper ::before {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 635px;
+  height: 69px;
+  background: url('@/assets/images/relativeInfoTop.png') no-repeat left top;
+  background-size: contain;
+}
+.relativeInfoWrapper ::after {
+  display: block;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 635px;
+  height: 72px;
+  background: url('@/assets/images/relativeInfoBottom.png') no-repeat left top;
+  background-size: contain;
+}
+.relativeInfoWrapper .relativeInfoContent h5 {
+  color: #ECC329;
+  font-size: 28px;
+  font-weight: bold;
 }
