@@ -284,34 +284,43 @@
   background-size: contain;
 }
 .relativeInfoWrapper {
-  position: relative;
-  padding-top: 69px;
-  padding-bottom: 72px;
+  margin-left: 131px;
 }
-.relativeInfoWrapper ::before {
-  display: block;
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
+.relativeInfoWrapper p {
+  margin-bottom: 0;
+}
+.relativeInfoWrapper .relativeInfoTop {
   width: 635px;
-  height: 69px;
+  padding-top: 69px;
   background: url('@/assets/images/relativeInfoTop.png') no-repeat left top;
   background-size: contain;
 }
-.relativeInfoWrapper ::after {
-  display: block;
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.relativeInfoWrapper .relativeInfoBottom {
   width: 635px;
-  height: 72px;
-  background: url('@/assets/images/relativeInfoBottom.png') no-repeat left top;
+  padding-bottom: 72px;
+  background: url('@/assets/images/relativeInfoBottom.png') no-repeat left bottom;
   background-size: contain;
 }
-.relativeInfoWrapper .relativeInfoContent h5 {
+.relativeInfoWrapper .relativeInfoBottom .relativeInfoContent {
+  background: url('@/assets/images/relativeInfoMiddle.png') repeat-y left top;
+}
+.relativeInfoWrapper .relativeInfoBottom .relativeInfoContent h5 {
   color: #ECC329;
   font-size: 28px;
   font-weight: bold;
+  margin-bottom: 0;
+  text-align: center;
+}
+.relativeInfoWrapper .relativeInfoBottom .relativeInfoContent .relativeDetail {
+  width: 493px;
+  margin: 54px auto 0;
+  font-size: 29px;
+  color: #FFF;
+  font-weight: bold;
+}
+.relativeInfoWrapper .relativeInfoBottom .relativeInfoContent .relativeDetail p {
+  padding-bottom: 10px;
+}
+.relativeInfoWrapper .relativeInfoBottom .relativeInfoContent .relativeDetail p span {
+  padding-right: 40px;
 }

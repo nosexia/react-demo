@@ -167,8 +167,15 @@ const RealtimeOverview = () => {
       </div>
 
       <div className={styles.relativeInfoWrapper}>
-        <div className={styles.relativeInfoContent}>
-          <h5>场景相关信息</h5>
+        <div className={styles.relativeInfoTop}>
+          <div className={styles.relativeInfoBottom}>
+            <div className={styles.relativeInfoContent}>
+              <h5>场景相关信息</h5>
+              <div className={styles.relativeDetail}>
+                <p><span>敌方坦克数量</span>2</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
