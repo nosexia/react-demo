@@ -97,7 +97,7 @@ const Simulation: FC = () => {
 
                     if (record['status'] === '进行中') {
                         btns = [
-                            <Button onClick={() => { setImgPreview(record["仿真程序截图URL"]); setImgPreviewVisible(true); setImgPreviewVisible(record["仿真程序截图URL"]) }}>查看仿真进度</Button>
+                            <Button onClick={() => handleSimulationStatus(record)}>查看仿真进度</Button>
                         ]
                     }
 
@@ -113,6 +113,17 @@ const Simulation: FC = () => {
             }
         ]
         , [])
+        
+    const handleSimulationStatus = (record:any) => {
+        if(Number(id) === 3) {
+            const {protocol, host} = window.location
+            window.open(`${protocol}//${host}/realtime-overview?id=${id}`)
+        }else{
+            setImgPreview(record["仿真程序截图URL"]); 
+            setImgPreviewVisible(true); 
+            setImgPreviewVisible(record["仿真程序截图URL"]) 
+        }
+    }
     function handleAbnormalLog(url: string) {
         let a = document.createElement('a');
         a.href = url;
