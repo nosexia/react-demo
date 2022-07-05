@@ -42,7 +42,7 @@ module.exports = merge(common, {
         // port: 8082,
         proxy: {
             '/dev-api': {
-                target: 'http://10.10.10.30:18866',
+                target: 'http://101.6.143.8:65513',
                 // secure: false,
                 changeOrigin: true,
                 // pathRewrite: { '^/dev-api': 'http://10.10.10.17:80/dev-api' },
