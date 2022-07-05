@@ -20,6 +20,10 @@ const menus = [
             {
                 path: '/model?id=2',
                 name: '智慧城市复杂体系'
+            },
+            {
+                path: '/model?id=3',
+                name: '中关村环保园'
             }
         ]
     },

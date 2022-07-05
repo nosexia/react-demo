@@ -49,6 +49,7 @@ const RealtimeOverview = () => {
   const getDynamicInfo = useCallback(async (id: string) => {
     const client = mqtt.connect(mqttUrl, mqttOptions);
     client.on("connect", () => {
+      console.log('connect')
       client.subscribe(
         "ryh_test_" + id,
         err => err && console.log("subscribe error:", err)
@@ -59,6 +60,7 @@ const RealtimeOverview = () => {
       const res = JSON.parse(
         pako.inflate(message, { to: "string" })
       ) as DynamicInfo;
+      console.log('res', res)
       setDynamicInfo(res);
     });
   }, []);
