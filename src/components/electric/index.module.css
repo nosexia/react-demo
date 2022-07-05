@@ -58,8 +58,8 @@
   display: block;
   width: 20px;
   height: 12px;
-  background: red;
+  background: #3bdf75;
 }
 .liveWrapper .jianchuanContent > div.aliveContent div.bg .youliang {
-  background: blue;
+  background: #e83434;
 }
