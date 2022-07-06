@@ -25,9 +25,9 @@ const staticData = {
   timeStamp: 1657075334,
   info: [{
       ALT: 0,
-      FUEL: -1,
+      FUEL: 80,
       HIGHLIGHT: false,
-      HP: -1,
+      HP: 100,
       LAT: "48°48'",
       LNG: "45°45'",
       NAME: "FW_AI_0",
@@ -240,6 +240,9 @@ const staticData = {
   }]
 }
 
+const wurenjiGroupInfo = staticData.info.filter(item => item.type === 'FW_AI')
+
+
 // 请求静态数据的url
 const getStaticInfoUrl = "http://101.6.143.8:65515/sim/staticinfo/";
 
@@ -305,29 +308,40 @@ const RealtimeOverview = () => {
   // 所以无人机组的经度列表
   const [LNGList, setLNGList] = useState<string[]>(["0°'", "0°'", "0°'"])
   const [LATList, setLATList] = useState<string[]>(["0°'", "0°'", "0°'"])
+  const [HPList, setHPList] = useState<string[]>(['0', '0', '0'])
+  const [FUELList, FUELHPList] = useState<string[]>(['0', '0', '0'])
   // 获取无人机的位置
   const handlePositionWurenjiGroup = () => {
     const wurenjiGroup = document.querySelectorAll('[data-name="wurenjiGroup"]')
     wurenjiGroup.forEach((node, index) => {
-      const wurenjiGroupInfo = staticData.info.filter(item => item.type === 'FW_AI')
       node.style.left = wurenjiGroupInfo[index].PX + 'px'
       node.style.top = wurenjiGroupInfo[index].PY + 'px'
       node.style.position = 'absolute'
     })
   }
 
-  // 设置无人机的经度
+  // 设置固定翼无人机的经度
   const handleLNGWurenjiGroup = () => {
-    const wurenjiGroupInfo = staticData.info.filter(item => item.type === 'FW_AI')
     const LNGListMap = wurenjiGroupInfo.map(item => String(item.LNG))
     setLNGList(LNGListMap)
   }
 
-  // 设置无人机的纬度
+  // 设置固定翼无人机的纬度
   const handleLATWurenjiGroup = () => {
-    const wurenjiGroupInfo = staticData.info.filter(item => item.type === 'FW_AI')
     const LATListMap = wurenjiGroupInfo.map(item => String(item.LAT))
     setLATList(LATListMap)
+  }
+
+  // 设置固定翼无人机的生命值
+  const handleHPWurenjiGroup = () => {
+    const HPListMap = wurenjiGroupInfo.map(item => String(Number(item.HP)*1.04))
+    setHPList(HPListMap)
+  }
+
+  // 设置固定翼无人机的油量
+  const handleFUELWurenjiGroup = () => {
+    const FUELListMap = wurenjiGroupInfo.map(item => String(Number(item.FUEL)*1.04))
+    FUELHPList(FUELListMap)
   }
 
   // 更改root的宽高
@@ -343,6 +357,8 @@ const RealtimeOverview = () => {
       handlePositionWurenjiGroup()
       handleLNGWurenjiGroup()
       handleLATWurenjiGroup()
+      handleHPWurenjiGroup()
+      handleFUELWurenjiGroup()
     }, 1000)
 
   }, []);
@@ -457,8 +473,8 @@ const RealtimeOverview = () => {
       <div className={styles.wurenjiGroup} data-name="wurenjiGroup">
         <div className={styles.wurenjiIcon}>固定翼无人机</div>
         <Electric 
-          liveValue={"20px"} 
-          oilValue={"30px"} 
+          liveValue={HPList[0] + "px"} 
+          oilValue={FUELList[0] + "px"} 
           LNG={LNGList[0]}
           LAT={LATList[0]}
         />
@@ -467,8 +483,8 @@ const RealtimeOverview = () => {
       <div className={styles.wurenjiGroup} data-name="wurenjiGroup">
         <div className={styles.wurenjiIcon}>固定翼无人机</div>
         <Electric 
-          liveValue={"20px"} 
-          oilValue={"30px"} 
+          liveValue={HPList[1] + "px"} 
+          oilValue={FUELList[1] + "px"}
           LNG={LNGList[1]}
           LAT={LATList[1]}
         />
@@ -478,8 +494,8 @@ const RealtimeOverview = () => {
       <div className={styles.wurenjiGroup} data-name="wurenjiGroup">
         <div className={styles.wurenjiIcon}>固定翼无人机</div>
         <Electric 
-          liveValue={"20px"} 
-          oilValue={"30px"} 
+          liveValue={HPList[2] + "px"} 
+          oilValue={FUELList[2] + "px"} 
           LNG={LNGList[2]}
           LAT={LATList[2]}
         />
