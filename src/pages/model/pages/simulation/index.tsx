@@ -117,7 +117,7 @@ const Simulation: FC = () => {
     const handleSimulationStatus = (record:any) => {
         if(Number(id) === 3) {
             const {protocol, host} = window.location
-            window.open(`${protocol}//${host}/realtime-overview?id=${id}`)
+            window.open(`${protocol}//${host}/realtime-overview?id=${id}&taskId=${record.id}`)
         }else{
             setImgPreview(record["仿真程序截图URL"]); 
             setImgPreviewVisible(true); 

@@ -34,9 +34,9 @@ const RealtimeOverview = () => {
   const ref = useRef<HTMLCanvasElement>(null);
   const [staticInfo, setStaticInfo] = useState<StaticInfo>();
   const [dynamicInfo, setDynamicInfo] = useState<DynamicInfo>();
-  const id = useMemo(() => {
+  const [id, taskId] = useMemo(() => {
     const params = parseParams(location.search);
-    return params.id;
+    return [params.id, params.taskId];
   }, [location]);
 
   // 获取静态数据
@@ -50,18 +50,29 @@ const RealtimeOverview = () => {
     const client = mqtt.connect(mqttUrl, mqttOptions);
     client.on("connect", () => {
       console.log('connect')
-      client.subscribe(
-        "ryh_test_" + id,
-        err => err && console.log("subscribe error:", err)
-      );
+      // client.subscribe(
+      //   "ryh_test_" + id,
+      //   err => err && console.log("subscribe error:", err)
+      // );
+      client.subscribe('SimEng_dynamicInfo_' + taskId, err => {
+        console.log('error', err)
+      })
     });
 
-    client.on("message", (topic, message) => {
+    const handleSimEngDynamicInfo =(message) => {
       const res = JSON.parse(
         pako.inflate(message, { to: "string" })
       ) as DynamicInfo;
       console.log('res', res)
       setDynamicInfo(res);
+    }
+
+
+    client.on("message", (topic, message) => {
+      console.log('topic', topic)
+      if(topic === `SimEng_dynamicInfo_${taskId}`) {
+        handleSimEngDynamicInfo(message)
+      }
     });
   }, []);
 
@@ -119,7 +130,7 @@ const RealtimeOverview = () => {
       style={{ backgroundImage: `url('${staticInfo.backgroundUrl}')` }}
     >
       {/* <canvas className={styles.canvas} ref={ref} height={1080} width={1920} />; */}
-      {dynamicInfo?.veh.map(item => (
+      {dynamicInfo?.veh?.map(item => (
         <div
           key={`${item.type}_${item.id}`}
           className={styles.veh}

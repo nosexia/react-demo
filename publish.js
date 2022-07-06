@@ -34,7 +34,7 @@ const publish = async () => {
             type: 'car',
             pos: item.points[i % item.points.length],
         }))
-        client.publish('ryh_test_' + idx, pako.deflate(JSON.stringify(data)));
+        // client.publish('ryh_test_' + idx, pako.deflate(JSON.stringify(data)));
         i++;
         await sleep(30);
     }
