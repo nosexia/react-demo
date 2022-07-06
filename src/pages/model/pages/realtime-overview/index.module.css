@@ -265,6 +265,9 @@
   background: url('@/assets/images/gudingyiIcon1.png') no-repeat left top;
   background-size: contain;
 }
+.wurenjiGroup .wurenjiIcon.highLight {
+  background-image: url('@/assets/images/gudingyiIcon1.png');
+}
 .jianlietingGroup {
   display: flex;
 }
