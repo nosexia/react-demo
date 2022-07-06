@@ -8,7 +8,7 @@ export default {
         HIGHLIGHT: false,
         HP: -1,
         LAT: 0,
-        LNG: 0,
+        LNG: "45°45'",
         NAME: "FW_AI_0",
         PITCH: 0,
         PX: 1335,

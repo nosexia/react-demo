@@ -19,6 +19,226 @@ const EdgeColor = {
   [EdgeType.WORKSPACE]: "blue",
   [EdgeType.CROSS]: "yellow"
 };
+const staticData = {
+  scriptId: 1,
+  simulationStatus: 1,
+  timeStamp: 1657075334,
+  info: [{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: "48°48'",
+      LNG: "45°45'",
+      NAME: "FW_AI_0",
+      PITCH: 0,
+      PX: 1335,
+      PY: 683,
+      PZ: 797,
+      ROLL: 0,
+      YAW: 0,
+      type: "FW_AI"         
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "FW_AI_1",
+      PITCH: 0,
+      PX: 1694,
+      PY: 699,
+      PZ: 3477,
+      ROLL: 0,
+      YAW: 0,
+      type: "FW_AI"
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "FW_AI_2",
+      PITCH: 0,
+      PX: 947,
+      PY: 531,
+      PZ: 2266,
+      ROLL: 0,
+      YAW: 0,
+      type: "FW_AI"
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "UAV_0",
+      PITCH: 0,
+      PX: 1489,
+      PY: 796,
+      PZ: 2901,
+      ROLL: 0,
+      YAW: 0,
+      type: "UAV"
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "UAV_1",
+      PITCH: 0,
+      PX: 1731,
+      PY: 237,
+      PZ: 668,
+      ROLL: 0,
+      YAW: 0,
+      type: "UAV"        
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "UAV_2",
+      PITCH: 0,
+      PX: 1387,
+      PY: 548,
+      PZ: 4887,
+      ROLL: 0,
+      YAW: 0,
+      type: "UAV"
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "UAV_3",
+      PITCH: 0,
+      PX: 266,
+      PY: 638,
+      PZ: 586,
+      ROLL: 0,
+      YAW: 0,
+      type: "UAV"
+  },{
+      ALT: 0,
+      DESTROYED: false,
+      DIST: 0,
+      DISTURB: false,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "BS_AI_0",
+      PITCH: 0,
+      PX: 1667,
+      PY: 50,
+      PZ: 2544,
+      ROLL: 0,
+      YAW: 0,
+      type: "BS_AI"
+  },{
+      ALT: 0,
+      DESTROYED: false,
+      DIST: 0,
+      DISTURB: false,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "BS_AI_1",
+      PITCH: 0,
+      PX: 1419,
+      PY: 350,
+      PZ: 4740,
+      ROLL: 0,
+      YAW: 0,
+      type: "BS_AI" 
+  },{
+      ALT: 0,
+      HIGHLIGHT: false,
+      LAT: 0,
+      LNG: 0,
+      NAME: "RS_AI_0",
+      PITCH: 0,
+      PX: 1067,
+      PY: 489,
+      PZ: 4612,
+      ROLL: 0,
+      YAW: 0,
+      type: "RS_AI"
+  },{
+      ALT: 0,
+      ATK: 0,
+      DESTORYED: false,
+      FUEL: 0,
+      HIGHLIGHT: false,
+      HP: 0,
+      LAT: 0,
+      LNG: 0,
+      MP: 0,
+      NAME: "TKL_AI_0",
+      PITCH: 0,
+      PX: 1467,
+      PY: 717,
+      PZ: 953,
+      ROLL: 0,
+      YAW: 0,
+      type: "TKL_AI"
+  },{
+      ALT: 0,
+      ATK: 0,
+      DESTORYED: false,
+      FUEL: 0,
+      HIGHLIGHT: false,
+      HP: 0,
+      LAT: 0,
+      LNG: 0,
+      MP: 0,
+      NAME: "TKL_AI_1",
+      PITCH: 0,
+      PX: 1456,
+      PY: 172,
+      PZ: 3777,
+      ROLL: 0,
+      YAW: 0,
+      type: "TKL_AI"
+  },{
+      ALT: 0,
+      LAT: 0,
+      LNG: 0,
+      NAME: "CameraActor_0",
+      PITCH: 0,
+      PX: 1660,
+      PY: 681,
+      PZ: 1079,
+      ROLL: 0,
+      YAW: 0,
+      type: "CameraActor"
+  },{
+      ALT: 0,
+      LAT: 0,
+      LNG: 0,
+      NAME: "CameraActor_1",
+      PITCH: 0,
+      PX: 475,
+      PY: 193,
+      PZ: 2395,
+      ROLL: 0,
+      YAW: 0,
+      type: "CameraActor"        
+  }]
+}
 
 // 请求静态数据的url
 const getStaticInfoUrl = "http://101.6.143.8:65515/sim/staticinfo/";
@@ -82,6 +302,34 @@ const RealtimeOverview = () => {
     getDynamicInfo(id);
   }, [id, getStaticInfo, getDynamicInfo]);
 
+  // 所以无人机组的经度列表
+  const [LNGList, setLNGList] = useState<string[]>(["0°'", "0°'", "0°'"])
+  const [LATList, setLATList] = useState<string[]>(["0°'", "0°'", "0°'"])
+  // 获取无人机的位置
+  const handlePositionWurenjiGroup = () => {
+    const wurenjiGroup = document.querySelectorAll('[data-name="wurenjiGroup"]')
+    wurenjiGroup.forEach((node, index) => {
+      const wurenjiGroupInfo = staticData.info.filter(item => item.type === 'FW_AI')
+      node.style.left = wurenjiGroupInfo[index].PX + 'px'
+      node.style.top = wurenjiGroupInfo[index].PY + 'px'
+      node.style.position = 'absolute'
+    })
+  }
+
+  // 设置无人机的经度
+  const handleLNGWurenjiGroup = () => {
+    const wurenjiGroupInfo = staticData.info.filter(item => item.type === 'FW_AI')
+    const LNGListMap = wurenjiGroupInfo.map(item => String(item.LNG))
+    setLNGList(LNGListMap)
+  }
+
+  // 设置无人机的纬度
+  const handleLATWurenjiGroup = () => {
+    const wurenjiGroupInfo = staticData.info.filter(item => item.type === 'FW_AI')
+    const LATListMap = wurenjiGroupInfo.map(item => String(item.LAT))
+    setLATList(LATListMap)
+  }
+
   // 更改root的宽高
   useEffect(() => {
     const root = document.getElementById("root");
@@ -89,40 +337,16 @@ const RealtimeOverview = () => {
       root.style.height = "100vh";
       root.style.width = "100vw";
     }
+    
+    // 当res变化时候
+    setTimeout(() => {
+      handlePositionWurenjiGroup()
+      handleLNGWurenjiGroup()
+      handleLATWurenjiGroup()
+    }, 1000)
+
   }, []);
 
-  // // 画背景
-  // useEffect(() => {
-  //   if (!ref.current || !staticInfo) return;
-  //   const ctx = ref.current.getContext('2d');
-  //   if (!ctx) return;
-  //   const edges = staticInfo.edges;
-  //   for (const edge of edges) {
-  //     const edgePoints = edge.points;
-  //     ctx.beginPath();
-  //     ctx.moveTo(edgePoints[0][1], edgePoints[0][0]);
-  //     for (let i = 1; i < edgePoints.length; i++) {
-  //       ctx.lineTo(edgePoints[i][1], edgePoints[i][0]);
-  //     }
-  //     ctx.closePath();
-  //     ctx.fillStyle = EdgeColor[edge.type];
-  //     ctx.fill();
-  //   }
-  // }, [ref, staticInfo]);
-
-  // // 画动态物体
-  // useEffect(() => {
-  //   if (!ref.current || !dynamicInfo) return;
-  //   const ctx = ref.current.getContext('2d');
-  //   if (!ctx) return;
-  //   ctx.clearRect(0, 0, 1920, 1080);
-  //   ctx.fillStyle = 'red';
-  //   for (const item of dynamicInfo.veh) {
-  //     ctx.beginPath();
-  //     ctx.rect(item.pos[1] - 10, item.pos[0] - 10, 20, 20);
-  //     ctx.fill();
-  //   }
-  // }, [ref, dynamicInfo]);
   if (!staticInfo) return <></>;
   return (
     <div
@@ -225,23 +449,59 @@ const RealtimeOverview = () => {
         <Electric
           liveValue={"20px"}
           oilValue={"30px"}
+          LNG={'0'}
+          LAT={'0'}
           styles={{ marginTop: "23px" }}
         />
       </div>
+      <div className={styles.wurenjiGroup} data-name="wurenjiGroup">
+        <div className={styles.wurenjiIcon}>固定翼无人机</div>
+        <Electric 
+          liveValue={"20px"} 
+          oilValue={"30px"} 
+          LNG={LNGList[0]}
+          LAT={LATList[0]}
+        />
+      </div>
 
-      <div className={styles.wurenjiGroup}>
-        <div className={styles.wurenjiIcon}></div>
-        <Electric liveValue={"20px"} oilValue={"30px"} />
+      <div className={styles.wurenjiGroup} data-name="wurenjiGroup">
+        <div className={styles.wurenjiIcon}>固定翼无人机</div>
+        <Electric 
+          liveValue={"20px"} 
+          oilValue={"30px"} 
+          LNG={LNGList[1]}
+          LAT={LATList[1]}
+        />
+      </div>
+
+
+      <div className={styles.wurenjiGroup} data-name="wurenjiGroup">
+        <div className={styles.wurenjiIcon}>固定翼无人机</div>
+        <Electric 
+          liveValue={"20px"} 
+          oilValue={"30px"} 
+          LNG={LNGList[2]}
+          LAT={LATList[2]}
+        />
       </div>
 
       <div className={styles.jianlietingGroup}>
         <div className={styles.jianlietingIcon}></div>
-        <Electric liveValue={"20px"} oilValue={"30px"} />
+        <Electric 
+          liveValue={"20px"} 
+          oilValue={"30px"}
+          LNG={'0'}
+          LAT={'0'} />
       </div>
 
       <div className={styles.weizhuangjianlietingGroup}>
         <div className={styles.weizhuangjianlietingIcon}></div>
-        <Electric liveValue={"20px"} oilValue={"30px"} />
+        <Electric 
+          liveValue={"20px"} 
+          oilValue={"30px"}           
+          LNG={'0'}
+          LAT={'0'} 
+        />
       </div>
     </div>
   );
