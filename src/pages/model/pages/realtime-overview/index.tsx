@@ -36,7 +36,7 @@ const staticData = {
       PY: 683,
       PZ: 797,
       ROLL: 0,
-      YAW: 0,
+      YAW: 100,
       type: "FW_AI"         
   },{
       ALT: 0,
@@ -309,7 +309,8 @@ const RealtimeOverview = () => {
   const [LNGList, setLNGList] = useState<string[]>(["0°'", "0°'", "0°'"])
   const [LATList, setLATList] = useState<string[]>(["0°'", "0°'", "0°'"])
   const [HPList, setHPList] = useState<string[]>(['0', '0', '0'])
-  const [FUELList, FUELHPList] = useState<string[]>(['0', '0', '0'])
+  const [FUELList, setFUELList] = useState<string[]>(['0', '0', '0'])
+  const [YAWList, setYAWList] = useState<string[]>(['0', '0', '0'])
   // 获取无人机的位置
   const handlePositionWurenjiGroup = () => {
     const wurenjiGroup = document.querySelectorAll('[data-name="wurenjiGroup"]')
@@ -341,7 +342,13 @@ const RealtimeOverview = () => {
   // 设置固定翼无人机的油量
   const handleFUELWurenjiGroup = () => {
     const FUELListMap = wurenjiGroupInfo.map(item => String(Number(item.FUEL)*1.04))
-    FUELHPList(FUELListMap)
+    setFUELList(FUELListMap)
+  }
+
+  // 设置固定翼无人机的机头方向
+  const handleYAWWurenjiGroup = () => {
+    const YAWListMap = wurenjiGroupInfo.map(item => String(item.YAW))
+    setYAWList(YAWListMap)
   }
 
   // 更改root的宽高
@@ -359,6 +366,7 @@ const RealtimeOverview = () => {
       handleLATWurenjiGroup()
       handleHPWurenjiGroup()
       handleFUELWurenjiGroup()
+      handleYAWWurenjiGroup()
     }, 1000)
 
   }, []);
@@ -471,7 +479,7 @@ const RealtimeOverview = () => {
         />
       </div>
       <div className={styles.wurenjiGroup} data-name="wurenjiGroup">
-        <div className={styles.wurenjiIcon}>固定翼无人机</div>
+        <div className={styles.wurenjiIcon} style={{transform: `rotate(${YAWList[0]}deg)`}}>固定翼无人机</div>
         <Electric 
           liveValue={HPList[0] + "px"} 
           oilValue={FUELList[0] + "px"} 
@@ -481,7 +489,7 @@ const RealtimeOverview = () => {
       </div>
 
       <div className={styles.wurenjiGroup} data-name="wurenjiGroup">
-        <div className={styles.wurenjiIcon}>固定翼无人机</div>
+        <div className={styles.wurenjiIcon}  style={{transform: `rotate(${YAWList[1]}deg)`}}>固定翼无人机</div>
         <Electric 
           liveValue={HPList[1] + "px"} 
           oilValue={FUELList[1] + "px"}
@@ -492,7 +500,7 @@ const RealtimeOverview = () => {
 
 
       <div className={styles.wurenjiGroup} data-name="wurenjiGroup">
-        <div className={styles.wurenjiIcon}>固定翼无人机</div>
+        <div className={styles.wurenjiIcon}  style={{transform: `rotate(${YAWList[2]}deg)`}}>固定翼无人机</div>
         <Electric 
           liveValue={HPList[2] + "px"} 
           oilValue={FUELList[2] + "px"} 
