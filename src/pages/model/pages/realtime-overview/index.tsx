@@ -241,8 +241,229 @@ const staticData = {
   }]
 }
 
-const wurenjiGroupInfo = staticData.info.filter(item => item.type === 'FW_AI')
+const staticData1 = {
+  scriptId: 1,
+  simulationStatus: 1,
+  timeStamp: 1657075334,
+  info: [{
+      ALT: 0,
+      FUEL: 80,
+      HIGHLIGHT: 1,
+      HP: 100,
+      LAT: "48°48'",
+      LNG: "45°45'",
+      NAME: "FW_AI_0",
+      PITCH: 0,
+      PX: 1896,
+      PY: 283,
+      PZ: 797,
+      ROLL: 0,
+      YAW: 100,
+      type: "FW_AI"         
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "FW_AI_1",
+      PITCH: 0,
+      PX: 2694,
+      PY: 1199,
+      PZ: 3477,
+      ROLL: 0,
+      YAW: 0,
+      type: "FW_AI"
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "FW_AI_2",
+      PITCH: 0,
+      PX: 147,
+      PY: 131,
+      PZ: 2266,
+      ROLL: 0,
+      YAW: 0,
+      type: "FW_AI"
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "UAV_0",
+      PITCH: 0,
+      PX: 1489,
+      PY: 796,
+      PZ: 2901,
+      ROLL: 0,
+      YAW: 0,
+      type: "UAV"
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "UAV_1",
+      PITCH: 0,
+      PX: 1731,
+      PY: 237,
+      PZ: 668,
+      ROLL: 0,
+      YAW: 0,
+      type: "UAV"        
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "UAV_2",
+      PITCH: 0,
+      PX: 1387,
+      PY: 548,
+      PZ: 4887,
+      ROLL: 0,
+      YAW: 0,
+      type: "UAV"
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "UAV_3",
+      PITCH: 0,
+      PX: 266,
+      PY: 638,
+      PZ: 586,
+      ROLL: 0,
+      YAW: 0,
+      type: "UAV"
+  },{
+      ALT: 0,
+      DESTROYED: false,
+      DIST: 0,
+      DISTURB: false,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "BS_AI_0",
+      PITCH: 0,
+      PX: 1667,
+      PY: 50,
+      PZ: 2544,
+      ROLL: 0,
+      YAW: 0,
+      type: "BS_AI"
+  },{
+      ALT: 0,
+      DESTROYED: false,
+      DIST: 0,
+      DISTURB: false,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "BS_AI_1",
+      PITCH: 0,
+      PX: 1419,
+      PY: 350,
+      PZ: 4740,
+      ROLL: 0,
+      YAW: 0,
+      type: "BS_AI" 
+  },{
+      ALT: 0,
+      HIGHLIGHT: false,
+      LAT: 0,
+      LNG: 0,
+      NAME: "RS_AI_0",
+      PITCH: 0,
+      PX: 1067,
+      PY: 489,
+      PZ: 4612,
+      ROLL: 0,
+      YAW: 0,
+      type: "RS_AI"
+  },{
+      ALT: 0,
+      ATK: 0,
+      DESTORYED: false,
+      FUEL: 0,
+      HIGHLIGHT: false,
+      HP: 0,
+      LAT: 0,
+      LNG: 0,
+      MP: 0,
+      NAME: "TKL_AI_0",
+      PITCH: 0,
+      PX: 1467,
+      PY: 717,
+      PZ: 953,
+      ROLL: 0,
+      YAW: 0,
+      type: "TKL_AI"
+  },{
+      ALT: 0,
+      ATK: 0,
+      DESTORYED: false,
+      FUEL: 0,
+      HIGHLIGHT: false,
+      HP: 0,
+      LAT: 0,
+      LNG: 0,
+      MP: 0,
+      NAME: "TKL_AI_1",
+      PITCH: 0,
+      PX: 1456,
+      PY: 172,
+      PZ: 3777,
+      ROLL: 0,
+      YAW: 0,
+      type: "TKL_AI"
+  },{
+      ALT: 0,
+      LAT: 0,
+      LNG: 0,
+      NAME: "CameraActor_0",
+      PITCH: 0,
+      PX: 1660,
+      PY: 681,
+      PZ: 1079,
+      ROLL: 0,
+      YAW: 0,
+      type: "CameraActor"
+  },{
+      ALT: 0,
+      LAT: 0,
+      LNG: 0,
+      NAME: "CameraActor_1",
+      PITCH: 0,
+      PX: 475,
+      PY: 193,
+      PZ: 2395,
+      ROLL: 0,
+      YAW: 0,
+      type: "CameraActor"        
+  }]
+}
 
+const wurenjiGroupInfo = staticData.info.filter(item => item.type === 'FW_AI')
+const currentWurenjiGroupInfo = staticData1.info.filter(item => item.type === 'FW_AI')
 
 // 请求静态数据的url
 const getStaticInfoUrl = "http://101.6.143.8:65515/sim/staticinfo/";
@@ -313,6 +534,9 @@ const RealtimeOverview = () => {
   const [FUELList, setFUELList] = useState<string[]>(['0', '0', '0'])
   const [YAWList, setYAWList] = useState<string[]>(['0', '0', '0'])
   const [highLightList, setHighLightList] = useState<number[]>([0, 0, 0])
+  // 计算固定翼无人机本次和上次的translateX的距离
+  const [translateXList, setTranslateXList] = useState<number[]>([0, 0, 0])
+  const [translateYList, setTranslateYList] = useState<number[]>([0, 0, 0])
   // 获取无人机的位置
   const handlePositionWurenjiGroup = () => {
     const wurenjiGroup = document.querySelectorAll('[data-name="wurenjiGroup"]')
@@ -359,6 +583,26 @@ const RealtimeOverview = () => {
     setHighLightList(highLightListMap)
   }
 
+  // 计算固定翼无人机translateX的差值
+  const handleTranslateXWurenjiGroup = () => {
+    const prevLeftList = wurenjiGroupInfo.map(item => item.PX)
+    const currentLeftList = currentWurenjiGroupInfo.map(item => item.PX)
+    const leftList = prevLeftList.map((value, key) => {
+      return Number(currentLeftList[key]) - Number(value)
+    })
+    setTranslateXList(leftList)
+  }
+
+  // 计算固定翼无人机translateY的差值
+  const handleTranslateYWurenjiGroup = () => {
+    const prevTopList = wurenjiGroupInfo.map(item => item.PY)
+    const currentTopList = currentWurenjiGroupInfo.map(item => item.PY)
+    const topList = prevTopList.map((value, key) => {
+      return Number(currentTopList[key]) - Number(value)
+    })
+    setTranslateYList(topList)
+  }
+
   // 更改root的宽高
   useEffect(() => {
     const root = document.getElementById("root");
@@ -376,6 +620,8 @@ const RealtimeOverview = () => {
       handleFUELWurenjiGroup()
       handleYAWWurenjiGroup()
       handleHighLightWurenjiGroup()
+      handleTranslateXWurenjiGroup()
+      handleTranslateYWurenjiGroup()
     }, 1000)
 
   }, []);
@@ -487,7 +733,7 @@ const RealtimeOverview = () => {
           styles={{ marginTop: "23px" }}
         />
       </div>
-      <div className={styles.wurenjiGroup} data-name="wurenjiGroup">
+      <div className={styles.wurenjiGroup} data-name="wurenjiGroup" style={{transform: `translate(${translateXList[0]}px, ${translateYList[0]}px)`}}>
         <div className={classnames(styles.wurenjiIcon,{
           [styles.highLight]: highLightList[0]
         })} style={{transform: `rotate(${YAWList[0]}deg)`}}>固定翼无人机</div>
@@ -499,7 +745,7 @@ const RealtimeOverview = () => {
         />
       </div>
 
-      <div className={styles.wurenjiGroup} data-name="wurenjiGroup">
+      <div className={styles.wurenjiGroup} data-name="wurenjiGroup" style={{transform: `translate(${translateXList[1]}px, ${translateYList[1]}px)`}}>
         <div className={classnames(styles.wurenjiIcon,{
           [styles.highLight]: highLightList[1]
         })}  style={{transform: `rotate(${YAWList[1]}deg)`}}>固定翼无人机</div>
@@ -512,7 +758,7 @@ const RealtimeOverview = () => {
       </div>
 
 
-      <div className={styles.wurenjiGroup} data-name="wurenjiGroup">
+      <div className={styles.wurenjiGroup} data-name="wurenjiGroup" style={{transform: `translate(${translateXList[2]}px, ${translateYList[2]}px)`}}>
         <div className={classnames(styles.wurenjiIcon,{
           [styles.highLight]: highLightList[2]
         })}  style={{transform: `rotate(${YAWList[2]}deg)`}}>固定翼无人机</div>
