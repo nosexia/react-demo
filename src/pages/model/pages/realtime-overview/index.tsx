@@ -137,8 +137,8 @@ const staticData = {
       FUEL: -1,
       HIGHLIGHT: false,
       HP: -1,
-      LAT: 0,
-      LNG: 0,
+      LAT: "33°33'",
+      LNG: "44°44'",
       NAME: "BS_AI_0",
       PITCH: 0,
       PX: 1667,
@@ -553,13 +553,14 @@ const RealtimeOverview = () => {
   const [sixuanyiLATList, setSixuanyiLATList] = useState<string[]>(new Array(10).fill("0°'"))
   const [sixuanyiHPList, setSixuanyiHPList] = useState<string[]>(new Array(10).fill('0'))
   const [sixuanyiFUELList, setSixuanyiFUELList] = useState<string[]>(new Array(10).fill('0'))
-  // 计算初始化4旋翼无人机和本次的translateX的距离
   const [sixuanyiTranslateXList, setSixuanyiTranslateXList] = useState<number[]>(new Array(10).fill(0))
   const [sixuanyiTranslateYList, setSixuanyiTranslateYList] = useState<number[]>(new Array(10).fill(0))
 
   /**  战列舰相关 */
   const [zhanliejianLeftList, setZhanliejianLeftList] = useState<number[]>(new Array(7).fill(0))
   const [zhanliejianTopList, setZhanliejianTopList] = useState<number[]>(new Array(7).fill(0))
+  const [zhanliejianLNGList, setZhanliejianLNGList] = useState<string[]>(new Array(7).fill("0°'"))
+  const [zhanliejianLATList, setZhanliejianLATList] = useState<string[]>(new Array(7).fill("0°'"))
 
   // 固定翼无人机的左边定位列表
   const handleLeftWurenjiGroup = () => {
@@ -701,6 +702,18 @@ const RealtimeOverview = () => {
     const topListMap = zhanliejianGroupInfo.map(item => Number(item.PY))
     setZhanliejianTopList(topListMap)
   }
+
+  // 战列舰无人机经度
+  const handleLNGZhanliejianGroup = () => {
+    const LNGListMap = zhanliejianGroupInfo.map(item => String(item.LNG))
+    setZhanliejianLNGList(LNGListMap)
+  }
+
+  // 战列舰无人机的纬度
+  const handleLATZhanliejianGroup = () => {
+    const LATListMap = zhanliejianGroupInfo.map(item => String(item.LAT))
+    setZhanliejianLATList(LATListMap)
+  }
   
 
   // 更改root的宽高
@@ -738,6 +751,8 @@ const RealtimeOverview = () => {
       /** 战列舰 */
       handleLeftZhanliejianGroup()
       handleTopZhanliejianGroup()
+      handleLNGZhanliejianGroup()
+      handleLATZhanliejianGroup()
     }, 1000)
 
   }, []);
@@ -872,8 +887,9 @@ const RealtimeOverview = () => {
             <Electric 
               liveValue={"20px"} 
               oilValue={"30px"}
-              LNG={'0'}
-              LAT={'0'} />
+              LNG={zhanliejianLNGList[i]}
+              LAT={zhanliejianLATList[i]}
+            />
           </div>
         ))
       }
