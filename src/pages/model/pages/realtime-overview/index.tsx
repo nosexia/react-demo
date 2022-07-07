@@ -663,34 +663,44 @@ const RealtimeOverview = () => {
   }
 
 
-    // 设置四旋翼无人机的油量
-    const handleFUELSixuanyiGroup = () => {
-      const FUELListMap = sixuanyiGroupInfo.map(item => String(Number(item.FUEL)*1.04))
-      setSixuanyiFUELList(FUELListMap)
-    }
+  // 设置四旋翼无人机的油量
+  const handleFUELSixuanyiGroup = () => {
+    const FUELListMap = sixuanyiGroupInfo.map(item => String(Number(item.FUEL)*1.04))
+    setSixuanyiFUELList(FUELListMap)
+  }
 
 
-    // 计算四旋翼无人机translateX的差值
-    const handleTranslateXSixuanyiGroup = () => {
-      const prevLeftList = sixuanyiGroupInfo.map(item => item.PX)
-      const currentLeftList = currentSixuanyiGroupInfo.map(item => item.PX)
-      const leftList = prevLeftList.map((value, key) => {
-        return Number(currentLeftList[key]) - Number(value)
-      })
-      setSixuanyiTranslateXList(leftList)
-    }
+  // 计算四旋翼无人机translateX的差值
+  const handleTranslateXSixuanyiGroup = () => {
+    const prevLeftList = sixuanyiGroupInfo.map(item => item.PX)
+    const currentLeftList = currentSixuanyiGroupInfo.map(item => item.PX)
+    const leftList = prevLeftList.map((value, key) => {
+      return Number(currentLeftList[key]) - Number(value)
+    })
+    setSixuanyiTranslateXList(leftList)
+  }
     
-    // 计算四旋翼无人机translateY的差值
-    const handleTranslateYSixuanyiGroup = () => {
-      const prevTopList = sixuanyiGroupInfo.map(item => item.PY)
-      const currentTopList = currentSixuanyiGroupInfo.map(item => item.PY)
-      const topList = prevTopList.map((value, key) => {
-        return Number(currentTopList[key]) - Number(value)
-      })
-      setSixuanyiTranslateYList(topList)
-    }
+  // 计算四旋翼无人机translateY的差值
+  const handleTranslateYSixuanyiGroup = () => {
+    const prevTopList = sixuanyiGroupInfo.map(item => item.PY)
+    const currentTopList = currentSixuanyiGroupInfo.map(item => item.PY)
+    const topList = prevTopList.map((value, key) => {
+      return Number(currentTopList[key]) - Number(value)
+    })
+    setSixuanyiTranslateYList(topList)
+  }
 
-  // 设置战列舰左侧位置
+  // 设置战列舰的左边定位列表
+  const handleLeftZhanliejianGroup = () => {
+    const leftListMap = zhanliejianGroupInfo.map(item => Number(item.PX))
+    setZhanliejianLeftList(leftListMap)
+  }
+
+  // 设置战列舰的顶部定位列表
+  const handleTopZhanliejianGroup = () => {
+    const topListMap = zhanliejianGroupInfo.map(item => Number(item.PY))
+    setZhanliejianTopList(topListMap)
+  }
   
 
   // 更改root的宽高
@@ -724,6 +734,10 @@ const RealtimeOverview = () => {
       handleFUELSixuanyiGroup()
       handleTranslateXSixuanyiGroup()
       handleTranslateYSixuanyiGroup()
+
+      /** 战列舰 */
+      handleLeftZhanliejianGroup()
+      handleTopZhanliejianGroup()
     }, 1000)
 
   }, []);
@@ -846,6 +860,11 @@ const RealtimeOverview = () => {
       {
         [0, 1, 2, 3, 4, 5, 6].map(i => (
           <div 
+            style={{
+              position: 'absolute', 
+              top: `${zhanliejianTopList[i]}px`, 
+              left: `${zhanliejianLeftList[i]}px`
+            }}
             className={styles.jianlietingGroup}
             key={i}
           >
