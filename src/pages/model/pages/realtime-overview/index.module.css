@@ -307,9 +307,9 @@
   transition-delay: 0;
 }
 .jianlietingGroup .jianlietingIcon {
-  width: 176px;
-  height: 38px;
-  background: url('@/assets/images/jianlieting1.png') no-repeat left top;
+  width: 38px;
+  height: 176px;
+  background: url('@/assets/images/zhanliejianIcon1.png') no-repeat left top;
   background-size: contain;
 }
 .jianlietingGroup .jianlietingIcon.highLight {
@@ -324,8 +324,8 @@
   display: flex;
 }
 .weizhuangjianlietingGroup .weizhuangjianlietingIcon {
-  width: 176px;
-  height: 38px;
+  width: 39px;
+  height: 177px;
   background: url('@/assets/images/weizhuangjianlieting1.png') no-repeat left top;
   background-size: contain;
 }
@@ -450,7 +450,7 @@
     background-image: url('@/assets/images/zhanliejianIconHighLight.png');
   }
   50% {
-    background-image: url('@/assets/images/zhanliejianIcon.png');
+    background-image: url('@/assets/images/zhanliejianIcon1.png');
   }
   100% {
     background-image: url('@/assets/images/zhanliejianIconHighLight.png');
@@ -461,7 +461,7 @@
     background-image: url('@/assets/images/zhanliejianIconHighLight.png');
   }
   50% {
-    background-image: url('@/assets/images/zhanliejianIcon.png');
+    background-image: url('@/assets/images/zhanliejianIcon1.png');
   }
   100% {
     background-image: url('@/assets/images/zhanliejianIconHighLight.png');
@@ -472,7 +472,7 @@
     background-image: url('@/assets/images/tankeIconHighLight.png');
   }
   50% {
-    background-image: url('@/assets/images/tankeIcon.png');
+    background-image: url('@/assets/images/tankeIcon1.png');
   }
   100% {
     background-image: url('@/assets/images/tankeIconHighLight.png');
@@ -483,7 +483,7 @@
     background-image: url('@/assets/images/tankeIconHighLight.png');
   }
   50% {
-    background-image: url('@/assets/images/tankeIcon.png');
+    background-image: url('@/assets/images/tankeIcon1.png');
   }
   100% {
     background-image: url('@/assets/images/tankeIconHighLight.png');
