@@ -533,6 +533,8 @@ const RealtimeOverview = () => {
 
   /**  固定翼无人机相关信息 */
   // 所以无人机组的经度列表
+  const [leftList, setLeftList] = useState<number[]>(new Array(3).fill(0))
+  const [topList, setTopList] = useState<number[]>(new Array(3).fill(0))
   const [LNGList, setLNGList] = useState<string[]>(new Array(3).fill("0°'"))
   const [LATList, setLATList] = useState<string[]>(new Array(3).fill("0°'"))
   const [HPList, setHPList] = useState<string[]>(new Array(3).fill('0'))
@@ -549,15 +551,20 @@ const RealtimeOverview = () => {
   const [sixuanyiLNGList, setSixuanyiLNGList] = useState<string[]>(new Array(10).fill("0°'"))
   const [sixuanyiLATList, setSixuanyiLATList] = useState<string[]>(new Array(10).fill("0°'"))
 
-  // 获取无人机的位置
-  const handlePositionWurenjiGroup = () => {
-    const wurenjiGroup = document.querySelectorAll('[data-name="wurenjiGroup"]')
-    wurenjiGroup.forEach((node, index) => {
-      node.style.left = wurenjiGroupInfo[index].PX + 'px'
-      node.style.top = wurenjiGroupInfo[index].PY + 'px'
-      node.style.position = 'absolute'
-    })
+  // 固定翼无人机的左边定位列表
+  const handleLeftWurenjiGroup = () => {
+    const leftListMap = wurenjiGroupInfo.map(item => Number(item.PX))
+    setLeftList(leftListMap)
   }
+
+
+  // 固定翼无人机的顶部定位列表
+  const handleTopWurenjiGroup = () => {
+    const topListMap = wurenjiGroupInfo.map(item => Number(item.PY))
+    setTopList(topListMap)
+  }
+
+
 
   // 设置固定翼无人机的经度
   const handleLNGWurenjiGroup = () => {
@@ -650,7 +657,8 @@ const RealtimeOverview = () => {
     
     // 当res变化时候
     setTimeout(() => {
-      handlePositionWurenjiGroup()
+      handleLeftWurenjiGroup()
+      handleTopWurenjiGroup()
       handleLNGWurenjiGroup()
       handleLATWurenjiGroup()
       handleHPWurenjiGroup()
@@ -659,6 +667,7 @@ const RealtimeOverview = () => {
       handleHighLightWurenjiGroup()
       handleTranslateXWurenjiGroup()
       handleTranslateYWurenjiGroup()
+
 
       /** 四炫翼无人机的操作 */
       handleLNGSixuanyiGroup()
@@ -692,8 +701,7 @@ const RealtimeOverview = () => {
           return (
             <div 
             key={i}
-            className={styles.sixuanyi}  
-            data-name="sixuanyiGroup"
+            className={styles.sixuanyi}
             style={{position: 'absolute', top: `${sixuanyiTopList[i]}px`, left: `${sixuanyiLeftList[i]}px`}}>
               <div className={styles.sixuanyiContent}>
                 小型4旋翼无人机1
@@ -790,10 +798,11 @@ const RealtimeOverview = () => {
       {
         [0, 1, 2].map((i) => (
           <div 
-            className={styles.wurenjiGroup} 
-            data-name="wurenjiGroup" 
+            className={styles.wurenjiGroup}
             key={i}
-            style={{transform: `translate(${translateXList[i]}px, ${translateYList[i]}px)`}}>
+            style={{
+              position: 'absolute', top: `${topList[i]}px`, left: `${leftList[i]}px`,
+              transform: `translate(${translateXList[i]}px, ${translateYList[i]}px)`}}>
             <div className={classnames(styles.wurenjiIcon,{
               [styles.highLight]: highLightList[i]
             })} style={{transform: `rotate(${YAWList[i]}deg)`}}>
