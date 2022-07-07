@@ -299,8 +299,8 @@ const staticData1 = {
       LNG: 0,
       NAME: "UAV_0",
       PITCH: 0,
-      PX: 1489,
-      PY: 796,
+      PX: 489,
+      PY: 496,
       PZ: 2901,
       ROLL: 0,
       YAW: 0,
@@ -314,8 +314,8 @@ const staticData1 = {
       LNG: 0,
       NAME: "UAV_1",
       PITCH: 0,
-      PX: 1731,
-      PY: 237,
+      PX: 731,
+      PY: 737,
       PZ: 668,
       ROLL: 0,
       YAW: 0,
@@ -329,8 +329,8 @@ const staticData1 = {
       LNG: 0,
       NAME: "UAV_2",
       PITCH: 0,
-      PX: 1387,
-      PY: 548,
+      PX: 871,
+      PY: 845,
       PZ: 4887,
       ROLL: 0,
       YAW: 0,
@@ -467,8 +467,9 @@ const wurenjiGroupInfo = staticData.info.filter(item => item.type === 'FW_AI')
 const currentWurenjiGroupInfo = staticData1.info.filter(item => item.type === 'FW_AI')
 
 const sixuanyiGroupInfo = staticData.info.filter(item => item.type === 'UAV')
+const currentSixuanyiGroupInfo = staticData1.info.filter(item => item.type === 'UAV')
 
-
+const zhanliejianGroupInfo = staticData.info.filter(item => item.type === 'BS_AI')
 // 请求静态数据的url
 const getStaticInfoUrl = "http://101.6.143.8:65515/sim/staticinfo/";
 
@@ -541,7 +542,7 @@ const RealtimeOverview = () => {
   const [FUELList, setFUELList] = useState<string[]>(new Array(3).fill('0'))
   const [YAWList, setYAWList] = useState<string[]>(new Array(3).fill('0'))
   const [highLightList, setHighLightList] = useState<number[]>(new Array(3).fill(0))
-  // 计算固定翼无人机本次和上次的translateX的距离
+  // 计算初始化固定翼无人机和本次的translateX的距离
   const [translateXList, setTranslateXList] = useState<number[]>(new Array(3).fill(0))
   const [translateYList, setTranslateYList] = useState<number[]>(new Array(3).fill(0))
 
@@ -552,9 +553,13 @@ const RealtimeOverview = () => {
   const [sixuanyiLATList, setSixuanyiLATList] = useState<string[]>(new Array(10).fill("0°'"))
   const [sixuanyiHPList, setSixuanyiHPList] = useState<string[]>(new Array(10).fill('0'))
   const [sixuanyiFUELList, setSixuanyiFUELList] = useState<string[]>(new Array(10).fill('0'))
+  // 计算初始化4旋翼无人机和本次的translateX的距离
+  const [sixuanyiTranslateXList, setSixuanyiTranslateXList] = useState<number[]>(new Array(10).fill(0))
+  const [sixuanyiTranslateYList, setSixuanyiTranslateYList] = useState<number[]>(new Array(10).fill(0))
 
   /**  战列舰相关 */
-  
+  const [zhanliejianLeftList, setZhanliejianLeftList] = useState<number[]>(new Array(7).fill(0))
+  const [zhanliejianTopList, setZhanliejianTopList] = useState<number[]>(new Array(7).fill(0))
 
   // 固定翼无人机的左边定位列表
   const handleLeftWurenjiGroup = () => {
@@ -664,7 +669,29 @@ const RealtimeOverview = () => {
       setSixuanyiFUELList(FUELListMap)
     }
 
-  // 四旋翼无人机的定义的left
+
+    // 计算四旋翼无人机translateX的差值
+    const handleTranslateXSixuanyiGroup = () => {
+      const prevLeftList = sixuanyiGroupInfo.map(item => item.PX)
+      const currentLeftList = currentSixuanyiGroupInfo.map(item => item.PX)
+      const leftList = prevLeftList.map((value, key) => {
+        return Number(currentLeftList[key]) - Number(value)
+      })
+      setSixuanyiTranslateXList(leftList)
+    }
+    
+    // 计算四旋翼无人机translateY的差值
+    const handleTranslateYSixuanyiGroup = () => {
+      const prevTopList = sixuanyiGroupInfo.map(item => item.PY)
+      const currentTopList = currentSixuanyiGroupInfo.map(item => item.PY)
+      const topList = prevTopList.map((value, key) => {
+        return Number(currentTopList[key]) - Number(value)
+      })
+      setSixuanyiTranslateYList(topList)
+    }
+
+  // 设置战列舰左侧位置
+  
 
   // 更改root的宽高
   useEffect(() => {
@@ -695,6 +722,8 @@ const RealtimeOverview = () => {
       handleLATSixuanyiGroup()
       handleHPSixuanyiGroup()
       handleFUELSixuanyiGroup()
+      handleTranslateXSixuanyiGroup()
+      handleTranslateYSixuanyiGroup()
     }, 1000)
 
   }, []);
@@ -816,13 +845,16 @@ const RealtimeOverview = () => {
       }
       {
         [0, 1, 2, 3, 4, 5, 6].map(i => (
-          <div className={styles.jianlietingGroup}>
-          <div className={styles.jianlietingIcon}>ZLJ</div>
-          <Electric 
-            liveValue={"20px"} 
-            oilValue={"30px"}
-            LNG={'0'}
-            LAT={'0'} />
+          <div 
+            className={styles.jianlietingGroup}
+            key={i}
+          >
+            <div className={styles.jianlietingIcon}>ZLJ</div>
+            <Electric 
+              liveValue={"20px"} 
+              oilValue={"30px"}
+              LNG={'0'}
+              LAT={'0'} />
           </div>
         ))
       }
@@ -833,7 +865,12 @@ const RealtimeOverview = () => {
             <div 
             key={i}
             className={styles.sixuanyi}
-            style={{position: 'absolute', top: `${sixuanyiTopList[i]}px`, left: `${sixuanyiLeftList[i]}px`}}>
+            style={{
+                position: 'absolute', 
+                top: `${sixuanyiTopList[i]}px`, 
+                left: `${sixuanyiLeftList[i]}px`,
+                transform: `translate(${sixuanyiTranslateXList[i]}px, ${sixuanyiTranslateYList[i]}px)`
+            }}>
               <div className={styles.sixuanyiContent}>
                 小型4旋翼无人机1
                 <img src={require('@/assets/images/sixuanyiIcon.png')} />
