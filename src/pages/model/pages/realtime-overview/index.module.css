@@ -312,6 +312,14 @@
   background: url('@/assets/images/jianlieting1.png') no-repeat left top;
   background-size: contain;
 }
+.jianlietingGroup .jianlietingIcon.highLight {
+  animation-name: zhanliejianHighLight;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
 .weizhuangjianlietingGroup {
   display: flex;
 }
@@ -427,5 +435,27 @@
   }
   100% {
     background-image: url('@/assets/images/gudingyiIcon1HighLight.png');
+  }
+}
+@-webkit-keyframes zhanliejianHighLight {
+  0% {
+    background-image: url('@/assets/images/zhanliejianIconHighLight.png');
+  }
+  50% {
+    background-image: url('@/assets/images/zhanliejianIcon.png');
+  }
+  100% {
+    background-image: url('@/assets/images/zhanliejianIconHighLight.png');
+  }
+}
+@keyframes zhanliejianHighLight {
+  0% {
+    background-image: url('@/assets/images/zhanliejianIconHighLight.png');
+  }
+  50% {
+    background-image: url('@/assets/images/zhanliejianIcon.png');
+  }
+  100% {
+    background-image: url('@/assets/images/zhanliejianIconHighLight.png');
   }
 }

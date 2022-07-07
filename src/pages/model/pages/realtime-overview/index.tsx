@@ -135,7 +135,7 @@ const staticData = {
       DIST: 0,
       DISTURB: false,
       FUEL: 100,
-      HIGHLIGHT: false,
+      HIGHLIGHT: 1,
       HP: 90,
       LAT: "33°33'",
       LNG: "44°44'",
@@ -153,7 +153,7 @@ const staticData = {
       DIST: 0,
       DISTURB: false,
       FUEL: -1,
-      HIGHLIGHT: false,
+      HIGHLIGHT: 1,
       HP: -1,
       LAT: 0,
       LNG: 0,
@@ -571,6 +571,7 @@ const RealtimeOverview = () => {
   const [zhanliejianFUELList, setZhanliejianFUELList] = useState<string[]>(new Array(10).fill('0'))
   const [zhanliejianTranslateXList, setZhanliejianTranslateXList] = useState<number[]>(new Array(10).fill(0))
   const [zhanliejianTranslateYList, setZhanliejianTranslateYList] = useState<number[]>(new Array(10).fill(0))
+  const [zhanliejianiHighLightList, setZhanliejianiHighLightList] = useState<number[]>(new Array(10).fill(0))
 
 
   /**  坦克两架 */
@@ -776,6 +777,12 @@ const RealtimeOverview = () => {
     setZhanliejianTranslateYList(topList)
   }
 
+  // 战列舰是否正在执行任务
+  const handleHighLightZhanliejianGroup = () => {
+    const highLightListMap = zhanliejianGroupInfo.map(item => Number(item.HIGHLIGHT))
+    setZhanliejianiHighLightList(highLightListMap)
+  }
+
 
   // 坦克经度
   const handleLNGTankeGroup = () => {
@@ -878,7 +885,7 @@ const RealtimeOverview = () => {
       handleFUELZhanliejianGroup()
       handleTranslateXZhanliejianGroup()
       handleTranslateYZhanliejianGroup()
-
+      handleHighLightZhanliejianGroup()
 
       /** 坦克的操作 */
       handleLNGTankeGroup()
@@ -1043,7 +1050,11 @@ const RealtimeOverview = () => {
             className={styles.jianlietingGroup}
             key={i}
           >
-            <div className={styles.jianlietingIcon}>ZLJ</div>
+            <div className={
+              classnames(styles.jianlietingIcon, {
+                [styles.highLight]: zhanliejianiHighLightList[i]
+              })
+              }>ZLJ</div>
             <Electric
               oilValue={`${zhanliejianFUELList[i]}px`} 
               liveValue={`${zhanliejianHPList[i]}px`} 
