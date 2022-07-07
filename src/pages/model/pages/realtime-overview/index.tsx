@@ -875,7 +875,18 @@ const RealtimeOverview = () => {
       </div>
 
       <p className={styles.dateWrapper}>2022-06-13 00:06:50:55</p>
-
+      <div 
+        className={styles.tankeGroup}
+        style={{position: 'absolute', left: '1400px', top: '1400px'}}
+        >
+        <div className={styles.tankeIcon}>坦克</div>
+        <Electric 
+          liveValue={"20px"} 
+          oilValue={"30px"}           
+          LNG={'0'}
+          LAT={'0'} 
+        />
+      </div>
       <div className={styles.jianchuanGroup}>
         <div className={styles.jianchuanWrapper}>
           <p className={styles.jianchuanTop}></p>
@@ -976,7 +987,6 @@ const RealtimeOverview = () => {
           LAT={'0'} 
         />
       </div>
-
 
     </div>
   );
