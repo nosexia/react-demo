@@ -274,6 +274,10 @@
 }
 .jianlietingGroup {
   display: flex;
+  transition-property: transform;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  transition-delay: 0;
 }
 .jianlietingGroup .jianlietingIcon {
   width: 176px;

@@ -362,8 +362,8 @@ const staticData1 = {
       LNG: 0,
       NAME: "BS_AI_0",
       PITCH: 0,
-      PX: 1667,
-      PY: 50,
+      PX: 567,
+      PY: 550,
       PZ: 2544,
       ROLL: 0,
       YAW: 0,
@@ -380,8 +380,8 @@ const staticData1 = {
       LNG: 0,
       NAME: "BS_AI_1",
       PITCH: 0,
-      PX: 1419,
-      PY: 350,
+      PX: 619,
+      PY: 650,
       PZ: 4740,
       ROLL: 0,
       YAW: 0,
@@ -393,8 +393,8 @@ const staticData1 = {
       LNG: 0,
       NAME: "RS_AI_0",
       PITCH: 0,
-      PX: 1067,
-      PY: 489,
+      PX: 867,
+      PY: 889,
       PZ: 4612,
       ROLL: 0,
       YAW: 0,
@@ -411,8 +411,8 @@ const staticData1 = {
       MP: 0,
       NAME: "TKL_AI_0",
       PITCH: 0,
-      PX: 1467,
-      PY: 717,
+      PX: 967,
+      PY: 917,
       PZ: 953,
       ROLL: 0,
       YAW: 0,
@@ -429,8 +429,8 @@ const staticData1 = {
       MP: 0,
       NAME: "TKL_AI_1",
       PITCH: 0,
-      PX: 1456,
-      PY: 172,
+      PX: 1056,
+      PY: 1172,
       PZ: 3777,
       ROLL: 0,
       YAW: 0,
@@ -470,6 +470,7 @@ const sixuanyiGroupInfo = staticData.info.filter(item => item.type === 'UAV')
 const currentSixuanyiGroupInfo = staticData1.info.filter(item => item.type === 'UAV')
 
 const zhanliejianGroupInfo = staticData.info.filter(item => item.type === 'BS_AI')
+const currentZhanliejianGroupInfo = staticData1.info.filter(item => item.type === 'UAV')
 // 请求静态数据的url
 const getStaticInfoUrl = "http://101.6.143.8:65515/sim/staticinfo/";
 
@@ -563,6 +564,8 @@ const RealtimeOverview = () => {
   const [zhanliejianLATList, setZhanliejianLATList] = useState<string[]>(new Array(7).fill("0°'"))
   const [zhanliejianHPList, setZhanliejianHPList] = useState<string[]>(new Array(10).fill('0'))
   const [zhanliejianFUELList, setZhanliejianFUELList] = useState<string[]>(new Array(10).fill('0'))
+  const [zhanliejianTranslateXList, setZhanliejianTranslateXList] = useState<number[]>(new Array(10).fill(0))
+  const [zhanliejianTranslateYList, setZhanliejianTranslateYList] = useState<number[]>(new Array(10).fill(0))
 
   // 固定翼无人机的左边定位列表
   const handleLeftWurenjiGroup = () => {
@@ -728,6 +731,28 @@ const RealtimeOverview = () => {
     const FUELListMap = zhanliejianGroupInfo.map(item => String(Number(item.FUEL)*1.04))
     setZhanliejianFUELList(FUELListMap)
   }
+
+
+  // 计算战列舰translateX的差值
+  const handleTranslateXZhanliejianGroup = () => {
+    const prevLeftList = zhanliejianGroupInfo.map(item => item.PX)
+    const currentLeftList = currentZhanliejianGroupInfo.map(item => item.PX)
+    const leftList = prevLeftList.map((value, key) => {
+      return Number(currentLeftList[key]) - Number(value)
+    })
+    setZhanliejianTranslateXList(leftList)
+  }
+
+
+  // 计算战列舰translateY的差值
+  const handleTranslateYZhanliejianGroup = () => {
+    const prevTopList = zhanliejianGroupInfo.map(item => item.PY)
+    const currentTopList = currentZhanliejianGroupInfo.map(item => item.PY)
+    const topList = prevTopList.map((value, key) => {
+      return Number(currentTopList[key]) - Number(value)
+    })
+    setZhanliejianTranslateYList(topList)
+  }
   
 
   // 更改root的宽高
@@ -769,6 +794,8 @@ const RealtimeOverview = () => {
       handleLATZhanliejianGroup()
       handleHPZhanliejianGroup()
       handleFUELZhanliejianGroup()
+      handleTranslateXZhanliejianGroup()
+      handleTranslateYZhanliejianGroup()
     }, 1000)
 
   }, []);
@@ -894,7 +921,8 @@ const RealtimeOverview = () => {
             style={{
               position: 'absolute', 
               top: `${zhanliejianTopList[i]}px`, 
-              left: `${zhanliejianLeftList[i]}px`
+              left: `${zhanliejianLeftList[i]}px`,
+              transform: `translate(${zhanliejianTranslateXList[i]}px, ${zhanliejianTranslateYList[i]}px)`
             }}
             className={styles.jianlietingGroup}
             key={i}
