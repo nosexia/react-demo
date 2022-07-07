@@ -71,9 +71,9 @@ const staticData = {
       type: "FW_AI"
   },{
       ALT: 0,
-      FUEL: -1,
+      FUEL: 100,
       HIGHLIGHT: false,
-      HP: -1,
+      HP: 90,
       LAT: "48°48'",
       LNG: "45°45'",
       NAME: "UAV_0",
@@ -550,6 +550,8 @@ const RealtimeOverview = () => {
   const [sixuanyiTopList, setSixuanyiTopList] = useState<number[]>(new Array(10).fill(0))
   const [sixuanyiLNGList, setSixuanyiLNGList] = useState<string[]>(new Array(10).fill("0°'"))
   const [sixuanyiLATList, setSixuanyiLATList] = useState<string[]>(new Array(10).fill("0°'"))
+  const [sixuanyiHPList, setSixuanyiHPList] = useState<string[]>(new Array(10).fill('0'))
+  const [sixuanyiFUELList, setSixuanyiFUELList] = useState<string[]>(new Array(10).fill('0'))
 
   // 固定翼无人机的左边定位列表
   const handleLeftWurenjiGroup = () => {
@@ -640,10 +642,24 @@ const RealtimeOverview = () => {
     setSixuanyiLeftList(leftListMap)
   }
 
+  // 四旋翼无人机的顶部定位列表
   const handleTopSixuanyiGroup = () => {
     const topListMap = sixuanyiGroupInfo.map(item => Number(item.PY))
     setSixuanyiTopList(topListMap)
   }
+
+  // 设置四旋翼无人机的生命值
+  const handleHPSixuanyiGroup = () => {
+    const HPListMap = sixuanyiGroupInfo.map(item => String(Number(item.HP)*1.04))
+    setSixuanyiHPList(HPListMap)
+  }
+
+
+    // 设置四旋翼无人机的油量
+    const handleFUELSixuanyiGroup = () => {
+      const FUELListMap = sixuanyiGroupInfo.map(item => String(Number(item.FUEL)*1.04))
+      setSixuanyiFUELList(FUELListMap)
+    }
 
   // 四旋翼无人机的定义的left
 
@@ -674,6 +690,8 @@ const RealtimeOverview = () => {
       handleLeftSixuanyiGroup()
       handleTopSixuanyiGroup()
       handleLATSixuanyiGroup()
+      handleHPSixuanyiGroup()
+      handleFUELSixuanyiGroup()
     }, 1000)
 
   }, []);
@@ -707,8 +725,8 @@ const RealtimeOverview = () => {
                 小型4旋翼无人机1
                 <img src={require('@/assets/images/sixuanyiIcon.png')} />
                 <Electric 
-                  oilValue={'40px'} 
-                  liveValue={'50px'} 
+                  oilValue={`${sixuanyiFUELList[i]}px`} 
+                  liveValue={`${sixuanyiHPList[i]}px`} 
                   styles={{marginLeft: '0'}} 
                   LNG={sixuanyiLNGList[i]}
                   LAT={sixuanyiLATList[i]}
