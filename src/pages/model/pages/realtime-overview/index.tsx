@@ -787,42 +787,27 @@ const RealtimeOverview = () => {
           styles={{ marginTop: "23px" }}
         />
       </div>
-      <div className={styles.wurenjiGroup} data-name="wurenjiGroup" style={{transform: `translate(${translateXList[0]}px, ${translateYList[0]}px)`}}>
-        <div className={classnames(styles.wurenjiIcon,{
-          [styles.highLight]: highLightList[0]
-        })} style={{transform: `rotate(${YAWList[0]}deg)`}}>固定翼无人机</div>
-        <Electric 
-          liveValue={HPList[0] + "px"} 
-          oilValue={FUELList[0] + "px"} 
-          LNG={LNGList[0]}
-          LAT={LATList[0]}
-        />
-      </div>
-
-      <div className={styles.wurenjiGroup} data-name="wurenjiGroup" style={{transform: `translate(${translateXList[1]}px, ${translateYList[1]}px)`}}>
-        <div className={classnames(styles.wurenjiIcon,{
-          [styles.highLight]: highLightList[1]
-        })}  style={{transform: `rotate(${YAWList[1]}deg)`}}>固定翼无人机</div>
-        <Electric 
-          liveValue={HPList[1] + "px"} 
-          oilValue={FUELList[1] + "px"}
-          LNG={LNGList[1]}
-          LAT={LATList[1]}
-        />
-      </div>
-
-
-      <div className={styles.wurenjiGroup} data-name="wurenjiGroup" style={{transform: `translate(${translateXList[2]}px, ${translateYList[2]}px)`}}>
-        <div className={classnames(styles.wurenjiIcon,{
-          [styles.highLight]: highLightList[2]
-        })}  style={{transform: `rotate(${YAWList[2]}deg)`}}>固定翼无人机</div>
-        <Electric 
-          liveValue={HPList[2] + "px"} 
-          oilValue={FUELList[2] + "px"} 
-          LNG={LNGList[2]}
-          LAT={LATList[2]}
-        />
-      </div>
+      {
+        [0, 1, 2].map((i) => (
+          <div 
+            className={styles.wurenjiGroup} 
+            data-name="wurenjiGroup" 
+            key={i}
+            style={{transform: `translate(${translateXList[i]}px, ${translateYList[i]}px)`}}>
+            <div className={classnames(styles.wurenjiIcon,{
+              [styles.highLight]: highLightList[i]
+            })} style={{transform: `rotate(${YAWList[i]}deg)`}}>
+              固定翼无人机
+            </div>
+            <Electric 
+              liveValue={HPList[i] + "px"} 
+              oilValue={FUELList[i] + "px"} 
+              LNG={LNGList[i]}
+              LAT={LATList[i]}
+            />
+          </div>
+        ))
+      }
 
       <div className={styles.jianlietingGroup}>
         <div className={styles.jianlietingIcon}></div>
