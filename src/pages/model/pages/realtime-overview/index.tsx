@@ -89,8 +89,8 @@ const staticData = {
       FUEL: -1,
       HIGHLIGHT: false,
       HP: -1,
-      LAT: 0,
-      LNG: 0,
+      LAT: "49°49'",
+      LNG: "46°46'",
       NAME: "UAV_1",
       PITCH: 0,
       PX: 3333,
@@ -547,6 +547,8 @@ const RealtimeOverview = () => {
   const [sixuanyiLeftList, setSixuanyiLeftList] = useState<number[]>(new Array(10).fill(0))
   const [sixuanyiTopList, setSixuanyiTopList] = useState<number[]>(new Array(10).fill(0))
   const [sixuanyiLNGList, setSixuanyiLNGList] = useState<string[]>(new Array(10).fill("0°'"))
+  const [sixuanyiLATList, setSixuanyiLATList] = useState<string[]>(new Array(10).fill("0°'"))
+
   // 获取无人机的位置
   const handlePositionWurenjiGroup = () => {
     const wurenjiGroup = document.querySelectorAll('[data-name="wurenjiGroup"]')
@@ -615,8 +617,14 @@ const RealtimeOverview = () => {
 
   // 四旋翼无人机经度
   const handleLNGSixuanyiGroup = () => {
-    const LATListMap = sixuanyiGroupInfo.map(item => String(item.LNG))
-    setSixuanyiLNGList(LATListMap)
+    const LNGListMap = sixuanyiGroupInfo.map(item => String(item.LNG))
+    setSixuanyiLNGList(LNGListMap)
+  }
+
+  // 四旋翼无人机的纬度
+  const handleLATSixuanyiGroup = () => {
+    const LATListMap = sixuanyiGroupInfo.map(item => String(item.LAT))
+    setSixuanyiLATList(LATListMap)
   }
 
   // 四旋翼无人机的左边定位列表
@@ -656,6 +664,7 @@ const RealtimeOverview = () => {
       handleLNGSixuanyiGroup()
       handleLeftSixuanyiGroup()
       handleTopSixuanyiGroup()
+      handleLATSixuanyiGroup()
     }, 1000)
 
   }, []);
@@ -677,131 +686,31 @@ const RealtimeOverview = () => {
           }}
         />
       ))}
-      <div 
-        className={styles.sixuanyi}  
-        data-name="sixuanyiGroup"
-        style={{position: 'absolute', top: `${sixuanyiTopList[0]}px`, left: `${sixuanyiLeftList[0]}px`}}>
-        <div className={styles.sixuanyiContent}>
-          小型4旋翼无人机1
-          <img src={require('@/assets/images/sixuanyiIcon.png')} />
-          <Electric 
-            oilValue={'40px'} 
-            liveValue={'50px'} 
-            styles={{marginLeft: '0'}} 
-            LNG={sixuanyiLNGList[0]}/>
-        </div>
-      </div>
-
-
-      <div 
-        className={styles.sixuanyi} 
-        data-name="sixuanyiGroup"
-        style={{position: 'absolute', top: `${sixuanyiTopList[1]}px`, left: `${sixuanyiLeftList[1]}px`}}>
-        <div className={styles.sixuanyiContent}>
-          小型4旋翼无人机1
-          <img src={require('@/assets/images/sixuanyiIcon.png')} />
-          <Electric oilValue={'40px'} liveValue={'50px'} styles={{marginLeft: '0'}} />
-        </div>
-      </div>
-
-      <div 
-        className={styles.sixuanyi} 
-        data-name="sixuanyiGroup"
-        style={{position: 'absolute', top: `${sixuanyiTopList[2]}px`, left: `${sixuanyiLeftList[2]}px`}}>
-        <div className={styles.sixuanyiContent}>
-          小型4旋翼无人机1
-          <img src={require('@/assets/images/sixuanyiIcon.png')} />
-          <Electric oilValue={'40px'} liveValue={'50px'} styles={{marginLeft: '0'}} />
-        </div>
-      </div>
-
-      <div 
-        className={styles.sixuanyi} 
-        data-name="sixuanyiGroup"
-        style={{position: 'absolute', top: `${sixuanyiTopList[3]}px`, left: `${sixuanyiLeftList[3]}px`}}>
-        <div className={styles.sixuanyiContent}>
-          小型4旋翼无人机1
-          <img src={require('@/assets/images/sixuanyiIcon.png')} />
-          <Electric oilValue={'40px'} liveValue={'50px'} styles={{marginLeft: '0'}} />
-        </div>
-      </div>
-
-      <div 
-        className={styles.sixuanyi} 
-        data-name="sixuanyiGroup"
-        style={{position: 'absolute', top: `${sixuanyiTopList[4]}px`, left: `${sixuanyiLeftList[4]}px`}}>
-        <div className={styles.sixuanyiContent}>
-          小型4旋翼无人机1
-          <img src={require('@/assets/images/sixuanyiIcon.png')} />
-          <Electric oilValue={'40px'} liveValue={'50px'} styles={{marginLeft: '0'}} />
-        </div>
-      </div>
-
-      <div 
-        className={styles.sixuanyi} 
-        data-name="sixuanyiGroup"
-        style={{position: 'absolute', top: `${sixuanyiTopList[5]}px`, left: `${sixuanyiLeftList[5]}px`}}>
-        <div className={styles.sixuanyiContent}>
-          小型4旋翼无人机1
-          <img src={require('@/assets/images/sixuanyiIcon.png')} />
-          <Electric oilValue={'40px'} liveValue={'50px'} styles={{marginLeft: '0'}} />
-        </div>
-      </div>
-
-      <div 
-        className={styles.sixuanyi} 
-        data-name="sixuanyiGroup"
-        style={{position: 'absolute', top: `${sixuanyiTopList[6]}px`, left: `${sixuanyiLeftList[6]}px`}}>
-        <div className={styles.sixuanyiContent}>
-          小型4旋翼无人机1
-          <img src={require('@/assets/images/sixuanyiIcon.png')} />
-          <Electric oilValue={'40px'} liveValue={'50px'} styles={{marginLeft: '0'}} />
-        </div>
-      </div>
-
-      <div 
-        className={styles.sixuanyi} 
-        data-name="sixuanyiGroup"
-        style={{position: 'absolute', top: `${sixuanyiTopList[7]}px`, left: `${sixuanyiLeftList[7]}px`}}>
-        <div className={styles.sixuanyiContent}>
-          小型4旋翼无人机1
-          <img src={require('@/assets/images/sixuanyiIcon.png')} />
-          <Electric oilValue={'40px'} liveValue={'50px'} styles={{marginLeft: '0'}} />
-        </div>
-      </div>
-
-      <div 
-        className={styles.sixuanyi} 
-        data-name="sixuanyiGroup"
-        style={{position: 'absolute', top: `${sixuanyiTopList[8]}px`, left: `${sixuanyiLeftList[8]}px`}}>
-        <div className={styles.sixuanyiContent}>
-          小型4旋翼无人机1
-          <img src={require('@/assets/images/sixuanyiIcon.png')} />
-          <Electric oilValue={'40px'} liveValue={'50px'} styles={{marginLeft: '0'}} />
-        </div>
-      </div>
-
-      <div 
-        className={styles.sixuanyi} 
-        data-name="sixuanyiGroup"
-        style={{position: 'absolute', top: `${sixuanyiTopList[9]}px`, left: `${sixuanyiLeftList[9]}px`}}>
-        <div className={styles.sixuanyiContent}>
-          小型4旋翼无人机1
-          <img src={require('@/assets/images/sixuanyiIcon.png')} />
-          <Electric oilValue={'40px'} liveValue={'50px'} styles={{marginLeft: '0'}} />
-        </div>
-      </div>
-
-      <div 
-        className={styles.sixuanyi} 
-        data-name="sixuanyiGroup"
-        style={{position: 'absolute', top: '200px', left: '1200px'}}>
-        <div className={styles.sixuanyiContent}>
-          小型4旋翼无人机1
-          <img src={require('@/assets/images/sixuanyiIcon.png')} />
-          <Electric oilValue={'40px'} liveValue={'50px'} styles={{marginLeft: '0'}} />
-        </div>
-      </div>
+      <>
+      {
+        [0,1,2,3,4,5,6,7,8,9].map((i) => {
+          return (
+            <div 
+            key={i}
+            className={styles.sixuanyi}  
+            data-name="sixuanyiGroup"
+            style={{position: 'absolute', top: `${sixuanyiTopList[i]}px`, left: `${sixuanyiLeftList[i]}px`}}>
+              <div className={styles.sixuanyiContent}>
+                小型4旋翼无人机1
+                <img src={require('@/assets/images/sixuanyiIcon.png')} />
+                <Electric 
+                  oilValue={'40px'} 
+                  liveValue={'50px'} 
+                  styles={{marginLeft: '0'}} 
+                  LNG={sixuanyiLNGList[i]}
+                  LAT={sixuanyiLATList[i]}
+                />
+              </div>
+            </div>
+          )
+        })
+      }
+      </>
       <div className={styles.legendWrapper}>
         <div className={styles.leftLegend}>
           <div className={styles.leftLegendLabel}>
