@@ -72,7 +72,7 @@ const staticData = {
   },{
       ALT: 0,
       FUEL: 100,
-      HIGHLIGHT: false,
+      HIGHLIGHT: 1,
       HP: 90,
       LAT: "48°48'",
       LNG: "45°45'",
@@ -87,7 +87,7 @@ const staticData = {
   },{
       ALT: 0,
       FUEL: -1,
-      HIGHLIGHT: false,
+      HIGHLIGHT: 1,
       HP: -1,
       LAT: "49°49'",
       LNG: "46°46'",
@@ -560,6 +560,7 @@ const RealtimeOverview = () => {
   const [sixuanyiFUELList, setSixuanyiFUELList] = useState<string[]>(new Array(10).fill('0'))
   const [sixuanyiTranslateXList, setSixuanyiTranslateXList] = useState<number[]>(new Array(10).fill(0))
   const [sixuanyiTranslateYList, setSixuanyiTranslateYList] = useState<number[]>(new Array(10).fill(0))
+  const [sixuanyiHighLightList, setSixuanyiHighLightList] = useState<number[]>(new Array(10).fill(0))
 
   /**  战列舰相关 */
   const [zhanliejianLeftList, setZhanliejianLeftList] = useState<number[]>(new Array(7).fill(0))
@@ -711,6 +712,12 @@ const RealtimeOverview = () => {
     setSixuanyiTranslateYList(topList)
   }
 
+  // 获取固定翼无人机是否正在执行任务
+  const handleHighLightSixuanyiGroup = () => {
+    const highLightListMap = sixuanyiGroupInfo.map(item => Number(item.HIGHLIGHT))
+    setSixuanyiHighLightList(highLightListMap)
+  }
+
   // 设置战列舰的左边定位列表
   const handleLeftZhanliejianGroup = () => {
     const leftListMap = zhanliejianGroupInfo.map(item => Number(item.PX))
@@ -860,6 +867,7 @@ const RealtimeOverview = () => {
       handleFUELSixuanyiGroup()
       handleTranslateXSixuanyiGroup()
       handleTranslateYSixuanyiGroup()
+      handleHighLightSixuanyiGroup()
 
       /** 战列舰 */
       handleLeftZhanliejianGroup()
@@ -1059,8 +1067,11 @@ const RealtimeOverview = () => {
                 transform: `translate(${sixuanyiTranslateXList[i]}px, ${sixuanyiTranslateYList[i]}px)`
             }}>
               <div className={styles.sixuanyiContent}>
-                小型4旋翼无人机1
-                <img src={require('@/assets/images/sixuanyiIcon.png')} />
+                <div className={
+                  classnames(styles.sixuanyiIcon, {
+                    [styles.highLight]: sixuanyiHighLightList[i]
+                  })
+                  }>小型4旋翼无人机1</div>
                 <Electric 
                   oilValue={`${sixuanyiFUELList[i]}px`} 
                   liveValue={`${sixuanyiHPList[i]}px`} 

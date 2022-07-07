@@ -393,8 +393,39 @@
   display: flex;
   justify-content: flex-end;
 }
-.sixuanyi .sixuanyiContent img {
-  display: block;
+.sixuanyi .sixuanyiContent .sixuanyiIcon {
   width: 65px;
   height: 60px;
+  background: url('@/assets/images/sixuanyiIcon.png') no-repeat left top;
+  background-size: contain;
+}
+.sixuanyi .sixuanyiContent .sixuanyiIcon.highLight {
+  animation-name: sixuanyiHighLight;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+@-webkit-keyframes sixuanyiHighLight {
+  0% {
+    background-image: url('@/assets/images/sixuanyiIconHighLight.png');
+  }
+  50% {
+    background-image: url('@/assets/images/sixuanyiIcon.png');
+  }
+  100% {
+    background-image: url('@/assets/images/gudingyiIcon1HighLight.png');
+  }
+}
+@keyframes sixuanyiHighLight {
+  0% {
+    background-image: url('@/assets/images/gudingyiIcon1HighLight.png');
+  }
+  50% {
+    background-image: url('@/assets/images/gudingyiIcon1.png');
+  }
+  100% {
+    background-image: url('@/assets/images/gudingyiIcon1HighLight.png');
+  }
 }
