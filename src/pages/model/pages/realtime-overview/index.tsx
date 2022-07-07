@@ -182,11 +182,11 @@ const staticData = {
       ALT: 0,
       ATK: 0,
       DESTORYED: false,
-      FUEL: 0,
+      FUEL: 50,
       HIGHLIGHT: false,
-      HP: 0,
-      LAT: 0,
-      LNG: 0,
+      HP: 60,
+      LAT:  "20'",
+      LNG: "30'",
       MP: 0,
       NAME: "TKL_AI_0",
       PITCH: 0,
@@ -411,7 +411,7 @@ const staticData1 = {
       MP: 0,
       NAME: "TKL_AI_0",
       PITCH: 0,
-      PX: 967,
+      PX: 2967,
       PY: 917,
       PZ: 953,
       ROLL: 0,
@@ -429,8 +429,8 @@ const staticData1 = {
       MP: 0,
       NAME: "TKL_AI_1",
       PITCH: 0,
-      PX: 1056,
-      PY: 1172,
+      PX: 1956,
+      PY: 172,
       PZ: 3777,
       ROLL: 0,
       YAW: 0,
@@ -471,6 +471,10 @@ const currentSixuanyiGroupInfo = staticData1.info.filter(item => item.type === '
 
 const zhanliejianGroupInfo = staticData.info.filter(item => item.type === 'BS_AI')
 const currentZhanliejianGroupInfo = staticData1.info.filter(item => item.type === 'UAV')
+
+const tankeGroupInfo = staticData.info.filter(item => item.type === 'TKL_AI')
+const currentTankeGroupInfo = staticData1.info.filter(item => item.type === 'TKL_AI')
+
 // 请求静态数据的url
 const getStaticInfoUrl = "http://101.6.143.8:65515/sim/staticinfo/";
 
@@ -567,6 +571,17 @@ const RealtimeOverview = () => {
   const [zhanliejianTranslateXList, setZhanliejianTranslateXList] = useState<number[]>(new Array(10).fill(0))
   const [zhanliejianTranslateYList, setZhanliejianTranslateYList] = useState<number[]>(new Array(10).fill(0))
 
+
+  /**  坦克两架 */
+  const [tankeLeftList, setTankeLeftList] = useState<number[]>(new Array(2).fill(0))
+  const [tankeTopList, setTankeTopList] = useState<number[]>(new Array(2).fill(0))
+  const [tankeLNGList, setTankeLNGList] = useState<string[]>(new Array(2).fill("0°'"))
+  const [tankeLATList, setTankeLATList] = useState<string[]>(new Array(2).fill("0°'"))
+  const [tankeHPList, setTankeHPList] = useState<string[]>(new Array(2).fill('0'))
+  const [tankeFUELList, setTankeFUELList] = useState<string[]>(new Array(2).fill('0'))
+  const [tankeTranslateXList, setTankeTranslateXList] = useState<number[]>(new Array(2).fill(0))
+  const [tankeTranslateYList, setTankeTranslateYList] = useState<number[]>(new Array(2).fill(0))
+  
   // 固定翼无人机的左边定位列表
   const handleLeftWurenjiGroup = () => {
     const leftListMap = wurenjiGroupInfo.map(item => Number(item.PX))
@@ -753,6 +768,65 @@ const RealtimeOverview = () => {
     })
     setZhanliejianTranslateYList(topList)
   }
+
+
+  // 坦克经度
+  const handleLNGTankeGroup = () => {
+    const LNGListMap = tankeGroupInfo.map(item => String(item.LNG))
+    setTankeLNGList(LNGListMap)
+  }
+
+  // 坦克的纬度
+  const handleLATTankeGroup = () => {
+    const LATListMap = tankeGroupInfo.map(item => String(item.LAT))
+    setTankeLATList(LATListMap)
+  }
+
+  // 坦克的左边定位列表
+  const handleLeftTankeGroup = () => {
+    const leftListMap = tankeGroupInfo.map(item => Number(item.PX))
+    setTankeLeftList(leftListMap)
+  }
+
+  // 坦克的顶部定位列表
+  const handleTopTankeGroup = () => {
+    const topListMap = tankeGroupInfo.map(item => Number(item.PY))
+    setTankeTopList(topListMap)
+  }
+
+  // 设置坦克的生命值
+  const handleHPTankeGroup = () => {
+    const HPListMap = tankeGroupInfo.map(item => String(Number(item.HP)*1.04))
+    setTankeHPList(HPListMap)
+  }
+
+
+  // 设置坦克的油量
+  const handleFUELTankeGroup = () => {
+    const FUELListMap = tankeGroupInfo.map(item => String(Number(item.FUEL)*1.04))
+    setTankeFUELList(FUELListMap)
+  }
+
+
+  // 计算坦克translateX的差值
+  const handleTranslateXTankeGroup = () => {
+    const prevLeftList = tankeGroupInfo.map(item => item.PX)
+    const currentLeftList = currentTankeGroupInfo.map(item => item.PX)
+    const leftList = prevLeftList.map((value, key) => {
+      return Number(currentLeftList[key]) - Number(value)
+    })
+    setTankeTranslateXList(leftList)
+  }
+    
+  // 计算坦克translateY的差值
+  const handleTranslateYTankeGroup = () => {
+    const prevTopList = tankeGroupInfo.map(item => item.PY)
+    const currentTopList = currentTankeGroupInfo.map(item => item.PY)
+    const topList = prevTopList.map((value, key) => {
+      return Number(currentTopList[key]) - Number(value)
+    })
+    setTankeTranslateYList(topList)
+  }
   
 
   // 更改root的宽高
@@ -796,6 +870,17 @@ const RealtimeOverview = () => {
       handleFUELZhanliejianGroup()
       handleTranslateXZhanliejianGroup()
       handleTranslateYZhanliejianGroup()
+
+
+      /** 坦克的操作 */
+      handleLNGTankeGroup()
+      handleLeftTankeGroup()
+      handleTopTankeGroup()
+      handleLATTankeGroup()
+      handleHPTankeGroup()
+      handleFUELTankeGroup()
+      handleTranslateXTankeGroup()
+      handleTranslateYTankeGroup()
     }, 1000)
 
   }, []);
@@ -875,18 +960,30 @@ const RealtimeOverview = () => {
       </div>
 
       <p className={styles.dateWrapper}>2022-06-13 00:06:50:55</p>
-      <div 
-        className={styles.tankeGroup}
-        style={{position: 'absolute', left: '1400px', top: '1400px'}}
-        >
-        <div className={styles.tankeIcon}>坦克</div>
-        <Electric 
-          liveValue={"20px"} 
-          oilValue={"30px"}           
-          LNG={'0'}
-          LAT={'0'} 
-        />
-      </div>
+      {
+        [0, 1].map(i => (
+          <div 
+            key={i}
+            className={styles.tankeGroup}
+            style={{
+              position: 'absolute', 
+              top: `${tankeTopList[i]}px`, 
+              left: `${tankeLeftList[i]}px`,
+              transform: `translate(${tankeTranslateXList[i]}px, ${tankeTranslateYList[i]}px)`
+            }}
+          >
+          <div className={styles.tankeIcon}>坦克</div>
+          <Electric 
+            oilValue={`${tankeFUELList[i]}px`} 
+            liveValue={`${tankeHPList[i]}px`} 
+            styles={{marginLeft: '0'}} 
+            LNG={tankeLNGList[i]}
+            LAT={tankeLATList[i]}
+          />
+        </div>
+        ))
+      }
+
       <div className={styles.jianchuanGroup}>
         <div className={styles.jianchuanWrapper}>
           <p className={styles.jianchuanTop}></p>
