@@ -134,9 +134,9 @@ const staticData = {
       DESTROYED: false,
       DIST: 0,
       DISTURB: false,
-      FUEL: -1,
+      FUEL: 100,
       HIGHLIGHT: false,
-      HP: -1,
+      HP: 90,
       LAT: "33°33'",
       LNG: "44°44'",
       NAME: "BS_AI_0",
@@ -561,6 +561,8 @@ const RealtimeOverview = () => {
   const [zhanliejianTopList, setZhanliejianTopList] = useState<number[]>(new Array(7).fill(0))
   const [zhanliejianLNGList, setZhanliejianLNGList] = useState<string[]>(new Array(7).fill("0°'"))
   const [zhanliejianLATList, setZhanliejianLATList] = useState<string[]>(new Array(7).fill("0°'"))
+  const [zhanliejianHPList, setZhanliejianHPList] = useState<string[]>(new Array(10).fill('0'))
+  const [zhanliejianFUELList, setZhanliejianFUELList] = useState<string[]>(new Array(10).fill('0'))
 
   // 固定翼无人机的左边定位列表
   const handleLeftWurenjiGroup = () => {
@@ -714,6 +716,18 @@ const RealtimeOverview = () => {
     const LATListMap = zhanliejianGroupInfo.map(item => String(item.LAT))
     setZhanliejianLATList(LATListMap)
   }
+
+  // 设置战列舰的生命值
+  const handleHPZhanliejianGroup = () => {
+    const HPListMap = zhanliejianGroupInfo.map(item => String(Number(item.HP)*1.04))
+    setZhanliejianHPList(HPListMap)
+  }
+
+    // 设置战列舰的油量
+  const handleFUELZhanliejianGroup = () => {
+    const FUELListMap = zhanliejianGroupInfo.map(item => String(Number(item.FUEL)*1.04))
+    setZhanliejianFUELList(FUELListMap)
+  }
   
 
   // 更改root的宽高
@@ -753,6 +767,8 @@ const RealtimeOverview = () => {
       handleTopZhanliejianGroup()
       handleLNGZhanliejianGroup()
       handleLATZhanliejianGroup()
+      handleHPZhanliejianGroup()
+      handleFUELZhanliejianGroup()
     }, 1000)
 
   }, []);
@@ -884,9 +900,9 @@ const RealtimeOverview = () => {
             key={i}
           >
             <div className={styles.jianlietingIcon}>ZLJ</div>
-            <Electric 
-              liveValue={"20px"} 
-              oilValue={"30px"}
+            <Electric
+              oilValue={`${zhanliejianFUELList[i]}px`} 
+              liveValue={`${zhanliejianHPList[i]}px`} 
               LNG={zhanliejianLNGList[i]}
               LAT={zhanliejianLATList[i]}
             />
