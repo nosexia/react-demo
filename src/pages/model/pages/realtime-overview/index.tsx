@@ -183,7 +183,7 @@ const staticData = {
       ATK: 0,
       DESTORYED: false,
       FUEL: 50,
-      HIGHLIGHT: false,
+      HIGHLIGHT: 1,
       HP: 60,
       LAT:  "20'",
       LNG: "30'",
@@ -201,7 +201,7 @@ const staticData = {
       ATK: 0,
       DESTORYED: false,
       FUEL: 0,
-      HIGHLIGHT: false,
+      HIGHLIGHT: 1,
       HP: 0,
       LAT: 0,
       LNG: 0,
@@ -583,7 +583,8 @@ const RealtimeOverview = () => {
   const [tankeFUELList, setTankeFUELList] = useState<string[]>(new Array(2).fill('0'))
   const [tankeTranslateXList, setTankeTranslateXList] = useState<number[]>(new Array(2).fill(0))
   const [tankeTranslateYList, setTankeTranslateYList] = useState<number[]>(new Array(2).fill(0))
-  
+  const [tankeHighLightList, setTankeHighLightList] = useState<number[]>(new Array(10).fill(0))
+
   // 固定翼无人机的左边定位列表
   const handleLeftWurenjiGroup = () => {
     const leftListMap = wurenjiGroupInfo.map(item => Number(item.PX))
@@ -841,6 +842,12 @@ const RealtimeOverview = () => {
     })
     setTankeTranslateYList(topList)
   }
+
+  // 获取坦克是否正在执行任务
+  const handleHighLightTankeGroup = () => {
+    const highLightListMap = tankeGroupInfo.map(item => Number(item.HIGHLIGHT))
+    setTankeHighLightList(highLightListMap)
+  }
   
 
   // 更改root的宽高
@@ -896,6 +903,7 @@ const RealtimeOverview = () => {
       handleFUELTankeGroup()
       handleTranslateXTankeGroup()
       handleTranslateYTankeGroup()
+      handleHighLightTankeGroup()
     }, 1000)
 
   }, []);
@@ -987,7 +995,11 @@ const RealtimeOverview = () => {
               transform: `translate(${tankeTranslateXList[i]}px, ${tankeTranslateYList[i]}px)`
             }}
           >
-          <div className={styles.tankeIcon}>坦克</div>
+          <div className={
+            classnames(styles.tankeIcon, {
+              [styles.highLight]: tankeHighLightList[i]
+            })
+            }>坦克</div>
           <Electric 
             oilValue={`${tankeFUELList[i]}px`} 
             liveValue={`${tankeHPList[i]}px`} 
