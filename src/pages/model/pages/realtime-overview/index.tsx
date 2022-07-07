@@ -553,6 +553,9 @@ const RealtimeOverview = () => {
   const [sixuanyiHPList, setSixuanyiHPList] = useState<string[]>(new Array(10).fill('0'))
   const [sixuanyiFUELList, setSixuanyiFUELList] = useState<string[]>(new Array(10).fill('0'))
 
+  /**  战列舰相关 */
+  
+
   // 固定翼无人机的左边定位列表
   const handleLeftWurenjiGroup = () => {
     const leftListMap = wurenjiGroupInfo.map(item => Number(item.PX))
@@ -713,30 +716,6 @@ const RealtimeOverview = () => {
           }}
         />
       ))}
-      <>
-      {
-        [0,1,2,3,4,5,6,7,8,9].map((i) => {
-          return (
-            <div 
-            key={i}
-            className={styles.sixuanyi}
-            style={{position: 'absolute', top: `${sixuanyiTopList[i]}px`, left: `${sixuanyiLeftList[i]}px`}}>
-              <div className={styles.sixuanyiContent}>
-                小型4旋翼无人机1
-                <img src={require('@/assets/images/sixuanyiIcon.png')} />
-                <Electric 
-                  oilValue={`${sixuanyiFUELList[i]}px`} 
-                  liveValue={`${sixuanyiHPList[i]}px`} 
-                  styles={{marginLeft: '0'}} 
-                  LNG={sixuanyiLNGList[i]}
-                  LAT={sixuanyiLATList[i]}
-                />
-              </div>
-            </div>
-          )
-        })
-      }
-      </>
       <div className={styles.legendWrapper}>
         <div className={styles.leftLegend}>
           <div className={styles.leftLegendLabel}>
@@ -835,15 +814,42 @@ const RealtimeOverview = () => {
           </div>
         ))
       }
+      {
+        [0, 1, 2, 3, 4, 5, 6].map(i => (
+          <div className={styles.jianlietingGroup}>
+          <div className={styles.jianlietingIcon}>ZLJ</div>
+          <Electric 
+            liveValue={"20px"} 
+            oilValue={"30px"}
+            LNG={'0'}
+            LAT={'0'} />
+          </div>
+        ))
+      }
 
-      <div className={styles.jianlietingGroup}>
-        <div className={styles.jianlietingIcon}></div>
-        <Electric 
-          liveValue={"20px"} 
-          oilValue={"30px"}
-          LNG={'0'}
-          LAT={'0'} />
-      </div>
+      {
+        [0,1,2,3,4,5,6,7,8,9].map((i) => {
+          return (
+            <div 
+            key={i}
+            className={styles.sixuanyi}
+            style={{position: 'absolute', top: `${sixuanyiTopList[i]}px`, left: `${sixuanyiLeftList[i]}px`}}>
+              <div className={styles.sixuanyiContent}>
+                小型4旋翼无人机1
+                <img src={require('@/assets/images/sixuanyiIcon.png')} />
+                <Electric 
+                  oilValue={`${sixuanyiFUELList[i]}px`} 
+                  liveValue={`${sixuanyiHPList[i]}px`} 
+                  styles={{marginLeft: '0'}} 
+                  LNG={sixuanyiLNGList[i]}
+                  LAT={sixuanyiLATList[i]}
+                />
+              </div>
+            </div>
+          )
+        })
+      }
+
 
       <div className={styles.weizhuangjianlietingGroup}>
         <div className={styles.weizhuangjianlietingIcon}></div>
@@ -854,6 +860,8 @@ const RealtimeOverview = () => {
           LAT={'0'} 
         />
       </div>
+
+
     </div>
   );
 };
