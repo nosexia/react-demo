@@ -470,7 +470,7 @@ const sixuanyiGroupInfo = staticData.info.filter(item => item.type === 'UAV')
 const currentSixuanyiGroupInfo = staticData1.info.filter(item => item.type === 'UAV')
 
 const zhanliejianGroupInfo = staticData.info.filter(item => item.type === 'BS_AI')
-const currentZhanliejianGroupInfo = staticData1.info.filter(item => item.type === 'UAV')
+const currentZhanliejianGroupInfo = staticData1.info.filter(item => item.type === 'BS_AI')
 
 const tankeGroupInfo = staticData.info.filter(item => item.type === 'TKL_AI')
 const currentTankeGroupInfo = staticData1.info.filter(item => item.type === 'TKL_AI')
@@ -567,11 +567,11 @@ const RealtimeOverview = () => {
   const [zhanliejianTopList, setZhanliejianTopList] = useState<number[]>(new Array(7).fill(0))
   const [zhanliejianLNGList, setZhanliejianLNGList] = useState<string[]>(new Array(7).fill("0°'"))
   const [zhanliejianLATList, setZhanliejianLATList] = useState<string[]>(new Array(7).fill("0°'"))
-  const [zhanliejianHPList, setZhanliejianHPList] = useState<string[]>(new Array(10).fill('0'))
-  const [zhanliejianFUELList, setZhanliejianFUELList] = useState<string[]>(new Array(10).fill('0'))
-  const [zhanliejianTranslateXList, setZhanliejianTranslateXList] = useState<number[]>(new Array(10).fill(0))
-  const [zhanliejianTranslateYList, setZhanliejianTranslateYList] = useState<number[]>(new Array(10).fill(0))
-  const [zhanliejianiHighLightList, setZhanliejianiHighLightList] = useState<number[]>(new Array(10).fill(0))
+  const [zhanliejianHPList, setZhanliejianHPList] = useState<string[]>(new Array(7).fill('0'))
+  const [zhanliejianFUELList, setZhanliejianFUELList] = useState<string[]>(new Array(7).fill('0'))
+  const [zhanliejianTranslateXList, setZhanliejianTranslateXList] = useState<number[]>(new Array(7).fill(0))
+  const [zhanliejianTranslateYList, setZhanliejianTranslateYList] = useState<number[]>(new Array(7).fill(0))
+  const [zhanliejianiHighLightList, setZhanliejianiHighLightList] = useState<number[]>(new Array(7).fill(0))
 
 
   /**  坦克两架 */
@@ -583,7 +583,7 @@ const RealtimeOverview = () => {
   const [tankeFUELList, setTankeFUELList] = useState<string[]>(new Array(2).fill('0'))
   const [tankeTranslateXList, setTankeTranslateXList] = useState<number[]>(new Array(2).fill(0))
   const [tankeTranslateYList, setTankeTranslateYList] = useState<number[]>(new Array(2).fill(0))
-  const [tankeHighLightList, setTankeHighLightList] = useState<number[]>(new Array(10).fill(0))
+  const [tankeHighLightList, setTankeHighLightList] = useState<number[]>(new Array(2).fill(0))
 
   // 固定翼无人机的左边定位列表
   const handleLeftWurenjiGroup = () => {
