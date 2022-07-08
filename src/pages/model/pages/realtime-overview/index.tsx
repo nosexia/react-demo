@@ -307,7 +307,7 @@ const RealtimeOverview = () => {
       PY: item.PY
     }))
     console.log('redAgentList', redAgentList)
-    const redAgentListMap = []
+    let redAgentListMap = []
     
     for(let i = 0; i < redAgentList.length; i++) {
         for(let j = i+1; j < redAgentList.length; j++) {
@@ -315,20 +315,42 @@ const RealtimeOverview = () => {
         const PYScale = Math.abs(redAgentList[i].PY - redAgentList[j].PY)
         const PX1 = redAgentList[i].PX
         const PX2 = redAgentList[j].PX
+
+        const PY1 = redAgentList[i].PY
+        const PY2 = redAgentList[j].PY
         // 角度是否需要反转
-        const convertDeg = PX1 > PX2 ? 180 : 0
-        console.log('PXScale/PYScale', PXScale/PYScale)
+        const xConvertDeg = PX1 > PX2 ? 180 : 0
+        let angle = 0
+        // 判断第一个点和点二个的位置关系，point2在point1的右上角
+        if(PY2 < PY1 && PX2 > PX1) {
+          angle = 360 - Math.atan(PYScale/PXScale)*180/Math.PI
+        }
+
+        // 判断第一个点和点二个的位置关系，point2在point1的右下角
+        if(PY2 > PY1 && PX2 > PX1) {
+          angle = Math.atan(PYScale/PXScale)*180/Math.PI
+        }
+
+        // 判断第一个点和点二个的位置关系，point2在point1的左下角
+        if(PY2 > PY1 && PX2 < PX1) {
+          angle = 90 + Math.atan(PXScale/PYScale)*180/Math.PI
+        }
+
+        // 判断第一个点和点二个的位置关系，point2在point1的左上角
+        if(PY2 < PY1 && PX2 < PX1) {
+          angle = 180 + Math.atan(PYScale/ PXScale)*180/Math.PI
+        }
         redAgentListMap.push({
             PX1,
             PX2,
             PXScale,
     
-            PY1: redAgentList[i].PY,
-            PY2: redAgentList[j].PY,
+            PY1,
+            PY2,
             PYScale,
     
             // 角度
-            angle: Math.atan(PYScale/PXScale)*180/Math.PI + convertDeg,
+            angle,
             // 斜边的长度
             PXY: Math.sqrt(PXScale*PXScale + PYScale*PYScale)
         })
@@ -336,7 +358,7 @@ const RealtimeOverview = () => {
     }
     
     console.log('redAgentListMap', redAgentListMap)
-    
+    redAgentListMap = redAgentListMap.filter(item => Number(item.PXY) > 500)
     const body = document.querySelector('body')
     redAgentListMap.forEach(item => {
         const div = document.createElement('div')

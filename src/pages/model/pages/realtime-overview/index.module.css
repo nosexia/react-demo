@@ -262,6 +262,7 @@
   transition-duration: 0.1s;
   transition-timing-function: ease;
   transition-delay: 0;
+  transform: translate(-50%, -50%);
 }
 .wurenjiGroup .wurenjiIcon {
   width: 73px;
@@ -404,6 +405,7 @@
   border: 9px dashed #FFFFFF;
   border-radius: 50%;
   background: rgba(230, 89, 89, 0.4);
+  transform: translate(-50%, -50%);
 }
 .sixuanyi .sixuanyiContent {
   display: flex;
