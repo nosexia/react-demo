@@ -258,7 +258,7 @@ const RealtimeOverview = () => {
 
   // 
   const [staticInfo, setStaticInfo] = useState<StaticInfo>();
-  const [dynamicInfo, setDynamicInfo] = useState<any[]>(dynamic.info);
+  const [dynamicInfo, setDynamicInfo] = useState<any[]>();
   const [id, taskId] = useMemo(() => {
     const params = parseParams(location.search);
     return [params.id, params.taskId];
@@ -302,6 +302,8 @@ const RealtimeOverview = () => {
 
   // 红方智能体连接
   const renderConnectLine = () => {
+    // 渲染之前将元素删除
+    
     const redAgentList = dynamicInfo.filter(item => ['FW_AI', 'UAV'].includes(item.type)).map(item => ({
       PX: item.PX,
       PY: item.PY
@@ -360,6 +362,11 @@ const RealtimeOverview = () => {
     console.log('redAgentListMap', redAgentListMap)
     redAgentListMap = redAgentListMap.filter(item => Number(item.PXY) > 500)
     const body = document.querySelector('body')
+    const redAgentlineList = document.querySelectorAll('.redAgentline')
+    for(let i = 0; i < redAgentlineList.length; i++) {
+      body.removeChild(redAgentlineList[i])
+    }
+    
     redAgentListMap.forEach(item => {
         const div = document.createElement('div')
         div.style.width = item.PXY + 'px'
@@ -369,6 +376,7 @@ const RealtimeOverview = () => {
         div.style.border = '5px dashed white'
         div.style.transform = `rotate(${item.angle}deg)`
         div.style.transformOrigin= 'top left'
+        div.setAttribute('class', 'redAgentline')
         body.appendChild(div)
     })
   }
