@@ -307,17 +307,20 @@ const RealtimeOverview = () => {
       PY: item.PY
     }))
     console.log('redAgentList', redAgentList)
-    const redAgentListMap = [{
-    }]
+    const redAgentListMap = []
     
     for(let i = 0; i < redAgentList.length; i++) {
         for(let j = i+1; j < redAgentList.length; j++) {
         const PXScale = Math.abs(redAgentList[i].PX - redAgentList[j].PX)
         const PYScale = Math.abs(redAgentList[i].PY - redAgentList[j].PY)
+        const PX1 = redAgentList[i].PX
+        const PX2 = redAgentList[j].PX
+        // 角度是否需要反转
+        const convertDeg = PX1 > PX2 ? 180 : 0
         console.log('PXScale/PYScale', PXScale/PYScale)
         redAgentListMap.push({
-            PX1: redAgentList[i].PX,
-            PX2: redAgentList[j].PX,
+            PX1,
+            PX2,
             PXScale,
     
             PY1: redAgentList[i].PY,
@@ -325,7 +328,7 @@ const RealtimeOverview = () => {
             PYScale,
     
             // 角度
-            angle: Math.atan(PXScale/PYScale)*180/Math.PI,
+            angle: Math.atan(PYScale/PXScale)*180/Math.PI + convertDeg,
             // 斜边的长度
             PXY: Math.sqrt(PXScale*PXScale + PYScale*PYScale)
         })
@@ -341,8 +344,9 @@ const RealtimeOverview = () => {
         div.style.position = 'absolute'
         div.style.left = item.PX1 + 'px'
         div.style.top = item.PY1 + 'px'
-        div.style.border = '3px dashed white'
+        div.style.border = '5px dashed white'
         div.style.transform = `rotate(${item.angle}deg)`
+        div.style.transformOrigin= 'top left'
         body.appendChild(div)
     })
   }
