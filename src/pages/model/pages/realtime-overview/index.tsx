@@ -12,6 +12,7 @@ import { EdgeType, StaticInfo } from "./type";
 import mqtt from "mqtt/dist/mqtt";
 import pako from "pako";
 import Electric from "@/components/electric";
+
 import classnames from 'classnames'
 // 边对应的背景颜色
 const EdgeColor = {
@@ -20,6 +21,227 @@ const EdgeColor = {
   [EdgeType.WORKSPACE]: "blue",
   [EdgeType.CROSS]: "yellow"
 };
+
+const dynamic =  {
+  scriptId: 1,
+  simulationStatus: 1,
+  timeStamp: 1657075334,
+  info: [{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: "45°45'",
+      NAME: "FW_AI_0",
+      PITCH: 0,
+      PX: 1335,
+      PY: 683,
+      PZ: 797,
+      ROLL: 0,
+      YAW: 0,
+      type: "FW_AI"         
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "FW_AI_1",
+      PITCH: 0,
+      PX: 1694,
+      PY: 699,
+      PZ: 3477,
+      ROLL: 0,
+      YAW: 0,
+      type: "FW_AI"
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "FW_AI_2",
+      PITCH: 0,
+      PX: 947,
+      PY: 531,
+      PZ: 2266,
+      ROLL: 0,
+      YAW: 0,
+      type: "FW_AI"
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "UAV_0",
+      PITCH: 0,
+      PX: 1489,
+      PY: 796,
+      PZ: 2901,
+      ROLL: 0,
+      YAW: 0,
+      type: "UAV"
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "UAV_1",
+      PITCH: 0,
+      PX: 1731,
+      PY: 237,
+      PZ: 668,
+      ROLL: 0,
+      YAW: 0,
+      type: "UAV"        
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "UAV_2",
+      PITCH: 0,
+      PX: 1387,
+      PY: 548,
+      PZ: 4887,
+      ROLL: 0,
+      YAW: 0,
+      type: "UAV"
+  },{
+      ALT: 0,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "UAV_3",
+      PITCH: 0,
+      PX: 266,
+      PY: 638,
+      PZ: 586,
+      ROLL: 0,
+      YAW: 0,
+      type: "UAV"
+  },{
+      ALT: 0,
+      DESTROYED: false,
+      DIST: 0,
+      DISTURB: false,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "BS_AI_0",
+      PITCH: 0,
+      PX: 1667,
+      PY: 50,
+      PZ: 2544,
+      ROLL: 0,
+      YAW: 0,
+      type: "BS_AI"
+  },{
+      ALT: 0,
+      DESTROYED: false,
+      DIST: 0,
+      DISTURB: false,
+      FUEL: -1,
+      HIGHLIGHT: false,
+      HP: -1,
+      LAT: 0,
+      LNG: 0,
+      NAME: "BS_AI_1",
+      PITCH: 0,
+      PX: 1419,
+      PY: 350,
+      PZ: 4740,
+      ROLL: 0,
+      YAW: 0,
+      type: "BS_AI" 
+  },{
+      ALT: 0,
+      HIGHLIGHT: false,
+      LAT: 0,
+      LNG: 0,
+      NAME: "RS_AI_0",
+      PITCH: 0,
+      PX: 1067,
+      PY: 489,
+      PZ: 4612,
+      ROLL: 0,
+      YAW: 0,
+      type: "RS_AI"
+  },{
+      ALT: 0,
+      ATK: 0,
+      DESTORYED: false,
+      FUEL: 0,
+      HIGHLIGHT: false,
+      HP: 0,
+      LAT: 0,
+      LNG: 0,
+      MP: 0,
+      NAME: "TKL_AI_0",
+      PITCH: 0,
+      PX: 1467,
+      PY: 717,
+      PZ: 953,
+      ROLL: 0,
+      YAW: 0,
+      type: "TKL_AI"
+  },{
+      ALT: 0,
+      ATK: 0,
+      DESTORYED: false,
+      FUEL: 0,
+      HIGHLIGHT: false,
+      HP: 0,
+      LAT: 0,
+      LNG: 0,
+      MP: 0,
+      NAME: "TKL_AI_1",
+      PITCH: 0,
+      PX: 1456,
+      PY: 172,
+      PZ: 3777,
+      ROLL: 0,
+      YAW: 0,
+      type: "TKL_AI"
+  },{
+      ALT: 0,
+      LAT: 0,
+      LNG: 0,
+      NAME: "CameraActor_0",
+      PITCH: 0,
+      PX: 1660,
+      PY: 681,
+      PZ: 1079,
+      ROLL: 0,
+      YAW: 0,
+      type: "CameraActor"
+  },{
+      ALT: 0,
+      LAT: 0,
+      LNG: 0,
+      NAME: "CameraActor_1",
+      PITCH: 0,
+      PX: 475,
+      PY: 193,
+      PZ: 2395,
+      ROLL: 0,
+      YAW: 0,
+      type: "CameraActor"        
+  }]
+}
 
 // 请求静态数据的url
 const getStaticInfoUrl = "http://101.6.143.8:65515/sim/staticinfo/";
@@ -36,7 +258,7 @@ const RealtimeOverview = () => {
 
   // 
   const [staticInfo, setStaticInfo] = useState<StaticInfo>();
-  const [dynamicInfo, setDynamicInfo] = useState<any[]>();
+  const [dynamicInfo, setDynamicInfo] = useState<any[]>(dynamic.info);
   const [id, taskId] = useMemo(() => {
     const params = parseParams(location.search);
     return [params.id, params.taskId];
@@ -78,8 +300,55 @@ const RealtimeOverview = () => {
     });
   }, []);
 
+  // 红方智能体连接
+  const renderConnectLine = () => {
+    const redAgentList = dynamicInfo.filter(item => ['FW_AI', 'UAV'].includes(item.type)).map(item => ({
+      PX: item.PX,
+      PY: item.PY
+    }))
+    console.log('redAgentList', redAgentList)
+    const redAgentListMap = [{
+    }]
+    
+    for(let i = 0; i < redAgentList.length; i++) {
+        for(let j = i+1; j < redAgentList.length; j++) {
+        const PXScale = Math.abs(redAgentList[i].PX - redAgentList[j].PX)
+        const PYScale = Math.abs(redAgentList[i].PY - redAgentList[j].PY)
+        console.log('PXScale/PYScale', PXScale/PYScale)
+        redAgentListMap.push({
+            PX1: redAgentList[i].PX,
+            PX2: redAgentList[j].PX,
+            PXScale,
+    
+            PY1: redAgentList[i].PY,
+            PY2: redAgentList[j].PY,
+            PYScale,
+    
+            // 角度
+            angle: Math.atan(PXScale/PYScale)*180/Math.PI,
+            // 斜边的长度
+            PXY: Math.sqrt(PXScale*PXScale + PYScale*PYScale)
+        })
+      }
+    }
+    
+    console.log('redAgentListMap', redAgentListMap)
+    
+    const body = document.querySelector('body')
+    redAgentListMap.forEach(item => {
+        const div = document.createElement('div')
+        div.style.width = item.PXY + 'px'
+        div.style.position = 'absolute'
+        div.style.left = item.PX1 + 'px'
+        div.style.top = item.PY1 + 'px'
+        div.style.border = '3px dashed white'
+        div.style.transform = `rotate(${item.angle}deg)`
+        body.appendChild(div)
+    })
+  }
   useEffect(() => {
     if(!dynamicInfo) { return }
+    renderConnectLine()
     const wurenjiGroupInfo = dynamicInfo.filter(item => item.type === 'FW_AI')
   
     const sixuanyiGroupInfo = dynamicInfo.filter(item => item.type === 'UAV')
