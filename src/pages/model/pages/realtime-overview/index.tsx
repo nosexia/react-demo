@@ -20,460 +20,6 @@ const EdgeColor = {
   [EdgeType.WORKSPACE]: "blue",
   [EdgeType.CROSS]: "yellow"
 };
-const staticData = {
-  scriptId: 1,
-  simulationStatus: 1,
-  timeStamp: 1657075334,
-  info: [{
-      ALT: 0,
-      FUEL: 80,
-      HIGHLIGHT: 1,
-      HP: 100,
-      LAT: "48°48'",
-      LNG: "45°45'",
-      NAME: "FW_AI_0",
-      PITCH: 0,
-      PX: 1335,
-      PY: 683,
-      PZ: 797,
-      ROLL: 0,
-      YAW: 100,
-      type: "FW_AI"         
-  },{
-      ALT: 0,
-      FUEL: -1,
-      HIGHLIGHT: false,
-      HP: -1,
-      LAT: 0,
-      LNG: 0,
-      NAME: "FW_AI_1",
-      PITCH: 0,
-      PX: 1694,
-      PY: 699,
-      PZ: 3477,
-      ROLL: 0,
-      YAW: 0,
-      type: "FW_AI"
-  },{
-      ALT: 0,
-      FUEL: -1,
-      HIGHLIGHT: false,
-      HP: -1,
-      LAT: 0,
-      LNG: 0,
-      NAME: "FW_AI_2",
-      PITCH: 0,
-      PX: 947,
-      PY: 531,
-      PZ: 2266,
-      ROLL: 0,
-      YAW: 0,
-      type: "FW_AI"
-  },{
-      ALT: 0,
-      FUEL: 100,
-      HIGHLIGHT: 1,
-      HP: 90,
-      LAT: "48°48'",
-      LNG: "45°45'",
-      NAME: "UAV_0",
-      PITCH: 0,
-      PX: 1111,
-      PY: 555,
-      PZ: 2901,
-      ROLL: 0,
-      YAW: 0,
-      type: "UAV"
-  },{
-      ALT: 0,
-      FUEL: -1,
-      HIGHLIGHT: 1,
-      HP: -1,
-      LAT: "49°49'",
-      LNG: "46°46'",
-      NAME: "UAV_1",
-      PITCH: 0,
-      PX: 3333,
-      PY: 1600,
-      PZ: 668,
-      ROLL: 0,
-      YAW: 0,
-      type: "UAV"        
-  },{
-      ALT: 0,
-      FUEL: -1,
-      HIGHLIGHT: false,
-      HP: -1,
-      LAT: 0,
-      LNG: 0,
-      NAME: "UAV_2",
-      PITCH: 0,
-      PX: 1387,
-      PY: 548,
-      PZ: 4887,
-      ROLL: 0,
-      YAW: 0,
-      type: "UAV"
-  },{
-      ALT: 0,
-      FUEL: -1,
-      HIGHLIGHT: false,
-      HP: -1,
-      LAT: 0,
-      LNG: 0,
-      NAME: "UAV_3",
-      PITCH: 0,
-      PX: 266,
-      PY: 638,
-      PZ: 586,
-      ROLL: 0,
-      YAW: 0,
-      type: "UAV"
-  },{
-      ALT: 0,
-      DESTROYED: false,
-      DIST: 0,
-      DISTURB: false,
-      FUEL: 100,
-      HIGHLIGHT: 1,
-      HP: 90,
-      LAT: "33°33'",
-      LNG: "44°44'",
-      NAME: "BS_AI_0",
-      PITCH: 0,
-      PX: 1667,
-      PY: 50,
-      PZ: 2544,
-      ROLL: 0,
-      YAW: 0,
-      type: "BS_AI"
-  },{
-      ALT: 0,
-      DESTROYED: false,
-      DIST: 0,
-      DISTURB: false,
-      FUEL: -1,
-      HIGHLIGHT: 1,
-      HP: -1,
-      LAT: 0,
-      LNG: 0,
-      NAME: "BS_AI_1",
-      PITCH: 0,
-      PX: 1419,
-      PY: 350,
-      PZ: 4740,
-      ROLL: 0,
-      YAW: 0,
-      type: "BS_AI" 
-  },{
-      ALT: 0,
-      HIGHLIGHT: false,
-      LAT: 0,
-      LNG: 0,
-      NAME: "RS_AI_0",
-      PITCH: 0,
-      PX: 1067,
-      PY: 489,
-      PZ: 4612,
-      ROLL: 0,
-      YAW: 0,
-      type: "RS_AI"
-  },{
-      ALT: 0,
-      ATK: 0,
-      DESTORYED: false,
-      FUEL: 50,
-      HIGHLIGHT: 1,
-      HP: 60,
-      LAT:  "20'",
-      LNG: "30'",
-      MP: 0,
-      NAME: "TKL_AI_0",
-      PITCH: 0,
-      PX: 1467,
-      PY: 717,
-      PZ: 953,
-      ROLL: 0,
-      YAW: 0,
-      type: "TKL_AI"
-  },{
-      ALT: 0,
-      ATK: 0,
-      DESTORYED: false,
-      FUEL: 0,
-      HIGHLIGHT: 1,
-      HP: 0,
-      LAT: 0,
-      LNG: 0,
-      MP: 0,
-      NAME: "TKL_AI_1",
-      PITCH: 0,
-      PX: 1456,
-      PY: 172,
-      PZ: 3777,
-      ROLL: 0,
-      YAW: 0,
-      type: "TKL_AI"
-  },{
-      ALT: 0,
-      LAT: 0,
-      LNG: 0,
-      NAME: "CameraActor_0",
-      PITCH: 0,
-      PX: 1660,
-      PY: 681,
-      PZ: 1079,
-      ROLL: 0,
-      YAW: 0,
-      type: "CameraActor"
-  },{
-      ALT: 0,
-      LAT: 0,
-      LNG: 0,
-      NAME: "CameraActor_1",
-      PITCH: 0,
-      PX: 475,
-      PY: 193,
-      PZ: 2395,
-      ROLL: 0,
-      YAW: 0,
-      type: "CameraActor"        
-  }]
-}
-
-const staticData1 = {
-  scriptId: 1,
-  simulationStatus: 1,
-  timeStamp: 1657075334,
-  info: [{
-      ALT: 0,
-      FUEL: 80,
-      HIGHLIGHT: 1,
-      HP: 100,
-      LAT: "48°48'",
-      LNG: "45°45'",
-      NAME: "FW_AI_0",
-      PITCH: 0,
-      PX: 1896,
-      PY: 283,
-      PZ: 797,
-      ROLL: 0,
-      YAW: 100,
-      type: "FW_AI"         
-  },{
-      ALT: 0,
-      FUEL: -1,
-      HIGHLIGHT: false,
-      HP: -1,
-      LAT: 0,
-      LNG: 0,
-      NAME: "FW_AI_1",
-      PITCH: 0,
-      PX: 2694,
-      PY: 1199,
-      PZ: 3477,
-      ROLL: 0,
-      YAW: 0,
-      type: "FW_AI"
-  },{
-      ALT: 0,
-      FUEL: -1,
-      HIGHLIGHT: false,
-      HP: -1,
-      LAT: 0,
-      LNG: 0,
-      NAME: "FW_AI_2",
-      PITCH: 0,
-      PX: 147,
-      PY: 131,
-      PZ: 2266,
-      ROLL: 0,
-      YAW: 0,
-      type: "FW_AI"
-  },{
-      ALT: 0,
-      FUEL: -1,
-      HIGHLIGHT: false,
-      HP: -1,
-      LAT: 0,
-      LNG: 0,
-      NAME: "UAV_0",
-      PITCH: 0,
-      PX: 489,
-      PY: 496,
-      PZ: 2901,
-      ROLL: 0,
-      YAW: 0,
-      type: "UAV"
-  },{
-      ALT: 0,
-      FUEL: -1,
-      HIGHLIGHT: false,
-      HP: -1,
-      LAT: 0,
-      LNG: 0,
-      NAME: "UAV_1",
-      PITCH: 0,
-      PX: 731,
-      PY: 737,
-      PZ: 668,
-      ROLL: 0,
-      YAW: 0,
-      type: "UAV"        
-  },{
-      ALT: 0,
-      FUEL: -1,
-      HIGHLIGHT: false,
-      HP: -1,
-      LAT: 0,
-      LNG: 0,
-      NAME: "UAV_2",
-      PITCH: 0,
-      PX: 871,
-      PY: 845,
-      PZ: 4887,
-      ROLL: 0,
-      YAW: 0,
-      type: "UAV"
-  },{
-      ALT: 0,
-      FUEL: -1,
-      HIGHLIGHT: false,
-      HP: -1,
-      LAT: 0,
-      LNG: 0,
-      NAME: "UAV_3",
-      PITCH: 0,
-      PX: 266,
-      PY: 638,
-      PZ: 586,
-      ROLL: 0,
-      YAW: 0,
-      type: "UAV"
-  },{
-      ALT: 0,
-      DESTROYED: false,
-      DIST: 0,
-      DISTURB: false,
-      FUEL: -1,
-      HIGHLIGHT: false,
-      HP: -1,
-      LAT: 0,
-      LNG: 0,
-      NAME: "BS_AI_0",
-      PITCH: 0,
-      PX: 567,
-      PY: 550,
-      PZ: 2544,
-      ROLL: 0,
-      YAW: 0,
-      type: "BS_AI"
-  },{
-      ALT: 0,
-      DESTROYED: false,
-      DIST: 0,
-      DISTURB: false,
-      FUEL: -1,
-      HIGHLIGHT: false,
-      HP: -1,
-      LAT: 0,
-      LNG: 0,
-      NAME: "BS_AI_1",
-      PITCH: 0,
-      PX: 619,
-      PY: 650,
-      PZ: 4740,
-      ROLL: 0,
-      YAW: 0,
-      type: "BS_AI" 
-  },{
-      ALT: 0,
-      HIGHLIGHT: false,
-      LAT: 0,
-      LNG: 0,
-      NAME: "RS_AI_0",
-      PITCH: 0,
-      PX: 867,
-      PY: 889,
-      PZ: 4612,
-      ROLL: 0,
-      YAW: 0,
-      type: "RS_AI"
-  },{
-      ALT: 0,
-      ATK: 0,
-      DESTORYED: false,
-      FUEL: 0,
-      HIGHLIGHT: false,
-      HP: 0,
-      LAT: 0,
-      LNG: 0,
-      MP: 0,
-      NAME: "TKL_AI_0",
-      PITCH: 0,
-      PX: 2967,
-      PY: 917,
-      PZ: 953,
-      ROLL: 0,
-      YAW: 0,
-      type: "TKL_AI"
-  },{
-      ALT: 0,
-      ATK: 0,
-      DESTORYED: false,
-      FUEL: 0,
-      HIGHLIGHT: false,
-      HP: 0,
-      LAT: 0,
-      LNG: 0,
-      MP: 0,
-      NAME: "TKL_AI_1",
-      PITCH: 0,
-      PX: 1956,
-      PY: 172,
-      PZ: 3777,
-      ROLL: 0,
-      YAW: 0,
-      type: "TKL_AI"
-  },{
-      ALT: 0,
-      LAT: 0,
-      LNG: 0,
-      NAME: "CameraActor_0",
-      PITCH: 0,
-      PX: 1660,
-      PY: 681,
-      PZ: 1079,
-      ROLL: 0,
-      YAW: 0,
-      type: "CameraActor"
-  },{
-      ALT: 0,
-      LAT: 0,
-      LNG: 0,
-      NAME: "CameraActor_1",
-      PITCH: 0,
-      PX: 475,
-      PY: 193,
-      PZ: 2395,
-      ROLL: 0,
-      YAW: 0,
-      type: "CameraActor"        
-  }]
-}
-
-
-const wurenjiGroupInfo = staticData.info.filter(item => item.type === 'FW_AI')
-const currentWurenjiGroupInfo = staticData1.info.filter(item => item.type === 'FW_AI')
-
-const sixuanyiGroupInfo = staticData.info.filter(item => item.type === 'UAV')
-const currentSixuanyiGroupInfo = staticData1.info.filter(item => item.type === 'UAV')
-
-const zhanliejianGroupInfo = staticData.info.filter(item => item.type === 'BS_AI')
-const currentZhanliejianGroupInfo = staticData1.info.filter(item => item.type === 'BS_AI')
-
-const tankeGroupInfo = staticData.info.filter(item => item.type === 'TKL_AI')
-const currentTankeGroupInfo = staticData1.info.filter(item => item.type === 'TKL_AI')
 
 // 请求静态数据的url
 const getStaticInfoUrl = "http://101.6.143.8:65515/sim/staticinfo/";
@@ -490,7 +36,7 @@ const RealtimeOverview = () => {
 
   // 
   const [staticInfo, setStaticInfo] = useState<StaticInfo>();
-  const [dynamicInfo, setDynamicInfo] = useState(staticData.info);
+  const [dynamicInfo, setDynamicInfo] = useState<any[]>();
   const [id, taskId] = useMemo(() => {
     const params = parseParams(location.search);
     return [params.id, params.taskId];
@@ -501,12 +47,6 @@ const RealtimeOverview = () => {
     const res: any = await axios.get(`${getStaticInfoUrl}?scenarioIdx=${idx}`);
     if (res && res.code === 200) setStaticInfo(res.data);
   }, []);
-
-  // 定时器更新数据
-  setTimeout(() => {
-    console.log('staticData1.info', staticData1.info)
-    setDynamicInfo(staticData1.info)
-  }, 5000)
 
   // 获取动态数据
   const getDynamicInfo = useCallback(async (id: string) => {
@@ -525,9 +65,8 @@ const RealtimeOverview = () => {
     const handleSimEngDynamicInfo =(message) => {
       const res = JSON.parse(
         pako.inflate(message, { to: "string" })
-      ) as DynamicInfo;
-      console.log('res', res)
-      // setDynamicInfo(res);
+      );
+      setDynamicInfo(res.info);
     }
 
 
@@ -540,17 +79,14 @@ const RealtimeOverview = () => {
   }, []);
 
   useEffect(() => {
+    if(!dynamicInfo) { return }
     const wurenjiGroupInfo = dynamicInfo.filter(item => item.type === 'FW_AI')
-    const currentWurenjiGroupInfo = staticData1.info.filter(item => item.type === 'FW_AI')
   
     const sixuanyiGroupInfo = dynamicInfo.filter(item => item.type === 'UAV')
-    const currentSixuanyiGroupInfo = staticData1.info.filter(item => item.type === 'UAV')
   
     const zhanliejianGroupInfo = dynamicInfo.filter(item => item.type === 'BS_AI')
-    const currentZhanliejianGroupInfo = staticData1.info.filter(item => item.type === 'BS_AI')
   
     const tankeGroupInfo = dynamicInfo.filter(item => item.type === 'TKL_AI')
-    const currentTankeGroupInfo = staticData1.info.filter(item => item.type === 'TKL_AI')  
     // 固定翼无人机的左边定位列表
     const handleLeftWurenjiGroup = () => {
       const leftListMap = wurenjiGroupInfo.map(item => Number(item.PX))
@@ -733,7 +269,6 @@ const RealtimeOverview = () => {
 
 
     // 当res变化时候
-    setTimeout(() => {
       handleLeftWurenjiGroup()
       handleTopWurenjiGroup()
       handleLNGWurenjiGroup()
@@ -770,7 +305,6 @@ const RealtimeOverview = () => {
       handleHPTankeGroup()
       handleFUELTankeGroup()
       handleHighLightTankeGroup()
-    }, 1000)
   }, [dynamicInfo])
 
   useEffect(() => {
@@ -835,17 +369,6 @@ const RealtimeOverview = () => {
       className={styles.container}
       style={{ backgroundImage: `url('${staticInfo.backgroundUrl}')` }}
     >
-      {/* <canvas className={styles.canvas} ref={ref} height={1080} width={1920} />; */}
-      {/* {dynamicInfo?.veh?.map(item => (
-        <div
-          key={`${item.type}_${item.id}`}
-          className={styles.veh}
-          style={{
-            top: `${(item.pos[0] * 100) / 1080}vh`,
-            left: `${(item.pos[1] * 100) / 1920}vw`
-          }}
-        />
-      ))} */}
       <div className={styles.legendWrapper}>
         <div className={styles.leftLegend}>
           <div className={styles.leftLegendLabel}>
