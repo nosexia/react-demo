@@ -8,7 +8,7 @@ import React, {
 import styles from "./index.module.less";
 import { axios } from "@/api/request";
 import { parseParams } from "@utils/utils";
-import { DynamicInfo, EdgeType, StaticInfo } from "./type";
+import { EdgeType, StaticInfo } from "./type";
 import mqtt from "mqtt/dist/mqtt";
 import pako from "pako";
 import Electric from "@/components/electric";
@@ -487,8 +487,10 @@ const mqttOptions = {
 
 const RealtimeOverview = () => {
   const ref = useRef<HTMLCanvasElement>(null);
+
+  // 
   const [staticInfo, setStaticInfo] = useState<StaticInfo>();
-  const [dynamicInfo, setDynamicInfo] = useState<DynamicInfo>();
+  const [dynamicInfo, setDynamicInfo] = useState(staticData.info);
   const [id, taskId] = useMemo(() => {
     const params = parseParams(location.search);
     return [params.id, params.taskId];
@@ -499,6 +501,12 @@ const RealtimeOverview = () => {
     const res: any = await axios.get(`${getStaticInfoUrl}?scenarioIdx=${idx}`);
     if (res && res.code === 200) setStaticInfo(res.data);
   }, []);
+
+  // 定时器更新数据
+  setTimeout(() => {
+    console.log('staticData1.info', staticData1.info)
+    setDynamicInfo(staticData1.info)
+  }, 5000)
 
   // 获取动态数据
   const getDynamicInfo = useCallback(async (id: string) => {
@@ -519,7 +527,7 @@ const RealtimeOverview = () => {
         pako.inflate(message, { to: "string" })
       ) as DynamicInfo;
       console.log('res', res)
-      setDynamicInfo(res);
+      // setDynamicInfo(res);
     }
 
 
@@ -530,6 +538,330 @@ const RealtimeOverview = () => {
       }
     });
   }, []);
+
+  useEffect(() => {
+    const wurenjiGroupInfo = dynamicInfo.filter(item => item.type === 'FW_AI')
+    const currentWurenjiGroupInfo = staticData1.info.filter(item => item.type === 'FW_AI')
+  
+    const sixuanyiGroupInfo = dynamicInfo.filter(item => item.type === 'UAV')
+    const currentSixuanyiGroupInfo = staticData1.info.filter(item => item.type === 'UAV')
+  
+    const zhanliejianGroupInfo = dynamicInfo.filter(item => item.type === 'BS_AI')
+    const currentZhanliejianGroupInfo = staticData1.info.filter(item => item.type === 'BS_AI')
+  
+    const tankeGroupInfo = dynamicInfo.filter(item => item.type === 'TKL_AI')
+    const currentTankeGroupInfo = staticData1.info.filter(item => item.type === 'TKL_AI')  
+    // 固定翼无人机的左边定位列表
+    const handleLeftWurenjiGroup = () => {
+      const leftListMap = wurenjiGroupInfo.map(item => Number(item.PX))
+      setLeftList(leftListMap)
+    }
+
+
+    // 固定翼无人机的顶部定位列表
+    const handleTopWurenjiGroup = () => {
+      const topListMap = wurenjiGroupInfo.map(item => Number(item.PY))
+      setTopList(topListMap)
+    }
+
+    // 设置固定翼无人机的经度
+    const handleLNGWurenjiGroup = () => {
+      const LNGListMap = wurenjiGroupInfo.map(item => String(item.LNG))
+      setLNGList(LNGListMap)
+    }
+
+    // 设置固定翼无人机的纬度
+    const handleLATWurenjiGroup = () => {
+      const LATListMap = wurenjiGroupInfo.map(item => String(item.LAT))
+      setLATList(LATListMap)
+    }
+
+    // 设置固定翼无人机的生命值
+    const handleHPWurenjiGroup = () => {
+      const HPListMap = wurenjiGroupInfo.map(item => String(Number(item.HP)*1.04))
+      setHPList(HPListMap)
+    }
+
+    // 设置固定翼无人机的油量
+    const handleFUELWurenjiGroup = () => {
+      const FUELListMap = wurenjiGroupInfo.map(item => String(Number(item.FUEL)*1.04))
+      setFUELList(FUELListMap)
+    }
+
+    // 设置固定翼无人机的机头方向
+    const handleYAWWurenjiGroup = () => {
+      const YAWListMap = wurenjiGroupInfo.map(item => String(item.YAW))
+      setYAWList(YAWListMap)
+    }
+
+    // 固定翼无人机是否正在执行任务
+    const handleHighLightWurenjiGroup = () => {
+      const highLightListMap = wurenjiGroupInfo.map(item => Number(item.HIGHLIGHT))
+      setHighLightList(highLightListMap)
+    }
+
+    // 计算固定翼无人机translateX的差值
+    const handleTranslateXWurenjiGroup = () => {
+      const prevLeftList = wurenjiGroupInfo.map(item => item.PX)
+      const currentLeftList = currentWurenjiGroupInfo.map(item => item.PX)
+      const leftList = prevLeftList.map((value, key) => {
+        return Number(currentLeftList[key]) - Number(value)
+      })
+      setTranslateXList(leftList)
+    }
+
+    // 计算固定翼无人机translateY的差值
+    const handleTranslateYWurenjiGroup = () => {
+      const prevTopList = wurenjiGroupInfo.map(item => item.PY)
+      const currentTopList = currentWurenjiGroupInfo.map(item => item.PY)
+      const topList = prevTopList.map((value, key) => {
+        return Number(currentTopList[key]) - Number(value)
+      })
+      setTranslateYList(topList)
+    }
+
+    // 四旋翼无人机经度
+    const handleLNGSixuanyiGroup = () => {
+      const LNGListMap = sixuanyiGroupInfo.map(item => String(item.LNG))
+      setSixuanyiLNGList(LNGListMap)
+    }
+
+    // 四旋翼无人机的纬度
+    const handleLATSixuanyiGroup = () => {
+      const LATListMap = sixuanyiGroupInfo.map(item => String(item.LAT))
+      setSixuanyiLATList(LATListMap)
+    }
+
+    // 四旋翼无人机的左边定位列表
+    const handleLeftSixuanyiGroup = () => {
+      const leftListMap = sixuanyiGroupInfo.map(item => Number(item.PX))
+      setSixuanyiLeftList(leftListMap)
+    }
+
+    // 四旋翼无人机的顶部定位列表
+    const handleTopSixuanyiGroup = () => {
+      const topListMap = sixuanyiGroupInfo.map(item => Number(item.PY))
+      setSixuanyiTopList(topListMap)
+    }
+
+    // 设置四旋翼无人机的生命值
+    const handleHPSixuanyiGroup = () => {
+      const HPListMap = sixuanyiGroupInfo.map(item => String(Number(item.HP)*1.04))
+      setSixuanyiHPList(HPListMap)
+    }
+
+
+    // 设置四旋翼无人机的油量
+    const handleFUELSixuanyiGroup = () => {
+      const FUELListMap = sixuanyiGroupInfo.map(item => String(Number(item.FUEL)*1.04))
+      setSixuanyiFUELList(FUELListMap)
+    }
+
+
+    // 计算四旋翼无人机translateX的差值
+    const handleTranslateXSixuanyiGroup = () => {
+      const prevLeftList = sixuanyiGroupInfo.map(item => item.PX)
+      const currentLeftList = currentSixuanyiGroupInfo.map(item => item.PX)
+      const leftList = prevLeftList.map((value, key) => {
+        return Number(currentLeftList[key]) - Number(value)
+      })
+      setSixuanyiTranslateXList(leftList)
+    }
+      
+    // 计算四旋翼无人机translateY的差值
+    const handleTranslateYSixuanyiGroup = () => {
+      const prevTopList = sixuanyiGroupInfo.map(item => item.PY)
+      const currentTopList = currentSixuanyiGroupInfo.map(item => item.PY)
+      const topList = prevTopList.map((value, key) => {
+        return Number(currentTopList[key]) - Number(value)
+      })
+      setSixuanyiTranslateYList(topList)
+    }
+
+    // 获取固定翼无人机是否正在执行任务
+    const handleHighLightSixuanyiGroup = () => {
+      const highLightListMap = sixuanyiGroupInfo.map(item => Number(item.HIGHLIGHT))
+      setSixuanyiHighLightList(highLightListMap)
+    }
+
+    // 设置战列舰的左边定位列表
+    const handleLeftZhanliejianGroup = () => {
+      const leftListMap = zhanliejianGroupInfo.map(item => Number(item.PX))
+      setZhanliejianLeftList(leftListMap)
+    }
+
+    // 设置战列舰的顶部定位列表
+    const handleTopZhanliejianGroup = () => {
+      const topListMap = zhanliejianGroupInfo.map(item => Number(item.PY))
+      setZhanliejianTopList(topListMap)
+    }
+
+    // 战列舰无人机经度
+    const handleLNGZhanliejianGroup = () => {
+      const LNGListMap = zhanliejianGroupInfo.map(item => String(item.LNG))
+      setZhanliejianLNGList(LNGListMap)
+    }
+
+    // 战列舰无人机的纬度
+    const handleLATZhanliejianGroup = () => {
+      const LATListMap = zhanliejianGroupInfo.map(item => String(item.LAT))
+      setZhanliejianLATList(LATListMap)
+    }
+
+    // 设置战列舰的生命值
+    const handleHPZhanliejianGroup = () => {
+      const HPListMap = zhanliejianGroupInfo.map(item => String(Number(item.HP)*1.04))
+      setZhanliejianHPList(HPListMap)
+    }
+
+      // 设置战列舰的油量
+    const handleFUELZhanliejianGroup = () => {
+      const FUELListMap = zhanliejianGroupInfo.map(item => String(Number(item.FUEL)*1.04))
+      setZhanliejianFUELList(FUELListMap)
+    }
+
+
+    // 计算战列舰translateX的差值
+    const handleTranslateXZhanliejianGroup = () => {
+      const prevLeftList = zhanliejianGroupInfo.map(item => item.PX)
+      const currentLeftList = currentZhanliejianGroupInfo.map(item => item.PX)
+      const leftList = prevLeftList.map((value, key) => {
+        return Number(currentLeftList[key]) - Number(value)
+      })
+      setZhanliejianTranslateXList(leftList)
+    }
+
+
+    // 计算战列舰translateY的差值
+    const handleTranslateYZhanliejianGroup = () => {
+      const prevTopList = zhanliejianGroupInfo.map(item => item.PY)
+      const currentTopList = currentZhanliejianGroupInfo.map(item => item.PY)
+      const topList = prevTopList.map((value, key) => {
+        return Number(currentTopList[key]) - Number(value)
+      })
+      setZhanliejianTranslateYList(topList)
+    }
+
+    // 战列舰是否正在执行任务
+    const handleHighLightZhanliejianGroup = () => {
+      const highLightListMap = zhanliejianGroupInfo.map(item => Number(item.HIGHLIGHT))
+      setZhanliejianiHighLightList(highLightListMap)
+    }
+
+
+    // 坦克经度
+    const handleLNGTankeGroup = () => {
+      const LNGListMap = tankeGroupInfo.map(item => String(item.LNG))
+      setTankeLNGList(LNGListMap)
+    }
+
+    // 坦克的纬度
+    const handleLATTankeGroup = () => {
+      const LATListMap = tankeGroupInfo.map(item => String(item.LAT))
+      setTankeLATList(LATListMap)
+    }
+
+    // 坦克的左边定位列表
+    const handleLeftTankeGroup = () => {
+      const leftListMap = tankeGroupInfo.map(item => Number(item.PX))
+      setTankeLeftList(leftListMap)
+    }
+
+    // 坦克的顶部定位列表
+    const handleTopTankeGroup = () => {
+      const topListMap = tankeGroupInfo.map(item => Number(item.PY))
+      setTankeTopList(topListMap)
+    }
+
+    // 设置坦克的生命值
+    const handleHPTankeGroup = () => {
+      const HPListMap = tankeGroupInfo.map(item => String(Number(item.HP)*1.04))
+      setTankeHPList(HPListMap)
+    }
+
+
+    // 设置坦克的油量
+    const handleFUELTankeGroup = () => {
+      const FUELListMap = tankeGroupInfo.map(item => String(Number(item.FUEL)*1.04))
+      setTankeFUELList(FUELListMap)
+    }
+
+
+    // 计算坦克translateX的差值
+    const handleTranslateXTankeGroup = () => {
+      const prevLeftList = tankeGroupInfo.map(item => item.PX)
+      const currentLeftList = currentTankeGroupInfo.map(item => item.PX)
+      const leftList = prevLeftList.map((value, key) => {
+        return Number(currentLeftList[key]) - Number(value)
+      })
+      setTankeTranslateXList(leftList)
+    }
+      
+    // 计算坦克translateY的差值
+    const handleTranslateYTankeGroup = () => {
+      const prevTopList = tankeGroupInfo.map(item => item.PY)
+      const currentTopList = currentTankeGroupInfo.map(item => item.PY)
+      const topList = prevTopList.map((value, key) => {
+        return Number(currentTopList[key]) - Number(value)
+      })
+      setTankeTranslateYList(topList)
+    }
+
+    // 获取坦克是否正在执行任务
+    const handleHighLightTankeGroup = () => {
+      const highLightListMap = tankeGroupInfo.map(item => Number(item.HIGHLIGHT))
+      setTankeHighLightList(highLightListMap)
+    }
+
+
+    // 当res变化时候
+    setTimeout(() => {
+      handleLeftWurenjiGroup()
+      handleTopWurenjiGroup()
+      handleLNGWurenjiGroup()
+      handleLATWurenjiGroup()
+      handleHPWurenjiGroup()
+      handleFUELWurenjiGroup()
+      handleYAWWurenjiGroup()
+      handleHighLightWurenjiGroup()
+      // handleTranslateXWurenjiGroup()
+      // handleTranslateYWurenjiGroup()
+
+
+      /** 四炫翼无人机的操作 */
+      handleLNGSixuanyiGroup()
+      handleLeftSixuanyiGroup()
+      handleTopSixuanyiGroup()
+      handleLATSixuanyiGroup()
+      handleHPSixuanyiGroup()
+      handleFUELSixuanyiGroup()
+      // handleTranslateXSixuanyiGroup()
+      // handleTranslateYSixuanyiGroup()
+      handleHighLightSixuanyiGroup()
+
+      /** 战列舰 */
+      handleLeftZhanliejianGroup()
+      handleTopZhanliejianGroup()
+      handleLNGZhanliejianGroup()
+      handleLATZhanliejianGroup()
+      handleHPZhanliejianGroup()
+      handleFUELZhanliejianGroup()
+      // handleTranslateXZhanliejianGroup()
+      // handleTranslateYZhanliejianGroup()
+      handleHighLightZhanliejianGroup()
+
+      /** 坦克的操作 */
+      handleLNGTankeGroup()
+      handleLeftTankeGroup()
+      handleTopTankeGroup()
+      handleLATTankeGroup()
+      handleHPTankeGroup()
+      handleFUELTankeGroup()
+      // handleTranslateXTankeGroup()
+      // handleTranslateYTankeGroup()
+      handleHighLightTankeGroup()
+    }, 1000)
+  }, [dynamicInfo])
 
   useEffect(() => {
     if (!id) return;
@@ -584,270 +916,6 @@ const RealtimeOverview = () => {
   const [tankeTranslateXList, setTankeTranslateXList] = useState<number[]>(new Array(2).fill(0))
   const [tankeTranslateYList, setTankeTranslateYList] = useState<number[]>(new Array(2).fill(0))
   const [tankeHighLightList, setTankeHighLightList] = useState<number[]>(new Array(2).fill(0))
-
-  // 固定翼无人机的左边定位列表
-  const handleLeftWurenjiGroup = () => {
-    const leftListMap = wurenjiGroupInfo.map(item => Number(item.PX))
-    setLeftList(leftListMap)
-  }
-
-
-  // 固定翼无人机的顶部定位列表
-  const handleTopWurenjiGroup = () => {
-    const topListMap = wurenjiGroupInfo.map(item => Number(item.PY))
-    setTopList(topListMap)
-  }
-
-
-
-  // 设置固定翼无人机的经度
-  const handleLNGWurenjiGroup = () => {
-    const LNGListMap = wurenjiGroupInfo.map(item => String(item.LNG))
-    setLNGList(LNGListMap)
-  }
-
-  // 设置固定翼无人机的纬度
-  const handleLATWurenjiGroup = () => {
-    const LATListMap = wurenjiGroupInfo.map(item => String(item.LAT))
-    setLATList(LATListMap)
-  }
-
-  // 设置固定翼无人机的生命值
-  const handleHPWurenjiGroup = () => {
-    const HPListMap = wurenjiGroupInfo.map(item => String(Number(item.HP)*1.04))
-    setHPList(HPListMap)
-  }
-
-  // 设置固定翼无人机的油量
-  const handleFUELWurenjiGroup = () => {
-    const FUELListMap = wurenjiGroupInfo.map(item => String(Number(item.FUEL)*1.04))
-    setFUELList(FUELListMap)
-  }
-
-  // 设置固定翼无人机的机头方向
-  const handleYAWWurenjiGroup = () => {
-    const YAWListMap = wurenjiGroupInfo.map(item => String(item.YAW))
-    setYAWList(YAWListMap)
-  }
-
-  // 固定翼无人机是否正在执行任务
-  const handleHighLightWurenjiGroup = () => {
-    const highLightListMap = wurenjiGroupInfo.map(item => Number(item.HIGHLIGHT))
-    setHighLightList(highLightListMap)
-  }
-
-  // 计算固定翼无人机translateX的差值
-  const handleTranslateXWurenjiGroup = () => {
-    const prevLeftList = wurenjiGroupInfo.map(item => item.PX)
-    const currentLeftList = currentWurenjiGroupInfo.map(item => item.PX)
-    const leftList = prevLeftList.map((value, key) => {
-      return Number(currentLeftList[key]) - Number(value)
-    })
-    setTranslateXList(leftList)
-  }
-
-  // 计算固定翼无人机translateY的差值
-  const handleTranslateYWurenjiGroup = () => {
-    const prevTopList = wurenjiGroupInfo.map(item => item.PY)
-    const currentTopList = currentWurenjiGroupInfo.map(item => item.PY)
-    const topList = prevTopList.map((value, key) => {
-      return Number(currentTopList[key]) - Number(value)
-    })
-    setTranslateYList(topList)
-  }
-
-  // 四旋翼无人机经度
-  const handleLNGSixuanyiGroup = () => {
-    const LNGListMap = sixuanyiGroupInfo.map(item => String(item.LNG))
-    setSixuanyiLNGList(LNGListMap)
-  }
-
-  // 四旋翼无人机的纬度
-  const handleLATSixuanyiGroup = () => {
-    const LATListMap = sixuanyiGroupInfo.map(item => String(item.LAT))
-    setSixuanyiLATList(LATListMap)
-  }
-
-  // 四旋翼无人机的左边定位列表
-  const handleLeftSixuanyiGroup = () => {
-    const leftListMap = sixuanyiGroupInfo.map(item => Number(item.PX))
-    setSixuanyiLeftList(leftListMap)
-  }
-
-  // 四旋翼无人机的顶部定位列表
-  const handleTopSixuanyiGroup = () => {
-    const topListMap = sixuanyiGroupInfo.map(item => Number(item.PY))
-    setSixuanyiTopList(topListMap)
-  }
-
-  // 设置四旋翼无人机的生命值
-  const handleHPSixuanyiGroup = () => {
-    const HPListMap = sixuanyiGroupInfo.map(item => String(Number(item.HP)*1.04))
-    setSixuanyiHPList(HPListMap)
-  }
-
-
-  // 设置四旋翼无人机的油量
-  const handleFUELSixuanyiGroup = () => {
-    const FUELListMap = sixuanyiGroupInfo.map(item => String(Number(item.FUEL)*1.04))
-    setSixuanyiFUELList(FUELListMap)
-  }
-
-
-  // 计算四旋翼无人机translateX的差值
-  const handleTranslateXSixuanyiGroup = () => {
-    const prevLeftList = sixuanyiGroupInfo.map(item => item.PX)
-    const currentLeftList = currentSixuanyiGroupInfo.map(item => item.PX)
-    const leftList = prevLeftList.map((value, key) => {
-      return Number(currentLeftList[key]) - Number(value)
-    })
-    setSixuanyiTranslateXList(leftList)
-  }
-    
-  // 计算四旋翼无人机translateY的差值
-  const handleTranslateYSixuanyiGroup = () => {
-    const prevTopList = sixuanyiGroupInfo.map(item => item.PY)
-    const currentTopList = currentSixuanyiGroupInfo.map(item => item.PY)
-    const topList = prevTopList.map((value, key) => {
-      return Number(currentTopList[key]) - Number(value)
-    })
-    setSixuanyiTranslateYList(topList)
-  }
-
-  // 获取固定翼无人机是否正在执行任务
-  const handleHighLightSixuanyiGroup = () => {
-    const highLightListMap = sixuanyiGroupInfo.map(item => Number(item.HIGHLIGHT))
-    setSixuanyiHighLightList(highLightListMap)
-  }
-
-  // 设置战列舰的左边定位列表
-  const handleLeftZhanliejianGroup = () => {
-    const leftListMap = zhanliejianGroupInfo.map(item => Number(item.PX))
-    setZhanliejianLeftList(leftListMap)
-  }
-
-  // 设置战列舰的顶部定位列表
-  const handleTopZhanliejianGroup = () => {
-    const topListMap = zhanliejianGroupInfo.map(item => Number(item.PY))
-    setZhanliejianTopList(topListMap)
-  }
-
-  // 战列舰无人机经度
-  const handleLNGZhanliejianGroup = () => {
-    const LNGListMap = zhanliejianGroupInfo.map(item => String(item.LNG))
-    setZhanliejianLNGList(LNGListMap)
-  }
-
-  // 战列舰无人机的纬度
-  const handleLATZhanliejianGroup = () => {
-    const LATListMap = zhanliejianGroupInfo.map(item => String(item.LAT))
-    setZhanliejianLATList(LATListMap)
-  }
-
-  // 设置战列舰的生命值
-  const handleHPZhanliejianGroup = () => {
-    const HPListMap = zhanliejianGroupInfo.map(item => String(Number(item.HP)*1.04))
-    setZhanliejianHPList(HPListMap)
-  }
-
-    // 设置战列舰的油量
-  const handleFUELZhanliejianGroup = () => {
-    const FUELListMap = zhanliejianGroupInfo.map(item => String(Number(item.FUEL)*1.04))
-    setZhanliejianFUELList(FUELListMap)
-  }
-
-
-  // 计算战列舰translateX的差值
-  const handleTranslateXZhanliejianGroup = () => {
-    const prevLeftList = zhanliejianGroupInfo.map(item => item.PX)
-    const currentLeftList = currentZhanliejianGroupInfo.map(item => item.PX)
-    const leftList = prevLeftList.map((value, key) => {
-      return Number(currentLeftList[key]) - Number(value)
-    })
-    setZhanliejianTranslateXList(leftList)
-  }
-
-
-  // 计算战列舰translateY的差值
-  const handleTranslateYZhanliejianGroup = () => {
-    const prevTopList = zhanliejianGroupInfo.map(item => item.PY)
-    const currentTopList = currentZhanliejianGroupInfo.map(item => item.PY)
-    const topList = prevTopList.map((value, key) => {
-      return Number(currentTopList[key]) - Number(value)
-    })
-    setZhanliejianTranslateYList(topList)
-  }
-
-  // 战列舰是否正在执行任务
-  const handleHighLightZhanliejianGroup = () => {
-    const highLightListMap = zhanliejianGroupInfo.map(item => Number(item.HIGHLIGHT))
-    setZhanliejianiHighLightList(highLightListMap)
-  }
-
-
-  // 坦克经度
-  const handleLNGTankeGroup = () => {
-    const LNGListMap = tankeGroupInfo.map(item => String(item.LNG))
-    setTankeLNGList(LNGListMap)
-  }
-
-  // 坦克的纬度
-  const handleLATTankeGroup = () => {
-    const LATListMap = tankeGroupInfo.map(item => String(item.LAT))
-    setTankeLATList(LATListMap)
-  }
-
-  // 坦克的左边定位列表
-  const handleLeftTankeGroup = () => {
-    const leftListMap = tankeGroupInfo.map(item => Number(item.PX))
-    setTankeLeftList(leftListMap)
-  }
-
-  // 坦克的顶部定位列表
-  const handleTopTankeGroup = () => {
-    const topListMap = tankeGroupInfo.map(item => Number(item.PY))
-    setTankeTopList(topListMap)
-  }
-
-  // 设置坦克的生命值
-  const handleHPTankeGroup = () => {
-    const HPListMap = tankeGroupInfo.map(item => String(Number(item.HP)*1.04))
-    setTankeHPList(HPListMap)
-  }
-
-
-  // 设置坦克的油量
-  const handleFUELTankeGroup = () => {
-    const FUELListMap = tankeGroupInfo.map(item => String(Number(item.FUEL)*1.04))
-    setTankeFUELList(FUELListMap)
-  }
-
-
-  // 计算坦克translateX的差值
-  const handleTranslateXTankeGroup = () => {
-    const prevLeftList = tankeGroupInfo.map(item => item.PX)
-    const currentLeftList = currentTankeGroupInfo.map(item => item.PX)
-    const leftList = prevLeftList.map((value, key) => {
-      return Number(currentLeftList[key]) - Number(value)
-    })
-    setTankeTranslateXList(leftList)
-  }
-    
-  // 计算坦克translateY的差值
-  const handleTranslateYTankeGroup = () => {
-    const prevTopList = tankeGroupInfo.map(item => item.PY)
-    const currentTopList = currentTankeGroupInfo.map(item => item.PY)
-    const topList = prevTopList.map((value, key) => {
-      return Number(currentTopList[key]) - Number(value)
-    })
-    setTankeTranslateYList(topList)
-  }
-
-  // 获取坦克是否正在执行任务
-  const handleHighLightTankeGroup = () => {
-    const highLightListMap = tankeGroupInfo.map(item => Number(item.HIGHLIGHT))
-    setTankeHighLightList(highLightListMap)
-  }
   
 
   // 更改root的宽高
@@ -857,54 +925,6 @@ const RealtimeOverview = () => {
       root.style.height = "100vh";
       root.style.width = "100vw";
     }
-    
-    // 当res变化时候
-    setTimeout(() => {
-      handleLeftWurenjiGroup()
-      handleTopWurenjiGroup()
-      handleLNGWurenjiGroup()
-      handleLATWurenjiGroup()
-      handleHPWurenjiGroup()
-      handleFUELWurenjiGroup()
-      handleYAWWurenjiGroup()
-      handleHighLightWurenjiGroup()
-      handleTranslateXWurenjiGroup()
-      handleTranslateYWurenjiGroup()
-
-
-      /** 四炫翼无人机的操作 */
-      handleLNGSixuanyiGroup()
-      handleLeftSixuanyiGroup()
-      handleTopSixuanyiGroup()
-      handleLATSixuanyiGroup()
-      handleHPSixuanyiGroup()
-      handleFUELSixuanyiGroup()
-      handleTranslateXSixuanyiGroup()
-      handleTranslateYSixuanyiGroup()
-      handleHighLightSixuanyiGroup()
-
-      /** 战列舰 */
-      handleLeftZhanliejianGroup()
-      handleTopZhanliejianGroup()
-      handleLNGZhanliejianGroup()
-      handleLATZhanliejianGroup()
-      handleHPZhanliejianGroup()
-      handleFUELZhanliejianGroup()
-      handleTranslateXZhanliejianGroup()
-      handleTranslateYZhanliejianGroup()
-      handleHighLightZhanliejianGroup()
-
-      /** 坦克的操作 */
-      handleLNGTankeGroup()
-      handleLeftTankeGroup()
-      handleTopTankeGroup()
-      handleLATTankeGroup()
-      handleHPTankeGroup()
-      handleFUELTankeGroup()
-      handleTranslateXTankeGroup()
-      handleTranslateYTankeGroup()
-      handleHighLightTankeGroup()
-    }, 1000)
 
   }, []);
 
@@ -915,7 +935,7 @@ const RealtimeOverview = () => {
       style={{ backgroundImage: `url('${staticInfo.backgroundUrl}')` }}
     >
       {/* <canvas className={styles.canvas} ref={ref} height={1080} width={1920} />; */}
-      {dynamicInfo?.veh?.map(item => (
+      {/* {dynamicInfo?.veh?.map(item => (
         <div
           key={`${item.type}_${item.id}`}
           className={styles.veh}
@@ -924,7 +944,7 @@ const RealtimeOverview = () => {
             left: `${(item.pos[1] * 100) / 1920}vw`
           }}
         />
-      ))}
+      ))} */}
       <div className={styles.legendWrapper}>
         <div className={styles.leftLegend}>
           <div className={styles.leftLegendLabel}>
