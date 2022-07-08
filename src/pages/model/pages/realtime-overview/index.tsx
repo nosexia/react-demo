@@ -600,25 +600,6 @@ const RealtimeOverview = () => {
       setHighLightList(highLightListMap)
     }
 
-    // 计算固定翼无人机translateX的差值
-    const handleTranslateXWurenjiGroup = () => {
-      const prevLeftList = wurenjiGroupInfo.map(item => item.PX)
-      const currentLeftList = currentWurenjiGroupInfo.map(item => item.PX)
-      const leftList = prevLeftList.map((value, key) => {
-        return Number(currentLeftList[key]) - Number(value)
-      })
-      setTranslateXList(leftList)
-    }
-
-    // 计算固定翼无人机translateY的差值
-    const handleTranslateYWurenjiGroup = () => {
-      const prevTopList = wurenjiGroupInfo.map(item => item.PY)
-      const currentTopList = currentWurenjiGroupInfo.map(item => item.PY)
-      const topList = prevTopList.map((value, key) => {
-        return Number(currentTopList[key]) - Number(value)
-      })
-      setTranslateYList(topList)
-    }
 
     // 四旋翼无人机经度
     const handleLNGSixuanyiGroup = () => {
@@ -655,27 +636,6 @@ const RealtimeOverview = () => {
     const handleFUELSixuanyiGroup = () => {
       const FUELListMap = sixuanyiGroupInfo.map(item => String(Number(item.FUEL)*1.04))
       setSixuanyiFUELList(FUELListMap)
-    }
-
-
-    // 计算四旋翼无人机translateX的差值
-    const handleTranslateXSixuanyiGroup = () => {
-      const prevLeftList = sixuanyiGroupInfo.map(item => item.PX)
-      const currentLeftList = currentSixuanyiGroupInfo.map(item => item.PX)
-      const leftList = prevLeftList.map((value, key) => {
-        return Number(currentLeftList[key]) - Number(value)
-      })
-      setSixuanyiTranslateXList(leftList)
-    }
-      
-    // 计算四旋翼无人机translateY的差值
-    const handleTranslateYSixuanyiGroup = () => {
-      const prevTopList = sixuanyiGroupInfo.map(item => item.PY)
-      const currentTopList = currentSixuanyiGroupInfo.map(item => item.PY)
-      const topList = prevTopList.map((value, key) => {
-        return Number(currentTopList[key]) - Number(value)
-      })
-      setSixuanyiTranslateYList(topList)
     }
 
     // 获取固定翼无人机是否正在执行任务
@@ -721,27 +681,6 @@ const RealtimeOverview = () => {
     }
 
 
-    // 计算战列舰translateX的差值
-    const handleTranslateXZhanliejianGroup = () => {
-      const prevLeftList = zhanliejianGroupInfo.map(item => item.PX)
-      const currentLeftList = currentZhanliejianGroupInfo.map(item => item.PX)
-      const leftList = prevLeftList.map((value, key) => {
-        return Number(currentLeftList[key]) - Number(value)
-      })
-      setZhanliejianTranslateXList(leftList)
-    }
-
-
-    // 计算战列舰translateY的差值
-    const handleTranslateYZhanliejianGroup = () => {
-      const prevTopList = zhanliejianGroupInfo.map(item => item.PY)
-      const currentTopList = currentZhanliejianGroupInfo.map(item => item.PY)
-      const topList = prevTopList.map((value, key) => {
-        return Number(currentTopList[key]) - Number(value)
-      })
-      setZhanliejianTranslateYList(topList)
-    }
-
     // 战列舰是否正在执行任务
     const handleHighLightZhanliejianGroup = () => {
       const highLightListMap = zhanliejianGroupInfo.map(item => Number(item.HIGHLIGHT))
@@ -786,27 +725,6 @@ const RealtimeOverview = () => {
       setTankeFUELList(FUELListMap)
     }
 
-
-    // 计算坦克translateX的差值
-    const handleTranslateXTankeGroup = () => {
-      const prevLeftList = tankeGroupInfo.map(item => item.PX)
-      const currentLeftList = currentTankeGroupInfo.map(item => item.PX)
-      const leftList = prevLeftList.map((value, key) => {
-        return Number(currentLeftList[key]) - Number(value)
-      })
-      setTankeTranslateXList(leftList)
-    }
-      
-    // 计算坦克translateY的差值
-    const handleTranslateYTankeGroup = () => {
-      const prevTopList = tankeGroupInfo.map(item => item.PY)
-      const currentTopList = currentTankeGroupInfo.map(item => item.PY)
-      const topList = prevTopList.map((value, key) => {
-        return Number(currentTopList[key]) - Number(value)
-      })
-      setTankeTranslateYList(topList)
-    }
-
     // 获取坦克是否正在执行任务
     const handleHighLightTankeGroup = () => {
       const highLightListMap = tankeGroupInfo.map(item => Number(item.HIGHLIGHT))
@@ -824,8 +742,6 @@ const RealtimeOverview = () => {
       handleFUELWurenjiGroup()
       handleYAWWurenjiGroup()
       handleHighLightWurenjiGroup()
-      // handleTranslateXWurenjiGroup()
-      // handleTranslateYWurenjiGroup()
 
 
       /** 四炫翼无人机的操作 */
@@ -835,8 +751,6 @@ const RealtimeOverview = () => {
       handleLATSixuanyiGroup()
       handleHPSixuanyiGroup()
       handleFUELSixuanyiGroup()
-      // handleTranslateXSixuanyiGroup()
-      // handleTranslateYSixuanyiGroup()
       handleHighLightSixuanyiGroup()
 
       /** 战列舰 */
@@ -846,8 +760,6 @@ const RealtimeOverview = () => {
       handleLATZhanliejianGroup()
       handleHPZhanliejianGroup()
       handleFUELZhanliejianGroup()
-      // handleTranslateXZhanliejianGroup()
-      // handleTranslateYZhanliejianGroup()
       handleHighLightZhanliejianGroup()
 
       /** 坦克的操作 */
@@ -857,8 +769,6 @@ const RealtimeOverview = () => {
       handleLATTankeGroup()
       handleHPTankeGroup()
       handleFUELTankeGroup()
-      // handleTranslateXTankeGroup()
-      // handleTranslateYTankeGroup()
       handleHighLightTankeGroup()
     }, 1000)
   }, [dynamicInfo])
@@ -879,9 +789,6 @@ const RealtimeOverview = () => {
   const [FUELList, setFUELList] = useState<string[]>(new Array(3).fill('0'))
   const [YAWList, setYAWList] = useState<string[]>(new Array(3).fill('0'))
   const [highLightList, setHighLightList] = useState<number[]>(new Array(3).fill(0))
-  // 计算初始化固定翼无人机和本次的translateX的距离
-  const [translateXList, setTranslateXList] = useState<number[]>(new Array(3).fill(0))
-  const [translateYList, setTranslateYList] = useState<number[]>(new Array(3).fill(0))
 
   /**  小型4旋翼无人机10架 */
   const [sixuanyiLeftList, setSixuanyiLeftList] = useState<number[]>(new Array(10).fill(0))
@@ -890,8 +797,6 @@ const RealtimeOverview = () => {
   const [sixuanyiLATList, setSixuanyiLATList] = useState<string[]>(new Array(10).fill("0°'"))
   const [sixuanyiHPList, setSixuanyiHPList] = useState<string[]>(new Array(10).fill('0'))
   const [sixuanyiFUELList, setSixuanyiFUELList] = useState<string[]>(new Array(10).fill('0'))
-  const [sixuanyiTranslateXList, setSixuanyiTranslateXList] = useState<number[]>(new Array(10).fill(0))
-  const [sixuanyiTranslateYList, setSixuanyiTranslateYList] = useState<number[]>(new Array(10).fill(0))
   const [sixuanyiHighLightList, setSixuanyiHighLightList] = useState<number[]>(new Array(10).fill(0))
 
   /**  战列舰相关 */
@@ -901,8 +806,6 @@ const RealtimeOverview = () => {
   const [zhanliejianLATList, setZhanliejianLATList] = useState<string[]>(new Array(7).fill("0°'"))
   const [zhanliejianHPList, setZhanliejianHPList] = useState<string[]>(new Array(7).fill('0'))
   const [zhanliejianFUELList, setZhanliejianFUELList] = useState<string[]>(new Array(7).fill('0'))
-  const [zhanliejianTranslateXList, setZhanliejianTranslateXList] = useState<number[]>(new Array(7).fill(0))
-  const [zhanliejianTranslateYList, setZhanliejianTranslateYList] = useState<number[]>(new Array(7).fill(0))
   const [zhanliejianiHighLightList, setZhanliejianiHighLightList] = useState<number[]>(new Array(7).fill(0))
 
 
@@ -913,8 +816,6 @@ const RealtimeOverview = () => {
   const [tankeLATList, setTankeLATList] = useState<string[]>(new Array(2).fill("0°'"))
   const [tankeHPList, setTankeHPList] = useState<string[]>(new Array(2).fill('0'))
   const [tankeFUELList, setTankeFUELList] = useState<string[]>(new Array(2).fill('0'))
-  const [tankeTranslateXList, setTankeTranslateXList] = useState<number[]>(new Array(2).fill(0))
-  const [tankeTranslateYList, setTankeTranslateYList] = useState<number[]>(new Array(2).fill(0))
   const [tankeHighLightList, setTankeHighLightList] = useState<number[]>(new Array(2).fill(0))
   
 
@@ -1011,8 +912,7 @@ const RealtimeOverview = () => {
             style={{
               position: 'absolute', 
               top: `${tankeTopList[i]}px`, 
-              left: `${tankeLeftList[i]}px`,
-              transform: `translate(${tankeTranslateXList[i]}px, ${tankeTranslateYList[i]}px)`
+              left: `${tankeLeftList[i]}px`
             }}
           >
           <div className={
@@ -1054,8 +954,7 @@ const RealtimeOverview = () => {
             className={styles.wurenjiGroup}
             key={i}
             style={{
-              position: 'absolute', top: `${topList[i]}px`, left: `${leftList[i]}px`,
-              transform: `translate(${translateXList[i]}px, ${translateYList[i]}px)`}}>
+              position: 'absolute', top: `${topList[i]}px`, left: `${leftList[i]}px`}}>
             <div className={classnames(styles.wurenjiIcon,{
               [styles.highLight]: highLightList[i]
             })} style={{transform: `rotate(${YAWList[i]}deg)`}}>
@@ -1076,8 +975,7 @@ const RealtimeOverview = () => {
             style={{
               position: 'absolute', 
               top: `${zhanliejianTopList[i]}px`, 
-              left: `${zhanliejianLeftList[i]}px`,
-              transform: `translate(${zhanliejianTranslateXList[i]}px, ${zhanliejianTranslateYList[i]}px)`
+              left: `${zhanliejianLeftList[i]}px`
             }}
             className={styles.jianlietingGroup}
             key={i}
@@ -1106,8 +1004,7 @@ const RealtimeOverview = () => {
             style={{
                 position: 'absolute', 
                 top: `${sixuanyiTopList[i]}px`, 
-                left: `${sixuanyiLeftList[i]}px`,
-                transform: `translate(${sixuanyiTranslateXList[i]}px, ${sixuanyiTranslateYList[i]}px)`
+                left: `${sixuanyiLeftList[i]}px`
             }}>
               <div className={styles.sixuanyiContent}>
                 <div className={
