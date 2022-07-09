@@ -491,3 +491,13 @@
     background-image: url('@/assets/images/tankeIconHighLight.png');
   }
 }
+.tataiGroup {
+  position: absolute;
+  display: flex;
+}
+.tataiGroup .tataiIcon {
+  width: 87px;
+  height: 273px;
+  background: url('@/assets/images/tatai.png') no-repeat left top;
+  background-size: contain;
+}

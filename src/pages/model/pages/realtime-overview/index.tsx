@@ -6,6 +6,7 @@ import React, {
   useCallback
 } from "react";
 import styles from "./index.module.less";
+import s2 from '@/components/electric/index.module.less'
 import { axios } from "@/api/request";
 import { parseParams } from "@utils/utils";
 import { EdgeType, StaticInfo } from "./type";
@@ -851,7 +852,18 @@ const RealtimeOverview = () => {
         })
       }
 
-
+      <div
+       className={styles.tataiGroup}
+      
+      >
+        <div className={styles.tataiIcon}>塔台</div>
+        <div className={s2.liveWrapper}>
+            <i className={s2.liveBg}></i>
+            <div className={s2.jianchuanContent}>
+                <div><p>北纬xx，东经xx</p></div>
+            </div>
+        </div>
+      </div>
       <div className={styles.weizhuangjianlietingGroup}>
         <div className={styles.weizhuangjianlietingIcon}></div>
         <Electric 
