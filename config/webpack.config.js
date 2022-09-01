@@ -59,7 +59,7 @@ module.exports = {
         new CleanWebpackPlugin(),
         new FriendlyErrorsWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: '智能复杂体系演示验证系统',
+            title: 'swap72',
             template: path.resolve(__dirname, '../', 'public/index.html'),
             filename: 'index.html'
         }),

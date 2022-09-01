@@ -192,9 +192,10 @@ module.exports = {
         // new ForkTsCheckerWebpackPlugin(),
         new WebpackBar(),
         new HtmlWebpackPlugin({
-            title: '智能复杂体系演示验证系统',
+            title: 'swap721',
             publicPath: '/',
-            template: path.resolve(__dirname, '../', 'src/document.ejs'),
+            template: path.resolve(__dirname, '../', 'src/index.html'),
+            favicon: path.resolve(__dirname, '../', 'public/favicon.ico'),
             filename: 'index.html'
         }),
     ]
