@@ -1,0 +1,155 @@
+@import '../styles/_base.scss';
+body {
+  background-color: #060606;
+}
+.header-wrapperOuter {
+  line-height: 40px;
+  width: 1160px;
+  margin: 48px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .wrapperInner {
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 14px;
+    color: #515151;
+    width: 419px;
+    display: flex;
+    justify-content: space-between;
+    
+    span {
+      line-height:40px;
+      &.active {
+        color: #fff;
+      } 
+    }
+  }
+  .logo {
+    width: 58px;
+    height: 30px;
+  }
+
+  .wrapper-inner-right {
+    width: 436px;
+    display: flex;
+    justify-content: space-between;
+    .link-list {
+      width: 150px;
+      display: flex;
+      justify-content: space-between;
+      a {
+        display: flex;
+        align-items: center;
+      }
+      .image-brid,
+      .image-wawa,
+      .image-github {
+        width: 20px;
+      }
+    }
+    .wrapper-tool-list {
+      display: flex;
+      align-items: center;
+      position: relative;
+      .wrapper-tool1 {
+        background: #f6851b;
+        height: 40px;
+        line-height: 40px;
+        width: 94px;
+        text-align: center;
+        border-radius: 10px;
+        font-family: "Inter";
+        font-weight: 600;
+        color: #ffffff;
+        cursor: pointer;
+      }
+      .wrapper-tool2 {
+        margin-left: 16px;
+        width: 136px;
+        height: 40px;
+        line-height: 40px;
+        border: 2px solid #264cc4;
+        border-radius: 10px;
+        color: #fff;
+        background: none;
+        cursor: pointer;
+        font-family: "Inter";
+      }
+      .inner-tool-list {
+        position: absolute;
+        z-index: 99;
+        right: 0;
+        top:52px;
+        width: 278px;
+        height: 209px;
+        background: #212121;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        box-sizing: border-box;
+        padding: 18px 24px 24px;
+        font-family: 'Poppins';
+        h5 {
+          color: #FFFFFF;
+          font-size: 16px;
+          font-weight: 600;
+          position: relative;
+          height:24px;
+          line-height: 24px;
+          i {
+            cursor: pointer;
+            display: block;
+            content: '';
+            position: absolute;
+            right:0;
+            top:0;
+            width: 24px;
+            height:24px;
+            background: url('../assets/image/close-small.png') no-repeat center center;
+            background-size: contain;
+          }
+        }
+        .box-wallet1,
+        .box-wallet2 {
+          margin-top: 18px;
+          width: 230px;
+          height: 53px;
+          border: 1px solid #FBF2F2;
+          border-radius: 10px;
+          padding: 16px 16px 16px 64px; 
+          box-sizing: border-box;
+          font-weight: 600;
+          font-size: 16px;
+          color: #FFFFFF;
+          position: relative;
+          cursor: pointer;
+          &::before {
+            position: absolute;
+            top:8px;
+            left:16px;
+            display: block;
+            content: '';
+            width: 32px;
+            height:32px;
+            background-size: contain;
+          }
+        }
+        .box-wallet1 {
+          &::before {
+            background-image: url('../assets/image/meta-mask.png')
+          }
+        }
+
+        .box-wallet2 {
+          &::before {
+            background-image: url('../assets/image/walletconnect.png')
+          }
+        }
+      }
+    }
+    
+  }
+}
+
+
+

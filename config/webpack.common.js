@@ -103,6 +103,19 @@ module.exports = {
                 // exclude: /node_modules/,
             },
             {
+                test: /\.scss$/,
+                use : [
+                    // Creates `style` nodes from JS strings
+                    'style-loader',
+                    'cache-loader',
+                    // Translates CSS into CommonJS
+                    'css-loader',
+                    'postcss-loader',
+                    // Compiles Sass to CSS
+                    'sass-loader',
+                ]
+            },
+            {
                 test: /\.less$/,
                 use: [
                     {

@@ -1,0 +1,129 @@
+.index-list-home {
+  width: 1160px;
+  margin: 57px auto 0;
+  font-family: "Poppins";
+  .title {
+    font-weight: 600;
+    line-height: 24px;
+    height: 24px;
+    font-size: 16px;
+    color: #c2c2c2;
+    text-align: center;
+  }
+  .wrapper-outer-list {
+    width: 1160px;
+    overflow: hidden
+  }
+  ul.wrapper-list {
+    margin-top: 32px;
+    display: flex;
+    width: 1480px;
+    justify-content: space-between;
+    transition: transform 1s ease 0s;
+    li {
+      margin-left:40px;
+      height: 390px;
+      width: 360px;
+      background: #111111;
+      border-radius: 20px;
+      padding: 40px 40px 56px;
+      box-sizing: border-box;
+      .sub-title {
+        display: flex;
+        align-items: center;
+        font-family: 'Poppins';
+        .sub-title-icon {
+          width: 58px;
+          height: 30px;
+          background: url('../../assets/image/logo1.png') no-repeat center center;
+          background-size: contain;
+        }
+        .sub-title-info {
+          font-weight: 600;
+          font-size: 24px;
+          margin: 0 10px;
+          color: #FFFFFF;
+        }
+        .sub-title-button {
+          font-weight: 700;
+          font-size: 12px;
+          color: #45B36B;
+          border: 2px solid #45B36B;
+          border-radius: 4px;
+          height: 26px;
+          line-height: 26px;
+          padding:  0 8px;
+        }
+      }
+      .content-info {
+        margin-top:35px;
+        height: 150px;
+        width: 280px;
+        overflow: auto;
+        font-weight: 400;
+        line-height: 24px;
+        color: #C2C2C2;
+        font-size: 12px;
+      }
+
+      .wrapper-read-more {
+        margin-top:32px;
+        width: 126px;
+        height: 48px;
+        line-height: 48px;
+        text-align: center;
+        background: #264CC4;
+        color:#FFFFFF;
+        font-size: 16px;
+        font-weight: 600;
+        font-family: 'SF Pro Display';
+        border-radius: 16px;
+        display: block;
+      }
+    }
+    li:first-of-type {
+      margin-left:0;
+    }
+  }
+
+  .scroll-tools {
+    display: flex;
+    justify-content: center;
+    margin-top:39px;
+    .scroll-tools-inner {
+      display: flex;
+      .icon-tool-left,
+      .icon-tool-right
+      {
+        display: block;
+        width: 14px;
+        height: 9px;
+      }
+      .icon-tool-left {
+        background: url('../../assets/image/icon-tool-right.png') no-repeat center center;
+        background-size: contain;
+        transform: rotate(180deg);
+        margin-right:30px;
+        cursor: pointer;
+        &.disabled {
+          background-image: url('../../assets/image/icon-tool-left.png');
+          transform: rotate(0);
+          cursor: inherit;
+        }
+      }
+  
+      .icon-tool-right {
+        background: url('../../assets/image/icon-tool-right.png') no-repeat center center;
+        background-size: contain;
+        cursor: pointer;
+        &.disabled {
+          background-image: url('../../assets/image/icon-tool-left.png');
+          transform: rotate(180deg);
+          cursor: inherit;
+        }
+      }
+    }
+    
+  }
+
+}
