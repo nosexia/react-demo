@@ -109,7 +109,15 @@ module.exports = {
                     'style-loader',
                     'cache-loader',
                     // Translates CSS into CommonJS
-                    'css-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                mode: 'local',
+                                localIdentName: '[local]--[contentHash:base64:8]'
+                            }
+                        }
+                    },
                     'postcss-loader',
                     // Compiles Sass to CSS
                     'sass-loader',

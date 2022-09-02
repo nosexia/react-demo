@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import "./Header.scss";
+import s from "./Header.scss";
 import links from '../constant/links.ts'
 import { useLocation } from 'react-router-dom'
 const logoSrc = require("../assets/image/logo.png");
@@ -19,36 +19,36 @@ const Header: FC = () => {
     })
   }
   return (
-    <div className="header-wrapperOuter">
-      <div className="wrapperInner">
-        <span className={pathname === 'home' ? 'active' : ''}> Home</span>
-        <span className={pathname === '' ? 'active' : ''}>Swap</span>
-        <span className="fa">Farm</span>
-        <span className="ga">$ve721</span>
-        <span className="ha">Claim</span>
+    <div className={s.headerWrapperOuter}>
+      <div className={s.wrapperInner}>
+        <span className={pathname === 'home' ? s.active : ''}> Home</span>
+        <span className={pathname === '' ? s.active : ''}>Swap</span>
+        <span >Farm</span>
+        <span >$ve721</span>
+        <span >Claim</span>
       </div>
-      <img src={logoSrc} className="logo" />
-      <div className="wrapper-inner-right">
-        <div className="link-list">
+      <img src={logoSrc} className={s.logo} />
+      <div className={s.wrapperInnerRight}>
+        <div className={s.linkList}>
           <a href={links.twitterIconUrl} target="_blank">
-            <img src={birdSrc} className="image-brid" />
+            <img src={birdSrc} className={s.imageBrid} />
           </a>
           <a href={links.swapIconUrl} target="_blank">
-            <img src={wawaSrc} className="image-wawa" />
+            <img src={wawaSrc} className={s.imageWawa} />
           </a>
           <a href={links.githubUrl} target="_blank">
-            <img src={githubSrc} className="image-github" />
+            <img src={githubSrc} className={s.imageGithub} />
           </a>
         </div>
 
-        <div className="wrapper-tool-list">
-          <input type="button" value="Buy $721" className="wrapper-tool1" />
-          <input type="button" value="Connect Wallet" className="wrapper-tool2" onClick={e => handleWalletShow(e)} />
+        <div className={s.wrapperToolList}>
+          <input type="button" value="Buy $721" className={s.wrapperTool1} />
+          <input type="button" value="Connect Wallet" className={s.wrapperTool2} onClick={e => handleWalletShow(e)} />
 
-          {showWallet && <div className="inner-tool-list">
-            <h5 className="title">Connect Wallet<i onClick={() => setShowWallet(false)}></i></h5>
-            <div className="box-wallet1">MetaMask</div>
-            <div className="box-wallet2">WalletConnect</div>
+          {showWallet && <div className={s.innerToolList}>
+            <h5 className={s.title}>Connect Wallet<i onClick={() => setShowWallet(false)}></i></h5>
+            <div className={s.boxWallet1}>MetaMask</div>
+            <div className={s.boxWallet2}>WalletConnect</div>
           </div>}
         </div>
       </div>

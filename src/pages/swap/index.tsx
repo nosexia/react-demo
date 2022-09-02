@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useMount, useUnmount} from 'react-use'
-import './index.scss'
+import s from './index.scss'
 let timer = null
 const Home  = () => {
     const [day, setDay] = useState<string>('000')
@@ -52,45 +52,45 @@ const Home  = () => {
         timer = null 
       })
 
-    return <div className="home-wrapper-outer">
-        <div className="wrapper-inner-left">
-            <p className="title-message">We are</p>
-            <p className="title-message">Coming</p> 
-            <p className="title-message">Soon.</p>
+    return <div className={s.homeWrapperOuter}>
+        <div className={s.wrapperInnerLeft}>
+            <p className={s.titleMessage}>We are</p>
+            <p className={s.titleMessage}>Coming</p> 
+            <p className={s.titleMessage}>Soon.</p>
         </div>
-        <div className="wrapper-inner-right">
-            <div className="wrapper-count-down">
+        <div className={s.wrapperInnerRight}>
+            <div className={s.wrapperCountDown}>
                 <ul>
                     <li>
-                        <h5 className="sub-title">DAYS</h5>
-                        <p className="sub-message">{day}</p>
+                        <h5 className={s.subTitle}>DAYS</h5>
+                        <p className={s.subMessage}>{day}</p>
                     </li>
                     <li>
-                        <h5 className="sub-title">HRS</h5>
-                        <p className="sub-message">{hour}</p>
-                    </li>
-
-                    <li>
-                        <h5 className="sub-title">MINS</h5>
-                        <p className="sub-message">{minute}</p>
+                        <h5 className={s.subTitle}>HRS</h5>
+                        <p className={s.subMessage}>{hour}</p>
                     </li>
 
                     <li>
-                        <h5 className="sub-title">SECS</h5>
-                        <p className="sub-message">{second}</p>
+                        <h5 className={s.subTitle}>MINS</h5>
+                        <p className={s.subMessage}>{minute}</p>
+                    </li>
+
+                    <li>
+                        <h5 className={s.subTitle}>SECS</h5>
+                        <p className={s.subMessage}>{second}</p>
                     </li>
                 </ul>
             </div>
 
-            <div className="wrapper-notified-message">
-                <div className="inner-notified-message">
-                    <div className="notified-message-left">
+            <div className={s.wrapperNotifiedMessage}>
+                <div className={s.innerNotifiedMessage}>
+                    <div className={s.notifiedMessageLeft}>
                         <h4>
                         Get notified when we launch
                         </h4>
-                        <input className="wrapper-email" placeholder="Enter your email" />
+                        <input className={s.wrapperEmail} placeholder="Enter your email" />
                     </div>
-                    <input type="button" className="wrapper-submit"/>
+                    <input type="button" className={s.wrapperSubmit}/>
                 </div>
             </div>
         </div>

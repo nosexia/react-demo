@@ -1,69 +1,70 @@
-import React, { FC } from "react";
-import "./index.scss";
-import WrapList from '../../constant/home-list.ts'
+import React, { FC, MouseEvent } from "react";
+import s from "./index.scss";
+import WrapList from '../../constant/home-list'
+import classname from 'classnames'
 const Index: FC = () => {
-  const handleLeftIcon = (e) => {
+  const handleLeftIcon = (e:MouseEvent) => {
     e.preventDefault()
-    const wrapperListDom = document.querySelector('.wrapper-list') as HTMLDivElement
-    const target = e.target
-    const originClassName = target.getAttribute('class')
-    const hasDisabled = originClassName.includes('disabled')
+    const wrapperListDom = document.querySelector(`\.${s.wrapperList}`) as HTMLDivElement
+    const target = e.target as HTMLDivElement
+    const originClassName = target.getAttribute('class') as string
+    const hasDisabled = originClassName.includes(`${s.disabled}`)
     if(hasDisabled) return
     wrapperListDom.style.transform = 'translateX(0)'
-    target.setAttribute('class', `${originClassName} disabled`)
+    target.setAttribute('class', `${originClassName} ${s.disabled}`)
 
-    const iconToolRightDom = document.querySelector('.icon-tool-right')
-    iconToolRightDom.setAttribute('class', 'icon-tool-right')
+    const iconToolRightDom = document.querySelector(`\.${s.iconToolRight}`) as HTMLDivElement
+    iconToolRightDom.setAttribute('class', `${s.iconToolRight}`)
   }
 
-  const handleRightIcon = (e) => {
+  const handleRightIcon = (e:MouseEvent) => {
     e.preventDefault()
-    const wrapperListDom = document.querySelector('.wrapper-list') as HTMLDivElement
+    const wrapperListDom = document.querySelector(`\.${s.wrapperList}`) as HTMLDivElement
     
-    const target = e.target
-    const originClassName = target.getAttribute('class')
+    const target = e.target as HTMLDivElement
+    const originClassName = target.getAttribute('class') as string
     
-    const hasDisabled = originClassName.includes('disabled')
+    const hasDisabled = originClassName.includes(`${s.disabled}`)
     if(hasDisabled) return
     wrapperListDom.style.transform = 'translateX(-400px)'
-    target.setAttribute('class', `${originClassName} disabled`)
+    target.setAttribute('class', `${originClassName} ${s.disabled}`)
 
-    const iconToolLeftDom = document.querySelector('.icon-tool-left')
-    iconToolLeftDom.setAttribute('class', 'icon-tool-left')
+    const iconToolLeftDom = document.querySelector(`\.${s.iconToolLeft}`) as HTMLDivElement;
+    iconToolLeftDom.setAttribute('class', `${s.iconToolLeft}`)
   }
   return (
     <div>
-      <div className="index-list-home">
-        <h3 className="title">
+      <div className={s.indexListHome}>
+        <h3 className={s.title}>
           <span>👋</span>Hello, NFT Holders!
         </h3>
-        <div className="wrapper-outer-list">
-          <ul className="wrapper-list">
+        <div className={s.wrapperOuterList}>
+          <ul className={s.wrapperList}>
             {
               WrapList.map(((item, index) => (
                 <li key={index}>
-                  <div className="sub-title">
-                    <i className="sub-title-icon"></i><i className="sub-title-info">{item.title}</i>
-                    {item.hasButton && <span className="sub-title-button">Farm</span>}
+                  <div className={s.subTitle}>
+                    <i className={s.subTitleIcon}></i><i className={s.subTitleInfo}>{item.title}</i>
+                    {item.hasButton && <span className={s.subTitleButton}>Farm</span>}
                     
                   </div>
-                  <p className="content-info">
+                  <p className={s.contentInfo}>
                     {item.content}
                   </p>
                   <a
                     href={item.href}
                     target="_blank"
-                    className="wrapper-read-more"
+                    className={s.wrapperReadMore}
                   >Read More</a>
                 </li>
               )))
             }
           </ul>
         </div>
-        <div className="scroll-tools">
-          <div className="scroll-tools-inner">
-            <i className="icon-tool-left disabled" onClick={(e) => handleLeftIcon(e)}></i>
-            <i className="icon-tool-right" onClick={(e) => handleRightIcon(e)}></i>
+        <div className={s.scrollTools}>
+          <div className={s.scrollToolsInner}>
+            <i className={classname(s.iconToolLeft, s.disabled)} onClick={(e) => handleLeftIcon(e)}></i>
+            <i className={s.iconToolRight} onClick={(e) => handleRightIcon(e)}></i>
           </div>
         </div>
       </div>

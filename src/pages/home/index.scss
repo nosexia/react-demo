@@ -1,4 +1,4 @@
-.index-list-home {
+.indexListHome {
   width: 1160px;
   margin: 57px auto 0;
   font-family: "Poppins";
@@ -10,11 +10,11 @@
     color: #c2c2c2;
     text-align: center;
   }
-  .wrapper-outer-list {
+  .wrapperOuterList {
     width: 1160px;
     overflow: hidden
   }
-  ul.wrapper-list {
+  ul.wrapperList {
     margin-top: 32px;
     display: flex;
     width: 1480px;
@@ -28,23 +28,23 @@
       border-radius: 20px;
       padding: 40px 40px 56px;
       box-sizing: border-box;
-      .sub-title {
+      .subTitle {
         display: flex;
         align-items: center;
         font-family: 'Poppins';
-        .sub-title-icon {
+        .subTitleIcon {
           width: 58px;
           height: 30px;
           background: url('../../assets/image/logo1.png') no-repeat center center;
           background-size: contain;
         }
-        .sub-title-info {
+        .subTitleInfo {
           font-weight: 600;
           font-size: 24px;
           margin: 0 10px;
           color: #FFFFFF;
         }
-        .sub-title-button {
+        .subTitleButton {
           font-weight: 700;
           font-size: 12px;
           color: #45B36B;
@@ -55,7 +55,7 @@
           padding:  0 8px;
         }
       }
-      .content-info {
+      .contentInfo {
         margin-top:35px;
         height: 150px;
         width: 280px;
@@ -66,7 +66,7 @@
         font-size: 12px;
       }
 
-      .wrapper-read-more {
+      .wrapperReadMore {
         margin-top:32px;
         width: 126px;
         height: 48px;
@@ -86,20 +86,20 @@
     }
   }
 
-  .scroll-tools {
+  .scrollTools {
     display: flex;
     justify-content: center;
     margin-top:39px;
-    .scroll-tools-inner {
+    .scrollToolsInner {
       display: flex;
-      .icon-tool-left,
-      .icon-tool-right
+      .iconToolLeft,
+      .iconToolRight
       {
         display: block;
         width: 14px;
         height: 9px;
       }
-      .icon-tool-left {
+      .iconToolLeft {
         background: url('../../assets/image/icon-tool-right.png') no-repeat center center;
         background-size: contain;
         transform: rotate(180deg);
@@ -112,7 +112,7 @@
         }
       }
   
-      .icon-tool-right {
+      .iconToolRight {
         background: url('../../assets/image/icon-tool-right.png') no-repeat center center;
         background-size: contain;
         cursor: pointer;

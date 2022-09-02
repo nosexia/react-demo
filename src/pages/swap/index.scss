@@ -1,16 +1,16 @@
-.home-wrapper-outer {
+.homeWrapperOuter {
     width: 1160px;
     margin: 184px auto 0;
     display: flex;
     justify-content: space-between;
-    .wrapper-inner-left {
+    .wrapperInnerLeft {
         position: relative;
         width: 449px;
         font-weight: 600;
         font-family: 'Poppins';
         font-size: 80px;
         color: #FFF;
-        .title-message {
+        .titleMessage {
             height:80px;
             line-height: 80px;
             position: relative;
@@ -30,10 +30,10 @@
         }
     }
 
-    .wrapper-inner-right  {
+    .wrapperInnerRight  {
         width: 684px;
         font-family: 'Tomorrow';
-        .wrapper-count-down  {
+        .wrapperCountDown  {
             margin-bottom: 110px;
             ul {
                 display: flex;
@@ -42,12 +42,13 @@
                     // width: 153px;
                     padding-right: 64px;
                     position: relative;
-                    .sub-title {
+                    .subTitle {
                         font-weight: 300;
                         font-size: 20px;
                         color: #FFFFFF;
                     }
-                    .sub-message {
+                    .subMessage {
+                        font-family: 'Tomorrow';
                         font-weight: 700;
                         font-size: 80px;
                         color: #FFFFFF;
@@ -72,19 +73,19 @@
             }
         }
 
-        .wrapper-notified-message {
+        .wrapperNotifiedMessage {
             display: flex;
             justify-content: right;
-            .inner-notified-message {
+            .innerNotifiedMessage {
                 display: flex;
-                .notified-message-left {
+                .notifiedMessageLeft {
                     width: 300px;
                     h4 {
                         font-weight: 700;
                         font-size: 20px;
                         color:#EBE2DD;
                     }
-                    input.wrapper-email {
+                    input.wrapperEmail {
                         border: 2px solid #FFFFFF;
                         border-radius: 10px;
                         height: 48px;
@@ -96,13 +97,14 @@
                         box-sizing: border-box;
                     }
                 }
-                .wrapper-submit {
+                .wrapperSubmit {
                     margin-left:20px;
                     width: 90px;
                     height: 90px;
                     border: 0;
                     background: url('../../assets/image/home-bg-submit.png') no-repeat center center;
                     background-size: contain;
+                    cursor: pointer;
                 }
             }
 
