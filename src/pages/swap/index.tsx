@@ -1,17 +1,17 @@
 import React, {useState} from 'react'
 import {useMount, useUnmount} from 'react-use'
 import s from './index.scss'
-let timer = null
+let timer:any =  null
 const Home  = () => {
     const [day, setDay] = useState<string>('000')
     const [hour, setHour] = useState<string>('00')
     const [minute, setMinute] = useState<string>('00')
     const [second, setSecond] = useState<string>('00')
-    const addZero = (i) => {
+    const addZero = (i:string|number) => {
         return i < 10 ? "0" + i: i + "";
     }
 
-    const addZero1 = (i) => {
+    const addZero1 = (i:string|number) => {
         if(i < 10) {
             return `00${i}`
         } else if(i < 100) {
@@ -37,7 +37,7 @@ const Home  = () => {
         const hour = addZero(h);
         const minute = addZero(m);
         const second = addZero(s);
-        setDay(day)
+        setDay(String(day))
         setHour(hour)
         setMinute(minute)
         setSecond(second)
